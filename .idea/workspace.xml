@@ -5,38 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="上传测试">
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/Addr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/AdminPwdBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/AlipayBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/Cart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/Discuss.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/GoodSelectBeanX.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/Goods.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/GoodsInfoBeanX.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/GoodsType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/MemberInfoBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/OrderInfoBeanX.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/OrderItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/OrderShowInfoBeanX.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/Orderiteminfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/PageBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/Resuser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Login/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Login/src/test/java/com/s3/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway_access_log.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/spring.log.2023-04-23.0.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/spring.log.2023-04-24.0.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/spring.log.2023-04-28.0.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/spring.log.2023-04-29.0.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,9 +50,12 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/yc119_s3_Login/src/main/resources" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "master",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -158,6 +132,8 @@
     </configuration>
     <configuration name="GatewayApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="res-getway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lxx.GatewayApp" />
+      <option name="VM_PARAMETERS" value="-Dreactor.netty.http.server.accessLogEnabled=true" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.lxx.*" />
@@ -169,8 +145,6 @@
         <option name="region" />
         <option name="useCurrentConnection" value="false" />
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lxx.GatewayApp" />
-      <option name="VM_PARAMETERS" value="-Dreactor.netty.http.server.accessLogEnabled=true" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -197,8 +171,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="HTTP Request.GatewayApp | #1" />
-      <item itemvalue="HTTP Request.GatewayApp | #2" />
+      <item itemvalue="HTTP 请求.GatewayApp | #1" />
+      <item itemvalue="HTTP 请求.GatewayApp | #2" />
       <item itemvalue="Spring Boot.FoodsApp9002" />
       <item itemvalue="Spring Boot.FoodsApp9003" />
       <item itemvalue="Spring Boot.ResCartsApplication" />
@@ -304,7 +278,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>

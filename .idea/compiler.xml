@@ -11,7 +11,7 @@
         <module name="yc119_s3_Entity" />
         <module name="static" />
         <module name="gateway" />
-        <module name="static" />
+        <module name="Jwt" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -26,6 +26,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Jwt" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="res-api" options="-parameters" />
       <module name="res-carts" options="-parameters" />
