@@ -7,6 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="yc119_s3_Login" />
+        <module name="yc119_s3_Entity" />
+        <module name="static" />
         <module name="gateway" />
       </profile>
     </annotationProcessing>
@@ -29,7 +32,10 @@
       <module name="res-foods" options="-parameters" />
       <module name="res-getway" options="-parameters" />
       <module name="res-static" options="-parameters" />
+      <module name="static" options="-parameters" />
       <module name="yc119_cloud_res_parent" options="" />
+      <module name="yc119_s3_Entity" options="-parameters" />
+      <module name="yc119_s3_Login" options="-parameters" />
     </option>
   </component>
 </project>
