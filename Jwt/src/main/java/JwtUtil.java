@@ -24,12 +24,8 @@ public class JwtUtil {
     //有效期为
     public static final Long JWT_TTL = 60 * 60 *1000L;// 60 * 60 *1000  有效期:一个小时
     //设置秘钥明文
-    public static final String JWT_KEY = "yjlService";
+    public static final String JWT_KEY = "yltService";
 
-    public static String getUUID(){
-        String token = UUID.randomUUID().toString().replaceAll("-", "");
-        return token;
-    }
 
     /**
      * 生成jtw
@@ -37,7 +33,7 @@ public class JwtUtil {
      * @return
      */
     public static String createJWT(String subject) {
-        JwtBuilder builder = getJwtBuilder(subject, null, getUUID());// 设置过期时间
+        JwtBuilder builder = getJwtBuilder(subject, null, String.valueOf(UUID.randomUUID()));// 设置过期时间
         return builder.compact();
     }
 
@@ -48,7 +44,7 @@ public class JwtUtil {
      * @return
      */
     public static String createJWT(String subject, Long ttlMillis) {
-        JwtBuilder builder = getJwtBuilder(subject, ttlMillis, getUUID());// 设置过期时间
+        JwtBuilder builder = getJwtBuilder(subject, ttlMillis, String.valueOf(UUID.randomUUID()));// 设置过期时间
         return builder.compact();
     }
 
@@ -63,12 +59,19 @@ public class JwtUtil {
         long expMillis = nowMillis + ttlMillis;
         Date expDate = new Date(expMillis);
         return Jwts.builder()
+                //设置token类型
+                .setHeaderParam("typ", "JWT")
+                //设置加密算法
+                .setHeaderParam("alg", "HS256")
+                //TODO:将用户信息存入token
+                //.claim("user","user")
                 .setId(uuid)              //唯一的ID
                 .setSubject(subject)   // 主题  可以是JSON数据
                 .setIssuer("yjlyyds")     // 签发者
                 .setIssuedAt(now)      // 签发时间
                 .signWith(signatureAlgorithm, secretKey) //使用HS256对称加密算法签名, 第二个参数为秘钥
                 .setExpiration(expDate);//过期时间
+
     }
 
     /**

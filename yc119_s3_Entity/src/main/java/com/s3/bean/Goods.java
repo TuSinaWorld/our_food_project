@@ -23,6 +23,4 @@ public class Goods implements Serializable {
     private String qperied;//保质期
     private String weight;//重量数量
     private String descr;//描述
-
-
 }

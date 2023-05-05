@@ -11,6 +11,7 @@
         <module name="yc119_s3_Entity" />
         <module name="static" />
         <module name="gateway" />
+        <module name="Jwt" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

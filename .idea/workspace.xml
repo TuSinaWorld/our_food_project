@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="提交jwt工具包">
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/com/yc/configs/RedisConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
+    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="上传测试">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jwt/target/classes/JwtUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/target/classes/JwtUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/yc/Util/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/yc/Util/JwtUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,19 +32,11 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="localRepository" value="D:\MavenRepository" />
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../apache-maven-3.6.3" />
-        <option name="userSettingsFile" value="D:\apache-maven-3.6.3\conf\settings.xml" />
-      </MavenGeneralSettings>
-    </option>
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="downloadAnnotationsAutomatically" value="true" />
         <option name="downloadDocsAutomatically" value="true" />
         <option name="downloadSourcesAutomatically" value="true" />
-        <option name="workspaceImportEnabled" value="true" />
       </MavenImportingSettings>
     </option>
   </component>
@@ -64,33 +50,6 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/java2/java2/yc119_s3_project/gateway/src/main/java/com/yc&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;0316676f385226cce027686f49e3a844&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -100,29 +59,40 @@
       <recent name="com.yc.resfoods.biz" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\javafile\yc119_s3_project\yc119_s3_Login\src\main\resources" />
       <recent name="D:\java2\java2\yc119_s3_project\gateway\src\main\java\com\yc" />
       <recent name="D:\java2\java2\yc119_s3_project\gateway\src\main\resources" />
       <recent name="F:\JAVA\yc112-s2\lxx_springboot\yc119_cloud_res_parent\res-entity\src\main\java\com\yc\utils" />
       <recent name="F:\JAVA\yc112-s2\lxx_springboot\yc119_cloud_res_parent\res-getway\src\main\java\com\lxx" />
-      <recent name="F:\JAVA\yc112-s2\lxx_springboot\yc119_cloud_res_parent\res-entity\src\main\java\com\yc\web\model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\javafile\yc119_s3_project\yc119_s3_Entity\src\main\java\com\s3\bean" />
+      <recent name="D:\javafile\yc119_s3_project\yc119_s3_Entity\src\main\java\com\s3" />
       <recent name="F:\JAVA\yc112-s2\lxx_springboot\yc119_cloud_res_parent\res-static\src\main\resources\static" />
       <recent name="F:\JAVA\yc112-s2\lxx_springboot\yc119_cloud_res_parent" />
       <recent name="F:\JAVA\yc112-s2\lxx_springboot\yc119_cloud_res_parent\res-foods\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.yc.configs" />
-      <recent name="" />
       <recent name="com.yc.Util" />
       <recent name="com.lxx.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.GateWayApp">
-    <configuration name="GatewayApp | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/GatewayApp.http" requestIdentifier="#1">
+  <component name="RunManager" selected="Spring Boot.GatewayApp">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayApp | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/GatewayApp.http">
       <method v="2" />
     </configuration>
-    <configuration name="GatewayApp | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/GatewayApp.http" index="2" requestIdentifier="#2">
+    <configuration name="GatewayApp | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/GatewayApp.http" index="2">
       <method v="2" />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
@@ -154,23 +124,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GateWayApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="gateway" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.GateWayApp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.yc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GatewayApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="res-getway" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lxx.GatewayApp" />
-      <option name="VM_PARAMETERS" value="-Dreactor.netty.http.server.accessLogEnabled=true" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.lxx.*" />
@@ -182,6 +137,8 @@
         <option name="region" />
         <option name="useCurrentConnection" value="false" />
       </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lxx.GatewayApp" />
+      <option name="VM_PARAMETERS" value="-Dreactor.netty.http.server.accessLogEnabled=true" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -214,19 +171,20 @@
       <item itemvalue="Spring Boot.FoodsApp9003" />
       <item itemvalue="Spring Boot.ResCartsApplication" />
       <item itemvalue="Spring Boot.ResFoodsApplication" />
-      <item itemvalue="Spring Boot.GateWayApp" />
       <item itemvalue="Spring Boot.GatewayApp" />
       <item itemvalue="Spring Boot.ResStaticApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.GateWayApp" />
         <item itemvalue="Spring Boot.ResStaticApplication" />
         <item itemvalue="Spring Boot.GatewayApp" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
       <changelist id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="" />
@@ -286,7 +244,6 @@
       <workItem from="1683284501327" duration="457000" />
       <workItem from="1683286560663" duration="1947000" />
       <workItem from="1683288548897" duration="105000" />
-      <workItem from="1683288675013" duration="3095000" />
     </task>
     <task id="LOCAL-00001" summary="yjl提交">
       <created>1683288314737</created>
@@ -295,21 +252,7 @@
       <option name="project" value="LOCAL" />
       <updated>1683288314737</updated>
     </task>
-    <task id="LOCAL-00002" summary="yjl提交">
-      <created>1683288956342</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1683288956342</updated>
-    </task>
-    <task id="LOCAL-00003" summary="提交jwt工具包">
-      <created>1683293248414</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1683293248414</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,8 +279,7 @@
       <path value="$PROJECT_DIR$/../../" />
     </ignored-roots>
     <MESSAGE value="yjl提交" />
-    <MESSAGE value="提交jwt工具包" />
-    <option name="LAST_COMMIT_MESSAGE" value="提交jwt工具包" />
+    <option name="LAST_COMMIT_MESSAGE" value="yjl提交" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
