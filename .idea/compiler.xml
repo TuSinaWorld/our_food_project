@@ -3,11 +3,6 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="res-api" target="1.8" />
@@ -17,6 +12,7 @@
       <module name="res-getway" target="1.8" />
       <module name="res-static" target="1.8" />
       <module name="yc119_cloud_res_parent" target="1.8" />
+      <module name="yc119_s2_Login" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="删除多余文档" />
+    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,7 +19,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://C:/Program Files/Java/jdk1.8.0_65/src.zip!/java/lang/annotation/RetentionPolicy.java" root0="SKIP_INSPECTION" />
@@ -75,7 +75,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "F:/代码仓库/yc119_pr3",
+    "last_opened_file_path": "F:/mygit/yc119_s3_project",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -266,23 +266,7 @@
       <workItem from="1683283944064" duration="148000" />
       <workItem from="1683284233833" duration="254000" />
       <workItem from="1683284501327" duration="457000" />
-      <workItem from="1683284971694" duration="1343000" />
     </task>
-    <task id="LOCAL-00001" summary="springboot框架搭建">
-      <created>1683285114749</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1683285114750</updated>
-    </task>
-    <task id="LOCAL-00002" summary="删除多余文档">
-      <created>1683285330267</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1683285330267</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,9 +281,6 @@
       <path value="$PROJECT_DIR$/../../../../" />
       <path value="$PROJECT_DIR$/../../" />
     </ignored-roots>
-    <MESSAGE value="springboot框架搭建" />
-    <MESSAGE value="删除多余文档" />
-    <option name="LAST_COMMIT_MESSAGE" value="删除多余文档" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
