@@ -11,6 +11,8 @@
     <modules>
         <module>gateway</module>
         <module>static</module>
+        <module>yc119_s3_Entity</module>
+        <module>yc119_s3_Login</module>
     </modules>
 
     <parent>
