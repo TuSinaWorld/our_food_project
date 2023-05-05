@@ -50,12 +50,6 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "git-widget-placeholder": "master",
-    "node.js.selected.package.tslint": "(autodetect)"
-  }
-}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -132,8 +126,6 @@
     </configuration>
     <configuration name="GatewayApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="res-getway" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lxx.GatewayApp" />
-      <option name="VM_PARAMETERS" value="-Dreactor.netty.http.server.accessLogEnabled=true" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.lxx.*" />
@@ -145,6 +137,8 @@
         <option name="region" />
         <option name="useCurrentConnection" value="false" />
       </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lxx.GatewayApp" />
+      <option name="VM_PARAMETERS" value="-Dreactor.netty.http.server.accessLogEnabled=true" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -171,8 +165,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="HTTP 请求.GatewayApp | #1" />
-      <item itemvalue="HTTP 请求.GatewayApp | #2" />
+      <item itemvalue="HTTP Request.GatewayApp | #1" />
+      <item itemvalue="HTTP Request.GatewayApp | #2" />
       <item itemvalue="Spring Boot.FoodsApp9002" />
       <item itemvalue="Spring Boot.FoodsApp9003" />
       <item itemvalue="Spring Boot.ResCartsApplication" />
