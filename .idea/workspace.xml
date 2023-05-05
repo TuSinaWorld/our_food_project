@@ -4,8 +4,127 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="yjl提交">
+    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="补充注释&amp;&amp;添加静态网页模块">
+      <change afterPath="$PROJECT_DIR$/static/src/main/java/com/lxx/StaticApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/WEB-INF/lib/UserAgentUtils-1.21.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/WEB-INF/lib/gson-2.8.6.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/WEB-INF/lib/javax.annotation.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/WEB-INF/lib/javax.ejb.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/WEB-INF/lib/javax.jms.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/WEB-INF/lib/javax.persistence.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/WEB-INF/lib/javax.resource.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/WEB-INF/lib/javax.servlet.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/WEB-INF/lib/javax.servlet.jsp.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/WEB-INF/lib/javax.servlet.jsp.jstl.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/WEB-INF/lib/javax.transaction.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/WEB-INF/lib/jedis-2.8.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/WEB-INF/lib/mysql-connector-java-8.0.25.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/addphoto.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/alipay.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/alipay.trade.close.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/alipay.trade.fastpay.refund.query.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/alipay.trade.page.pay.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/alipay.trade.query.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/alipay.trade.refund.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/backstage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/cart.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/css/404.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/css/reset.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/echarts.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/findPass.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/fresh.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/fresh_data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/goodsinfo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/adv01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/adv02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/banner01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/banner02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/banner03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/banner04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/banner05.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/banner06.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/batman-404.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/fruit.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods001.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods002.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods003.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods004.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods005.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods006.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods007.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods008.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods009.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods010.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods011.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods012.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods013.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods014.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods015.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods016.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods017.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods018.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods019.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods020.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods/goods021.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/goods_detail.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/halo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/halo2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/icons02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/interval_line.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/left_bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/licht.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/login_banner.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/logo02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/pay_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/register_banner.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/shop_cart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/slide.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/slide02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/slide03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/slide04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/images/wand.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/js/axios.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/js/echarts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/js/jquery-1.12.4.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/js/jquery-1.9.1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/js/jquery-ui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/js/jquery.cookie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/js/register.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/js/scriptalizer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/js/slide.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/js/vue.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/login_admin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/newadd.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/notify_url.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/ordersinfo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/place_order.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/return_url.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/user_center_info.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/user_center_order.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/user_center_site.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/userinfo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/页面说明.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/Requirements.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/Requirements.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +159,6 @@
         <option name="downloadAnnotationsAutomatically" value="true" />
         <option name="downloadDocsAutomatically" value="true" />
         <option name="downloadSourcesAutomatically" value="true" />
-        <option name="workspaceImportEnabled" value="true" />
       </MavenImportingSettings>
     </option>
   </component>
@@ -54,33 +172,33 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/java2/java2/yc119_s3_project/gateway/src/main/java/com/yc&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;0316676f385226cce027686f49e3a844&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "last_opened_file_path": "F:/git_code/yc119_s3_project/static/src/main/resources/static",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "spring.configuration.checksum": "0316676f385226cce027686f49e3a844",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -90,11 +208,11 @@
       <recent name="com.yc.resfoods.biz" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\git_code\yc119_s3_project\static\src\main\resources\static" />
+      <recent name="F:\git_code\yc119_s3_project\static\src\main\resources" />
       <recent name="D:\java2\java2\yc119_s3_project\gateway\src\main\java\com\yc" />
       <recent name="D:\java2\java2\yc119_s3_project\gateway\src\main\resources" />
       <recent name="F:\JAVA\yc112-s2\lxx_springboot\yc119_cloud_res_parent\res-entity\src\main\java\com\yc\utils" />
-      <recent name="F:\JAVA\yc112-s2\lxx_springboot\yc119_cloud_res_parent\res-getway\src\main\java\com\lxx" />
-      <recent name="F:\JAVA\yc112-s2\lxx_springboot\yc119_cloud_res_parent\res-entity\src\main\java\com\yc\web\model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\JAVA\yc112-s2\lxx_springboot\yc119_cloud_res_parent\res-static\src\main\resources\static" />
@@ -102,6 +220,7 @@
       <recent name="F:\JAVA\yc112-s2\lxx_springboot\yc119_cloud_res_parent\res-foods\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.lxx" />
       <recent name="com.yc.Util" />
       <recent name="com.lxx.config" />
     </key>
@@ -183,8 +302,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="HTTP Request.GatewayApp | #1" />
-      <item itemvalue="HTTP Request.GatewayApp | #2" />
+      <item itemvalue="HTTP 请求.GatewayApp | #1" />
+      <item itemvalue="HTTP 请求.GatewayApp | #2" />
       <item itemvalue="Spring Boot.FoodsApp9002" />
       <item itemvalue="Spring Boot.FoodsApp9003" />
       <item itemvalue="Spring Boot.ResCartsApplication" />
@@ -259,6 +378,7 @@
       <workItem from="1683284501327" duration="457000" />
       <workItem from="1683286560663" duration="1947000" />
       <workItem from="1683288548897" duration="105000" />
+      <workItem from="1683290282735" duration="2224000" />
     </task>
     <task id="LOCAL-00001" summary="yjl提交">
       <created>1683288314737</created>
@@ -267,7 +387,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683288314737</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="补充注释&amp;&amp;添加静态网页模块">
+      <created>1683291362533</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683291362533</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,7 +421,8 @@
       <path value="$PROJECT_DIR$/../../" />
     </ignored-roots>
     <MESSAGE value="yjl提交" />
-    <option name="LAST_COMMIT_MESSAGE" value="yjl提交" />
+    <MESSAGE value="补充注释&amp;&amp;添加静态网页模块" />
+    <option name="LAST_COMMIT_MESSAGE" value="补充注释&amp;&amp;添加静态网页模块" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
