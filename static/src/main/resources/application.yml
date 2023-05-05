@@ -1,0 +1,34 @@
+server:
+  port: ${port:10001}
+spring:
+  application:
+    name: static
+
+  mvc:
+    static-path-pattern: "/static/**"
+  sleuth:
+    web:
+      client:
+        eabled: true
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://127.0.0.1:10000
+  cloud:
+    sentinel:
+      transport:
+        port: 10001
+        dashboard: localhost:9000
+      eager: true
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8000
+        username: nacos
+        password: nacos
+        namespace: test
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

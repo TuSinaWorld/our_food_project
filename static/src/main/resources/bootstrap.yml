@@ -1,0 +1,25 @@
+#TODO:日后加入nacos配置中心后使用
+
+#spring:
+#  application:
+#    name: static
+#  cloud:
+#    nacos:
+#      config:
+#        server-addr: 127.0.0.1:8000
+#        username: nacos
+#        password: nacos
+#
+#        namespace: yc119_prod
+#        group: DEFAULT_GROUP
+#        prefix: res-static
+#        file-extension: yml
+#        refresh-enabled: true
+#
+##        shared-configs:
+##          -  {data-id: mysql119.yml,group: DEFAULT_GROUP,refresh: true}
+##          -  {data-id: redis119.yml,group: DEFAULT_GROUP,refresh: true}
+#
+#
+#  profiles:
+#    active: prod
