@@ -4,10 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="上传测试">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="添加配置信息 测试数据库">
+      <change afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/service/Impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/utils/Md5.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/MemberInfoBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/MemberInfoBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/common/dto/Resuser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/controller/UserControlller.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/controller/UserControlller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/test/java/com/s3/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/test/java/com/s3/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +32,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://C:/Program Files/Java/jdk1.8.0_65/src.zip!/java/lang/annotation/RetentionPolicy.java" root0="SKIP_INSPECTION" />
@@ -50,6 +66,13 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/utils" />
+  </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -59,11 +82,11 @@
       <recent name="com.yc.resfoods.biz" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\javafile\yc119_s3_project\yc119_s3_Login\src\main\java\com\s3\utils" />
       <recent name="D:\javafile\yc119_s3_project\yc119_s3_Login\src\main\resources" />
       <recent name="D:\java2\java2\yc119_s3_project\gateway\src\main\java\com\yc" />
       <recent name="D:\java2\java2\yc119_s3_project\gateway\src\main\resources" />
       <recent name="F:\JAVA\yc112-s2\lxx_springboot\yc119_cloud_res_parent\res-entity\src\main\java\com\yc\utils" />
-      <recent name="F:\JAVA\yc112-s2\lxx_springboot\yc119_cloud_res_parent\res-getway\src\main\java\com\lxx" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\javafile\yc119_s3_project\yc119_s3_Entity\src\main\java\com\s3\bean" />
@@ -73,11 +96,12 @@
       <recent name="F:\JAVA\yc112-s2\lxx_springboot\yc119_cloud_res_parent\res-foods\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.s3.utils" />
       <recent name="com.yc.Util" />
       <recent name="com.lxx.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.GatewayApp">
+  <component name="RunManager" selected="JUnit.Test">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -89,11 +113,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GatewayApp | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/GatewayApp.http">
-      <method v="2" />
+    <configuration name="Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="yc119_s3_Login" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.s3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.s3" />
+      <option name="MAIN_CLASS_NAME" value="com.s3.Test" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="GatewayApp | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/GatewayApp.http" index="2">
-      <method v="2" />
+    <configuration name="Test.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="yc119_s3_Login" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.s3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.s3" />
+      <option name="MAIN_CLASS_NAME" value="com.s3.Test" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="yc119_cloud_res_parent" />
@@ -143,6 +192,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LoginApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="yc119_s3_Login" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.s3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.s3.LoginApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ResCartsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="res-carts" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.rescarts.ResCartsApplication" />
@@ -165,17 +227,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="HTTP Request.GatewayApp | #1" />
-      <item itemvalue="HTTP Request.GatewayApp | #2" />
       <item itemvalue="Spring Boot.FoodsApp9002" />
       <item itemvalue="Spring Boot.FoodsApp9003" />
       <item itemvalue="Spring Boot.ResCartsApplication" />
       <item itemvalue="Spring Boot.ResFoodsApplication" />
       <item itemvalue="Spring Boot.GatewayApp" />
       <item itemvalue="Spring Boot.ResStaticApplication" />
+      <item itemvalue="Spring Boot.LoginApplication" />
+      <item itemvalue="JUnit.Test.test" />
+      <item itemvalue="JUnit.Test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Test" />
+        <item itemvalue="JUnit.Test.test" />
+        <item itemvalue="Spring Boot.LoginApplication" />
         <item itemvalue="Spring Boot.ResStaticApplication" />
         <item itemvalue="Spring Boot.GatewayApp" />
       </list>
@@ -252,7 +318,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683288314737</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="添加配置信息 测试数据库">
+      <created>1683294130497</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683294130497</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,6 +345,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -279,7 +353,8 @@
       <path value="$PROJECT_DIR$/../../" />
     </ignored-roots>
     <MESSAGE value="yjl提交" />
-    <option name="LAST_COMMIT_MESSAGE" value="yjl提交" />
+    <MESSAGE value="添加配置信息 测试数据库" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加配置信息 测试数据库" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
