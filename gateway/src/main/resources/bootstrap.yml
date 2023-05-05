@@ -1,0 +1,42 @@
+#系统级别的配置文件,在容器启动时读取
+server:
+  port: 20001
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        namespace: yjl119_prod
+    gateway:  #基础的路由转发配置
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+      routes: #查看配置源码
+        - id: res-good  #唯一区别的名字
+          uri: lb://res-foods #
+          predicates:
+              #PathRoutePredicateFactory =>  PathRoutePredicate 断言
+            - ServiceTimeBetween=上午9:00,下午12:00 #表示访问此网站所有路径都要  路由到uri为   百度的地址
+#        - id: baidu  #唯一区别的名字
+#          uri: http://www.baidu.com #都转发到百度
+#          predicates:
+#            #PathRoutePredicateFactory =>  PathRoutePredicate 断言
+#            - Path=/** #表示访问此网站所有路径都要  路由到uri为   百度的地址
+          filters:
+            - AddRequestHeader=token,123
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"    # 暴露gateway端点，* 是暴露全部端点
+  endpoint:
+    gateway:
+      enabled: true # default value
