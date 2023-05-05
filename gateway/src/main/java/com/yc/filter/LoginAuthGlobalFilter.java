@@ -5,10 +5,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yc.Util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.core.io.buffer.DataBuffer;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
@@ -30,6 +33,10 @@ import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 @Component
 @Slf4j
 public class LoginAuthGlobalFilter implements GlobalFilter, Ordered {
+
+    @Autowired
+    @Qualifier("redisTemplate")
+    private RedisTemplate redisTemplate;
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         List<String> token = exchange.getRequest().getHeaders().get("token");
@@ -37,8 +44,7 @@ public class LoginAuthGlobalFilter implements GlobalFilter, Ordered {
             if (token.size() != 1) {
                 throw new RuntimeException();
             }
-           //TODO:解析token进行验证
-            Claims chaims = JwtUtil.parseJWT(token.get(0));
+
 
             return chain.filter(exchange);
         }catch (Exception e){
@@ -50,6 +56,23 @@ public class LoginAuthGlobalFilter implements GlobalFilter, Ordered {
         }
     }
 
+    //检测token令牌
+    private boolean checkToken(List<String> token) throws Exception {
+        //TODO:解析token进行验证
+        Claims chaims = JwtUtil.parseJWT(token.get(0));
+        Object o = redisTemplate.opsForValue().get("");
+        if(o  == null){
+            return false;
+        }
+        String redisToken = o.toString();
+        if(Boolean.TRUE.equals(redisTemplate.hasKey(""))){
+            //boolean核实无误
+            //token错误,判断为并发登录,强行下线
+            return true;
+        }else {
+            return false;
+        }
+    }
     private Mono<Void> doResponse(ServerHttpResponse response, Map map){
         response.setStatusCode(UNAUTHORIZED);
         ObjectMapper objectMapper = new ObjectMapper();

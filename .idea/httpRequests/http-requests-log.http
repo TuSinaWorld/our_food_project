@@ -1,3 +1,12 @@
+GET http://localhost:20001/actuator/gateway/globalfilters
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-05-05T212119.200.json
+
+###
+
 GET http://localhost:20001/actuator/gateway/routefilters
 Proxy-Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
