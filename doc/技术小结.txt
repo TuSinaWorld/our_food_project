@@ -1,0 +1,171 @@
+1. mybatisplus分页
+ @Configuration
+ public class MybatisPlugConfig {
+     //分页拦截器:   MYSQL:    limit x,y      oracle: 子查询+rownum     sqlserver； top
+     //             -> hibernate ORM框架  ->  指定方言  dialect=
+     @Bean
+     public MybatisPlusInterceptor mybatisPlusInterceptor() {
+         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+         interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
+         return interceptor;
+     }
+ }
+
+  @Override  // Wrapper接口 -> select的Wrapper接口     update的Wrapper接口    LambdaWrapper接口
+     public Page<Resfood>  findByPage(int pageno, int pagesize, String sortby, String sort) {
+         QueryWrapper<Resfood> wrapper = new QueryWrapper<>();
+         if(   sort.equalsIgnoreCase("asc")){
+             wrapper.orderByAsc(   sortby );
+         }else{
+             wrapper.orderByDesc(sortby );
+         }
+         // 设置分页信息,
+         Page<Resfood> page = new Page<>(pageno, pagesize);
+         // 执行分页查询
+         Page<Resfood> userPage = resfoodDao.selectPage(page, wrapper);
+         log.info("总记录数 = " + userPage.getTotal());
+         log.info("总页数 = " + userPage.getPages());
+         log.info("当前页码 = " + userPage.getCurrent());
+         return page;
+     }
+==========================================================
+2. 服务注册中心监控微服务的运行状态. -> 暴露运行状态信息
+springboot四大组件:
+  自动配置, starter, acuator监控器, cli.
+  acuator监控器 -> endpoint   可访问的http接口
+
+
+       <!-- acuator端点监控启动器:  -->
+          <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-starter-actuator</artifactId>
+          </dependency>
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: ""
+
+访问: http://ip:port/actuator/端点名
+
+=========================================================================
+3. 用 alibaba的 服务注册的功能将服务自身注册到nacos上.
+         <dependency>
+              <groupId>com.alibaba.cloud</groupId>
+              <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+          </dependency>
+
+         spring:
+            cloud:
+              nacos:
+                discovery:
+                  server-addr: localhost:8848
+                  username: nacos
+                  password: nacos
+
+         @EnableDiscoveryClient   //启用服务注册发现的客户端:  httpclient/postman
+
+============================================================================
+作业 :
+完成购物车相关操作:
+1.清空购物车:  http://localhost:8001/cart/clearAll
+2. 查询购物车: http://localhost:8001/cart/getCartInfo
+3. 加入购物车:  http://localhost:8001/cart/addCart?fid=1&num=2
+      fid:   ->访问 res-foods里面的服务   findById  ->  Resfood  ->
+                CartItem对象
+                       Resfood
+
+技术:
+ 1. redis存购物车信息
+ 2. 消费端云访问  res-foods里面的服务   findById  ->  Resfood
+
+问题: 如何在  res-order服务中访问res-food服务:
+     spring提供了很多模板操作:  JDBCTemplate   redisTemplate    restTemplate   模板模式(设计模式      ).
+          结合微服务的地址:   url
+
+ 1) restTemplate用法:
+   @Bean
+      public RestTemplate restTemplate(    ){
+          return new RestTemplate();
+      }
+      //              postXXX, getXXX, putXXX....
+      //              exchange()
+    this.restTemplate.getForObject(  url   , Map.class );
+  2)redisTemplate用法: 重点是解决对象序列化的问题 ( no-sql库[redis, mongodb, es...等] )
+             java程序: java对象包装数据　－> 　　　　转化(序列化)　　　　　　　　　　-> no-sql库
+      @Bean
+          public RedisTemplate redisTemplate(RedisConnectionFactory factory){
+              RedisTemplate<String,Object> redisTemplate=new RedisTemplate();
+
+              //设置 序列化器
+              redisTemplate.setKeySerializer(   new StringRedisSerializer());
+              redisTemplate.setHashKeySerializer(  new StringRedisSerializer() );
+              //将redis中保存的hash的value ，因为它是一个对象，
+
+              //这里调用  GenericJackson2JsonRedisSerializer序列化器将对象转为了json字符串
+              redisTemplate.setValueSerializer(    new GenericJackson2JsonRedisSerializer());
+              redisTemplate.setHashValueSerializer(   new GenericJackson2JsonRedisSerializer()  );
+
+              redisTemplate.setConnectionFactory(factory);
+
+              return redisTemplate;
+          }
+
+    redisTemplate.opsForHash()   操作hash值的方法
+
+=================================================================================
+引入LoadBalancer,通过服务名以负载均衡的方式查找服务节点
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+
+        @Configuration
+        @EnableDiscoveryClient    //启用服务发现的客户端
+        public class ApplicationConfig {
+            @Bean
+            @LoadBalanced     //负载平衡器: 一个服务名下有多个服务节点
+            public RestTemplate restTemplate(    ){   //如此RestTemplate对象就有这个功能了..
+                return new RestTemplate();
+            }
+        }
+
+================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
