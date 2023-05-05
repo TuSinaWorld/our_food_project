@@ -24,14 +24,6 @@ spring:
           uri: lb://res-foods #
           predicates:
               #PathRoutePredicateFactory =>  PathRoutePredicate 断言
-            - ServiceTimeBetween=上午9:00,下午12:00 #表示访问此网站所有路径都要  路由到uri为   百度的地址
-#        - id: baidu  #唯一区别的名字
-#          uri: http://www.baidu.com #都转发到百度
-#          predicates:
-#            #PathRoutePredicateFactory =>  PathRoutePredicate 断言
-#            - Path=/** #表示访问此网站所有路径都要  路由到uri为   百度的地址
-          filters:
-            - AddRequestHeader=token,123
 management:
   endpoints:
     web:
