@@ -11,14 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.TimeUnit;
 
 import static com.s3.utils.Redisconstants.LOGIN_USER;
 import static com.s3.utils.Redisconstants.LOGIN_USER_TTL;
 
 @RestController
+@RequestMapping("/user")
 public class UserControlller {
     @Autowired(required = false)
     private UserService userService;
@@ -26,7 +27,7 @@ public class UserControlller {
     @Autowired
     private RedisTemplate redisTemplate;
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public Result Login(@RequestBody Resuser resuser){
         try {
             MemberInfoBean result = userService.login(resuser);
@@ -43,14 +44,14 @@ public class UserControlller {
 
 
 
-    @GetMapping("logout/{mno}")
+    @GetMapping("/logout/{mno}")
     public Result Logout(@PathVariable("mno") String mno){
         //退出 删除 redis中的token
         redisTemplate.delete(LOGIN_USER + mno);
         return Result.fail("退出成功");
     }
 
-    @PostMapping("logon")
+    @PostMapping("/logon")
     public Result Logon(@RequestBody Resuser resuser, HttpServletRequest request){
         try {
             Integer result = userService.logon(resuser, request);
