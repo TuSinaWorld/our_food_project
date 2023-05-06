@@ -4,20 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="更改部分端口并优化部分代码">
-      <change afterPath="$PROJECT_DIR$/find_and_cart/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="完善token验证">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_6_18_41____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_6_18_41____.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_6_19_04____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_6_19_04____.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yc119_s3_Entity/target/classes/com/s3/bean/MemberInfoBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Entity/target/classes/com/s3/bean/MemberInfoBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yc119_s3_Login/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/controller/UserControlller.class" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/controller/UserControlller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/mapper/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/common/dto/Resuser.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,12 +81,15 @@
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
+    "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "jdk.selected.JAVA_MODULE": "1.8",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "spring.configuration.checksum": "5efafdd2e12e2b6fe8487adf3079a227",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="ReactorSettings">
@@ -119,7 +120,7 @@
       <recent name="com.lxx.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.LoginApplication">
+  <component name="RunManager" selected="Spring Boot.GateWayApp">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -260,8 +261,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.LoginApplication" />
         <item itemvalue="Spring Boot.GateWayApp" />
+        <item itemvalue="Spring Boot.LoginApplication" />
         <item itemvalue="Spring Boot.StaticApp" />
         <item itemvalue="JUnit.Test.login" />
         <item itemvalue="JUnit.Test.test" />
@@ -334,6 +335,7 @@
       <workItem from="1683339845745" duration="5238000" />
       <workItem from="1683355379549" duration="3036000" />
       <workItem from="1683359637154" duration="5574000" />
+      <workItem from="1683376470451" duration="2876000" />
     </task>
     <task id="LOCAL-00001" summary="yjl提交">
       <created>1683288314737</created>
@@ -571,6 +573,36 @@
           <url>file://$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/service/Impl/UserServiceImpl.java</url>
           <line>51</line>
           <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gateway/src/main/java/com/yc/Util/JwtUtil.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-loadbalancer/3.1.6/spring-cloud-loadbalancer-3.1.6-sources.jar!/org/springframework/cloud/loadbalancer/annotation/LoadBalancerClientConfiguration.java</url>

@@ -42,9 +42,9 @@ public class LoginAuthGlobalFilter implements GlobalFilter, Ordered {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         RequestPath path = exchange.getRequest().getPath();
         System.out.println(path);
-        if(!path.toString().endsWith(".action")) {
-            return chain.filter(exchange);
-        }
+//        if(!path.toString().endsWith(".action")) {
+//            return chain.filter(exchange);
+//        }
         List<String> token = exchange.getRequest().getHeaders().get("token");
         try {
             if (token == null || token.size() != 1) {
@@ -67,7 +67,7 @@ public class LoginAuthGlobalFilter implements GlobalFilter, Ordered {
 
     //检测token令牌
     private boolean checkToken(List<String> token) throws Exception {
-        String tokens="eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI5ZTYxZDM4ZTI1N2Q0Y2U2OWUwZjE3YWU1ODJmMzkyYSIsInN1YiI6IjEiLCJpc3MiOiJ5amx5eWRzIiwiaWF0IjoxNjgzMzYyMjMzLCJleHAiOjE2ODMzNjU4MzN9.SxFXv0JT_YkXqoeIeYyswfe20cV9jrV5FYlxzhQgbWk";
+        String tokens="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7Im1ubyI6MTAsIm5pY2tOYW1lIjoiaHN3ZGF3ZGF3ZGQiLCJyZWFsTmFtZSI6bnVsbCwicHdkIjoiZWU2MmMzY2EwY2E1M2FjMTEzZjY4OWE1MDAwYWUwZjMiLCJ0ZWwiOiIxMzMzMzMzMzMzMyIsImVtYWlsIjoiMTYwNzY2NzM2OEBxcS5jb20iLCJwaG90byI6bnVsbCwicmVnRGF0ZSI6IjIwMjMtMDUtMDYgMTU6MzA6MjMiLCJzdGF0dXMiOjF9LCJqdGkiOiJiN2U2NGJhZS1jNzM1LTRlMmYtYmY0Mi0zM2RkYzU5NDE3YWMiLCJzdWIiOiIxMCIsImlzcyI6InlqbHl5ZHMiLCJpYXQiOjE2ODMzNzYzNjAsImV4cCI6MTY4MzM3OTk2MH0.a9793QK6Kj9it_-AaHgrsEVohfltAgewFndDVsFgMpg";
         //TODO:解析token进行验证
         Claims chaims = JwtUtil.parseJWT(tokens);
         System.out.println(chaims);
