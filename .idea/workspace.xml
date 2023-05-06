@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="添加配置信息 测试数据库">
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/service/Impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/utils/Md5.java" afterDir="false" />
+    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="注册 登入 退出">
+      <change afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/utils/JwtUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jwt/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/MemberInfoBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/MemberInfoBean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yc119_s3_Login/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/common/dto/Resuser.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/controller/UserControlller.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/controller/UserControlller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/service/Impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/test/java/com/s3/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/test/java/com/s3/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +26,8 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="FxmlFile" />
+        <option value="mybatis-mapper" />
       </list>
     </option>
   </component>
@@ -48,6 +49,13 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\maven\repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../maven/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="D:\maven\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="downloadAnnotationsAutomatically" value="true" />
@@ -71,7 +79,15 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/utils" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ssm" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
@@ -101,7 +117,7 @@
       <recent name="com.lxx.config" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Test">
+  <component name="RunManager" selected="Spring Boot.LoginApplication">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -124,6 +140,22 @@
       <option name="PACKAGE_NAME" value="com.s3" />
       <option name="MAIN_CLASS_NAME" value="com.s3.Test" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test.login" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="yc119_s3_Login" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.s3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.s3" />
+      <option name="MAIN_CLASS_NAME" value="com.s3.Test" />
+      <option name="METHOD_NAME" value="login" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -173,25 +205,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GatewayApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="res-getway" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lxx.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
-        <option name="credential" />
-        <option name="region" />
-        <option name="useCurrentConnection" value="false" />
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lxx.GatewayApp" />
-      <option name="VM_PARAMETERS" value="-Dreactor.netty.http.server.accessLogEnabled=true" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="LoginApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="yc119_s3_Login" />
       <extension name="coverage">
@@ -227,23 +240,23 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.Test.test" />
+      <item itemvalue="JUnit.Test" />
+      <item itemvalue="JUnit.Test.login" />
       <item itemvalue="Spring Boot.FoodsApp9002" />
       <item itemvalue="Spring Boot.FoodsApp9003" />
       <item itemvalue="Spring Boot.ResCartsApplication" />
       <item itemvalue="Spring Boot.ResFoodsApplication" />
-      <item itemvalue="Spring Boot.GatewayApp" />
       <item itemvalue="Spring Boot.ResStaticApplication" />
       <item itemvalue="Spring Boot.LoginApplication" />
-      <item itemvalue="JUnit.Test.test" />
-      <item itemvalue="JUnit.Test" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.Test" />
-        <item itemvalue="JUnit.Test.test" />
         <item itemvalue="Spring Boot.LoginApplication" />
+        <item itemvalue="JUnit.Test.login" />
+        <item itemvalue="JUnit.Test.test" />
+        <item itemvalue="JUnit.Test" />
         <item itemvalue="Spring Boot.ResStaticApplication" />
-        <item itemvalue="Spring Boot.GatewayApp" />
       </list>
     </recent_temporary>
   </component>
@@ -310,6 +323,8 @@
       <workItem from="1683284501327" duration="457000" />
       <workItem from="1683286560663" duration="1947000" />
       <workItem from="1683288548897" duration="105000" />
+      <workItem from="1683339845745" duration="5238000" />
+      <workItem from="1683355379549" duration="3036000" />
     </task>
     <task id="LOCAL-00001" summary="yjl提交">
       <created>1683288314737</created>
@@ -325,7 +340,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683294130497</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="注册 登入 退出">
+      <created>1683305559660</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683305559660</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,7 +376,8 @@
     </ignored-roots>
     <MESSAGE value="yjl提交" />
     <MESSAGE value="添加配置信息 测试数据库" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加配置信息 测试数据库" />
+    <MESSAGE value="注册 登入 退出" />
+    <option name="LAST_COMMIT_MESSAGE" value="注册 登入 退出" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -464,10 +487,20 @@
           <line>78</line>
           <option name="timeStamp" value="51" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/service/Impl/UserServiceImpl.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/controller/UserControlller.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-loadbalancer/3.1.6/spring-cloud-loadbalancer-3.1.6-sources.jar!/org/springframework/cloud/loadbalancer/annotation/LoadBalancerClientConfiguration.java</url>
           <line>84</line>
-          <properties class="org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientConfiguration.ReactiveSupportConfiguration" method="discoveryClientServiceInstanceListSupplier">
+          <properties class="org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientConfiguration.ReactiveSupportConfiguration">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -476,7 +509,7 @@
         <line-breakpoint type="java-method">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-loadbalancer/3.1.6/spring-cloud-loadbalancer-3.1.6-sources.jar!/org/springframework/cloud/loadbalancer/annotation/LoadBalancerClientConfiguration.java</url>
           <line>93</line>
-          <properties class="org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientConfiguration.ReactiveSupportConfiguration" method="zonePreferenceDiscoveryClientServiceInstanceListSupplier">
+          <properties class="org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientConfiguration.ReactiveSupportConfiguration">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -485,7 +518,7 @@
         <line-breakpoint type="java-method">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-loadbalancer/3.1.6/spring-cloud-loadbalancer-3.1.6-sources.jar!/org/springframework/cloud/loadbalancer/annotation/LoadBalancerClientConfiguration.java</url>
           <line>102</line>
-          <properties class="org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientConfiguration.ReactiveSupportConfiguration" method="xForwarderHeadersTransformer">
+          <properties class="org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientConfiguration.ReactiveSupportConfiguration">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -494,7 +527,7 @@
         <line-breakpoint type="java-method">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-loadbalancer/3.1.6/spring-cloud-loadbalancer-3.1.6-sources.jar!/org/springframework/cloud/loadbalancer/annotation/LoadBalancerClientConfiguration.java</url>
           <line>119</line>
-          <properties class="org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientConfiguration.ReactiveSupportConfiguration" method="requestBasedStickySessionDiscoveryClientServiceInstanceListSupplier">
+          <properties class="org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientConfiguration.ReactiveSupportConfiguration">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -503,7 +536,7 @@
         <line-breakpoint type="java-method">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-loadbalancer/3.1.6/spring-cloud-loadbalancer-3.1.6-sources.jar!/org/springframework/cloud/loadbalancer/annotation/LoadBalancerClientConfiguration.java</url>
           <line>129</line>
-          <properties class="org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientConfiguration.ReactiveSupportConfiguration" method="sameInstancePreferenceServiceInstanceListSupplier">
+          <properties class="org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientConfiguration.ReactiveSupportConfiguration">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>

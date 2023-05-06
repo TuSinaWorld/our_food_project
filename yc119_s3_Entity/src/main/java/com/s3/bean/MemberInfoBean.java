@@ -24,5 +24,5 @@ public class MemberInfoBean {
     @TableField("regDate")
     private String regDate;
     private Integer status;
-    private boolean ban = false;
+//    private boolean ban = false;
 }
