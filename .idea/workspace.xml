@@ -4,9 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="更改部分端口与文档描述">
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/application.yml" afterDir="false" />
+    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="更改部分端口并优化部分代码">
+      <change afterPath="$PROJECT_DIR$/find_and_cart/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Entity/target/classes/com/s3/bean/MemberInfoBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Entity/target/classes/com/s3/bean/MemberInfoBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/controller/UserControlller.class" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/controller/UserControlller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/mapper/UserMapper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,19 +77,20 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -107,7 +119,7 @@
       <recent name="com.lxx.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.GateWayApp">
+  <component name="RunManager" selected="Spring Boot.LoginApplication">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -248,9 +260,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.LoginApplication" />
         <item itemvalue="Spring Boot.GateWayApp" />
         <item itemvalue="Spring Boot.StaticApp" />
-        <item itemvalue="Spring Boot.LoginApplication" />
         <item itemvalue="JUnit.Test.login" />
         <item itemvalue="JUnit.Test.test" />
       </list>
@@ -393,7 +405,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683372057506</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="更改部分端口">
+      <created>1683372106030</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1683372106030</updated>
+    </task>
+    <task id="LOCAL-00012" summary="更改部分端口并优化部分代码">
+      <created>1683372235348</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1683372235348</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,7 +455,9 @@
     <MESSAGE value="添加静态网页模块至网关,并优化网关配置与端口." />
     <MESSAGE value="修复部分网关与静态页面bug" />
     <MESSAGE value="更改部分端口与文档描述" />
-    <option name="LAST_COMMIT_MESSAGE" value="更改部分端口与文档描述" />
+    <MESSAGE value="更改部分端口" />
+    <MESSAGE value="更改部分端口并优化部分代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="更改部分端口并优化部分代码" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -543,11 +571,6 @@
           <url>file://$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/service/Impl/UserServiceImpl.java</url>
           <line>51</line>
           <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/controller/UserControlller.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-loadbalancer/3.1.6/spring-cloud-loadbalancer-3.1.6-sources.jar!/org/springframework/cloud/loadbalancer/annotation/LoadBalancerClientConfiguration.java</url>

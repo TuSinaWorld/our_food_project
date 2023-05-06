@@ -12,6 +12,7 @@
         <module name="static" />
         <module name="gateway" />
         <module name="Jwt" />
+        <module name="find_and_cart" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -27,6 +28,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Jwt" options="-parameters" />
+      <module name="find_and_cart" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="res-api" options="-parameters" />
       <module name="res-carts" options="-parameters" />

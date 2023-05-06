@@ -1,0 +1,45 @@
+spring:
+  sleuth:
+    web:
+      client:
+        eabled: true
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://127.0.0.1:10000
+  cloud:
+    sentinel:
+      transport:
+        port: 8720
+        dashboard: localhost:10812
+      eager: true
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+        namespace: test
+server:
+  port: ${port:9001}
+  tomcat:
+    accept-count: 200
+    max-accept-count: 200
+    min-accept-count: 10
+    max-connections: 8192
+
+logging:
+  level:
+    root: info
+    com.yc: info
+    org.springframework: info
+  file:
+    path: ./logs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+

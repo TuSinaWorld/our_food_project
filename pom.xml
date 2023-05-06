@@ -14,6 +14,7 @@
         <module>yc119_s3_Entity</module>
         <module>yc119_s3_Login</module>
         <module>Jwt</module>
+        <module>find_and_cart</module>
     </modules>
 
     <parent>

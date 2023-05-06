@@ -1553,3 +1553,538 @@ Caused by: java.util.concurrent.TimeoutException: Did not observe any item or te
 2023-05-06 16:40:48.343  INFO [s3-login,,] 9296 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
 2023-05-06 16:40:48.484  INFO [s3-login,,] 9296 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
 2023-05-06 16:40:48.491  INFO [s3-login,,] 9296 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2023-05-06 19:34:25.050  WARN [s3-login,,] 14516 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login] & group[DEFAULT_GROUP]
+2023-05-06 19:34:25.067  WARN [s3-login,,] 14516 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login.properties] & group[DEFAULT_GROUP]
+2023-05-06 19:34:25.068  INFO [s3-login,,] 14516 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-s3-login.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-s3-login,DEFAULT_GROUP'}]
+2023-05-06 19:34:25.094  INFO [s3-login,,] 14516 --- [main] com.s3.LoginApplication                  : No active profile set, falling back to 1 default profile: "default"
+2023-05-06 19:34:26.234  INFO [s3-login,,] 14516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-06 19:34:26.237  INFO [s3-login,,] 14516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-06 19:34:26.263  INFO [s3-login,,] 14516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2023-05-06 19:34:26.509  WARN [s3-login,,] 14516 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.tyl.vueblog.mapper]' package. Please check your configuration.
+2023-05-06 19:34:26.583  INFO [s3-login,,] 14516 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8094eb52-069d-3291-b9fa-eb1dc06b4da9
+2023-05-06 19:34:27.003  INFO [s3-login,,] 14516 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-05-06 19:34:27.008  INFO [s3-login,,] 14516 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-05-06 19:34:27.012  INFO [s3-login,,] 14516 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-05-06 19:34:27.390  INFO [s3-login,,] 14516 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10020 (http)
+2023-05-06 19:34:27.391  INFO [s3-login,,] 14516 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.33] using APR version [1.7.0].
+2023-05-06 19:34:27.391  INFO [s3-login,,] 14516 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2023-05-06 19:34:27.392  INFO [s3-login,,] 14516 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2023-05-06 19:34:27.395  INFO [s3-login,,] 14516 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1o  3 May 2022]
+2023-05-06 19:34:27.404  INFO [s3-login,,] 14516 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-06 19:34:27.404  INFO [s3-login,,] 14516 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2023-05-06 19:34:27.576  INFO [s3-login,,] 14516 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-06 19:34:27.576  INFO [s3-login,,] 14516 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2463 ms
+2023-05-06 19:34:27.701  INFO [s3-login,,] 14516 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2023-05-06 19:34:27.825  INFO [s3-login,,] 14516 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2023-05-06 19:34:29.275  WARN [s3-login,,] 14516 --- [pool-3-thread-1] o.s.c.s.a.z.ZipkinAutoConfiguration      : Check result of the [RestTemplateSender{http://localhost:9411/api/v2/spans}] contains an error [CheckResult{ok=false, error=org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:9411/api/v2/spans": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out}]
+2023-05-06 19:34:30.440  INFO [s3-login,,] 14516 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2023-05-06 19:34:32.006  WARN [s3-login,,] 14516 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.gateway.config.GatewayClassPathWarningAutoConfiguration$SpringMvcFoundOnClasspathConfiguration': Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.cloud.gateway.config.GatewayClassPathWarningAutoConfiguration$SpringMvcFoundOnClasspathConfiguration]: Constructor threw exception; nested exception is org.springframework.cloud.gateway.support.MvcFoundOnClasspathException
+2023-05-06 19:34:33.030  WARN [s3-login,,] 14516 --- [main] z.r.AsyncReporter$BoundedAsyncReporter   : Timed out waiting for in-flight spans to send
+2023-05-06 19:34:33.031  INFO [s3-login,,] 14516 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2023-05-06 19:34:33.032  INFO [s3-login,,] 14516 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2023-05-06 19:34:33.035  INFO [s3-login,,] 14516 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-05-06 19:34:33.038  WARN [s3-login,,] 14516 --- [main] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [Thread-31] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.net.dns.ResolverConfigurationImpl.notifyAddrChange0(Native Method)
+ sun.net.dns.ResolverConfigurationImpl$AddressChangeListener.run(ResolverConfigurationImpl.java:144)
+2023-05-06 19:34:33.039  WARN [s3-login,,] 14516 --- [main] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [spring.cloud.inetutils] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.Inet6AddressImpl.getHostByAddr(Native Method)
+ java.net.InetAddress$2.getHostByAddr(InetAddress.java:932)
+ java.net.InetAddress.getHostFromNameService(InetAddress.java:617)
+ java.net.InetAddress.getHostName(InetAddress.java:559)
+ java.net.InetAddress.getHostName(InetAddress.java:531)
+ org.springframework.cloud.commons.util.InetUtils$$Lambda$90/311239812.call(Unknown Source)
+ java.util.concurrent.FutureTask.run(FutureTask.java:266)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ java.lang.Thread.run(Thread.java:745)
+2023-05-06 19:34:33.066  INFO [s3-login,,] 14516 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-05-06 19:34:33.100 ERROR [s3-login,,] 14516 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Spring MVC found on classpath, which is incompatible with Spring Cloud Gateway.
+
+Action:
+
+Please set spring.main.web-application-type=reactive or remove spring-boot-starter-web dependency.
+
+2023-05-06 19:34:33.101  WARN [s3-login,,] 14516 --- [Thread-5] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+2023-05-06 19:34:33.102  INFO [s3-login,,] 14516 --- [Thread-28] o.s.c.s.a.z.ZipkinAutoConfiguration      : Flushing remaining spans on shutdown
+2023-05-06 19:34:33.102  WARN [s3-login,,] 14516 --- [Thread-15] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+2023-05-06 19:37:05.970  WARN [s3-login,,] 29428 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login] & group[DEFAULT_GROUP]
+2023-05-06 19:37:05.977  WARN [s3-login,,] 29428 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login.properties] & group[DEFAULT_GROUP]
+2023-05-06 19:37:05.977  INFO [s3-login,,] 29428 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-s3-login.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-s3-login,DEFAULT_GROUP'}]
+2023-05-06 19:37:06.015  INFO [s3-login,,] 29428 --- [main] com.s3.LoginApplication                  : No active profile set, falling back to 1 default profile: "default"
+2023-05-06 19:37:07.034  INFO [s3-login,,] 29428 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-06 19:37:07.036  INFO [s3-login,,] 29428 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-06 19:37:07.063  INFO [s3-login,,] 29428 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2023-05-06 19:37:07.291  WARN [s3-login,,] 29428 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.tyl.vueblog.mapper]' package. Please check your configuration.
+2023-05-06 19:37:07.362  INFO [s3-login,,] 29428 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=50738c96-8130-3a30-aea3-98f2205990fd
+2023-05-06 19:37:08.023  INFO [s3-login,,] 29428 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10020 (http)
+2023-05-06 19:37:08.025  INFO [s3-login,,] 29428 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.33] using APR version [1.7.0].
+2023-05-06 19:37:08.025  INFO [s3-login,,] 29428 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2023-05-06 19:37:08.025  INFO [s3-login,,] 29428 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2023-05-06 19:37:08.028  INFO [s3-login,,] 29428 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1o  3 May 2022]
+2023-05-06 19:37:08.037  INFO [s3-login,,] 29428 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-06 19:37:08.037  INFO [s3-login,,] 29428 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2023-05-06 19:37:08.203  INFO [s3-login,,] 29428 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-06 19:37:08.204  INFO [s3-login,,] 29428 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2169 ms
+2023-05-06 19:37:08.324  INFO [s3-login,,] 29428 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2023-05-06 19:37:08.428  INFO [s3-login,,] 29428 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2023-05-06 19:37:09.846  WARN [s3-login,,] 29428 --- [pool-3-thread-1] o.s.c.s.a.z.ZipkinAutoConfiguration      : Check result of the [RestTemplateSender{http://localhost:9411/api/v2/spans}] contains an error [CheckResult{ok=false, error=org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:9411/api/v2/spans": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out}]
+2023-05-06 19:37:10.733  INFO [s3-login,,] 29428 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2023-05-06 19:37:14.652  INFO [s3-login,,] 29428 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2023-05-06 19:37:14.761  WARN [s3-login,,] 29428 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-05-06 19:37:14.826  INFO [s3-login,,] 29428 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-05-06 19:37:14.933  INFO [s3-login,,] 29428 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 10020 (http) with context path ''
+2023-05-06 19:37:14.949  INFO [s3-login,,] 29428 --- [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+2023-05-06 19:37:14.949  INFO [s3-login,,] 29428 --- [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+2023-05-06 19:37:15.248  INFO [s3-login,,] 29428 --- [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP s3-login 192.168.211.82:10020 register finished
+2023-05-06 19:37:16.569  INFO [s3-login,,] 29428 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2023-05-06 19:37:16.597  INFO [s3-login,,] 29428 --- [main] com.s3.LoginApplication                  : Started LoginApplication in 15.649 seconds (JVM running for 16.597)
+2023-05-06 19:37:16.618  INFO [s3-login,,] 29428 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=s3-login, group=DEFAULT_GROUP
+2023-05-06 19:37:16.619  INFO [s3-login,,] 29428 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=s3-login.properties, group=DEFAULT_GROUP
+2023-05-06 19:37:17.301  INFO [s3-login,,] 29428 --- [RMI TCP Connection(6)-192.168.211.82] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-06 19:37:17.301  INFO [s3-login,,] 29428 --- [RMI TCP Connection(6)-192.168.211.82] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-06 19:37:17.303  INFO [s3-login,,] 29428 --- [RMI TCP Connection(6)-192.168.211.82] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-05-06 19:37:17.440 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:17.443 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:17.443  INFO [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] c.a.druid.pool.DruidAbstractDataSource   : {dataSource-1} failContinuous is true
+2023-05-06 19:37:17.960 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:18.474 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:18.988 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:19.501 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:20.015 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:20.530 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:21.038 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:21.555 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:22.067 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:22.579 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:23.081 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:23.598 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:24.112 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:24.618 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:25.133 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:25.642 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:26.145 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:26.663 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:27.175 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:27.689 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:28.202 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:28.716 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:28.828  WARN [s3-login,,] 29428 --- [Thread-15] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+2023-05-06 19:37:28.828  WARN [s3-login,,] 29428 --- [Thread-6] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+2023-05-06 19:37:28.829  INFO [s3-login,,] 29428 --- [Thread-28] o.s.c.s.a.z.ZipkinAutoConfiguration      : Flushing remaining spans on shutdown
+2023-05-06 19:37:28.829  WARN [s3-login,,] 29428 --- [Thread-15] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+2023-05-06 19:37:28.829  WARN [s3-login,,] 29428 --- [Thread-6] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+2023-05-06 19:37:29.067  INFO [s3-login,,] 29428 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+2023-05-06 19:37:29.072  INFO [s3-login,,] 29428 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+2023-05-06 19:37:29.225 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:29.730 ERROR [s3-login,,] 29428 --- [Druid-ConnectionPool-Create-789178034] com.alibaba.druid.pool.DruidDataSource   : create connection SQLException, url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8, errorCode 1045, state 28000
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1700) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1792) ~[druid-1.2.15.jar:na]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2877) ~[druid-1.2.15.jar:na]
+
+2023-05-06 19:37:30.122  INFO [s3-login,,] 29428 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2023-05-06 19:37:30.123  INFO [s3-login,,] 29428 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2023-05-06 19:37:46.584  WARN [s3-login,,] 25932 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login] & group[DEFAULT_GROUP]
+2023-05-06 19:37:46.590  WARN [s3-login,,] 25932 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login.properties] & group[DEFAULT_GROUP]
+2023-05-06 19:37:46.591  INFO [s3-login,,] 25932 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-s3-login.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-s3-login,DEFAULT_GROUP'}]
+2023-05-06 19:37:46.629  INFO [s3-login,,] 25932 --- [main] com.s3.LoginApplication                  : No active profile set, falling back to 1 default profile: "default"
+2023-05-06 19:37:47.627  INFO [s3-login,,] 25932 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-06 19:37:47.630  INFO [s3-login,,] 25932 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-06 19:37:47.659  INFO [s3-login,,] 25932 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2023-05-06 19:37:47.881  WARN [s3-login,,] 25932 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.tyl.vueblog.mapper]' package. Please check your configuration.
+2023-05-06 19:37:47.954  INFO [s3-login,,] 25932 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=50738c96-8130-3a30-aea3-98f2205990fd
+2023-05-06 19:37:48.615  INFO [s3-login,,] 25932 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10020 (http)
+2023-05-06 19:37:48.616  INFO [s3-login,,] 25932 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.33] using APR version [1.7.0].
+2023-05-06 19:37:48.616  INFO [s3-login,,] 25932 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2023-05-06 19:37:48.616  INFO [s3-login,,] 25932 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2023-05-06 19:37:48.619  INFO [s3-login,,] 25932 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1o  3 May 2022]
+2023-05-06 19:37:48.628  INFO [s3-login,,] 25932 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-06 19:37:48.629  INFO [s3-login,,] 25932 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2023-05-06 19:37:48.791  INFO [s3-login,,] 25932 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-06 19:37:48.791  INFO [s3-login,,] 25932 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2142 ms
+2023-05-06 19:37:48.916  INFO [s3-login,,] 25932 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2023-05-06 19:37:49.020  INFO [s3-login,,] 25932 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2023-05-06 19:37:50.455  WARN [s3-login,,] 25932 --- [pool-3-thread-1] o.s.c.s.a.z.ZipkinAutoConfiguration      : Check result of the [RestTemplateSender{http://localhost:9411/api/v2/spans}] contains an error [CheckResult{ok=false, error=org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:9411/api/v2/spans": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out}]
+2023-05-06 19:37:51.351  INFO [s3-login,,] 25932 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2023-05-06 19:37:55.221  INFO [s3-login,,] 25932 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2023-05-06 19:37:55.319  WARN [s3-login,,] 25932 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-05-06 19:37:55.385  INFO [s3-login,,] 25932 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-05-06 19:37:55.491  INFO [s3-login,,] 25932 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 10020 (http) with context path ''
+2023-05-06 19:37:55.507  INFO [s3-login,,] 25932 --- [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+2023-05-06 19:37:55.508  INFO [s3-login,,] 25932 --- [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+2023-05-06 19:37:55.799  INFO [s3-login,,] 25932 --- [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP s3-login 192.168.211.82:10020 register finished
+2023-05-06 19:37:57.075  INFO [s3-login,,] 25932 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2023-05-06 19:37:57.101  INFO [s3-login,,] 25932 --- [main] com.s3.LoginApplication                  : Started LoginApplication in 15.542 seconds (JVM running for 16.561)
+2023-05-06 19:37:57.122  INFO [s3-login,,] 25932 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=s3-login, group=DEFAULT_GROUP
+2023-05-06 19:37:57.122  INFO [s3-login,,] 25932 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=s3-login.properties, group=DEFAULT_GROUP
+2023-05-06 19:37:57.628  INFO [s3-login,,] 25932 --- [RMI TCP Connection(3)-192.168.211.82] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-06 19:37:57.629  INFO [s3-login,,] 25932 --- [RMI TCP Connection(3)-192.168.211.82] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-06 19:37:57.631  INFO [s3-login,,] 25932 --- [RMI TCP Connection(3)-192.168.211.82] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-05-06 19:38:00.349  WARN [s3-login,,] 25932 --- [AsyncReporter{RestTemplateSender{http://localhost:9411/api/v2/spans}}] z.r.AsyncReporter$BoundedAsyncReporter   : Spans were dropped due to exceptions. All subsequent errors will be logged at FINE level.
+2023-05-06 19:38:00.353  WARN [s3-login,,] 25932 --- [AsyncReporter{RestTemplateSender{http://localhost:9411/api/v2/spans}}] z.r.AsyncReporter$BoundedAsyncReporter   : Dropped 1 spans due to ResourceAccessException(I/O error on POST request for "http://localhost:9411/api/v2/spans": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out)
+
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:9411/api/v2/spans": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:791) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.sleuth.zipkin2.ZipkinRestTemplateWrapper.doExecute(ZipkinRestTemplateWrapper.java:67) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:666) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.sleuth.zipkin2.RestTemplateSender.post(RestTemplateSender.java:51) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
+	at org.springframework.cloud.sleuth.zipkin2.RestTemplateSender.lambda$new$0(RestTemplateSender.java:44) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
+	at org.springframework.cloud.sleuth.zipkin2.HttpSender.post(HttpSender.java:137) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
+	at org.springframework.cloud.sleuth.zipkin2.HttpSender$HttpPostCall.doExecute(HttpSender.java:150) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
+	at org.springframework.cloud.sleuth.zipkin2.HttpSender$HttpPostCall.doExecute(HttpSender.java:140) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
+	at zipkin2.Call$Base.execute(Call.java:391) ~[zipkin-2.23.2.jar:na]
+	at zipkin2.reporter.AsyncReporter$BoundedAsyncReporter.flush(AsyncReporter.java:299) ~[zipkin-reporter-2.16.3.jar:na]
+	at zipkin2.reporter.AsyncReporter$Flusher.run(AsyncReporter.java:378) [zipkin-reporter-2.16.3.jar:na]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_65]
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method) ~[na:1.8.0_65]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85) ~[na:1.8.0_65]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_65]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_65]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_65]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[na:1.8.0_65]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_65]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_65]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175) ~[na:1.8.0_65]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[na:1.8.0_65]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[na:1.8.0_65]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[na:1.8.0_65]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[na:1.8.0_65]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[na:1.8.0_65]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1169) ~[na:1.8.0_65]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1105) ~[na:1.8.0_65]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:999) ~[na:1.8.0_65]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:933) ~[na:1.8.0_65]
+	at org.springframework.http.client.SimpleBufferingClientHttpRequest.executeInternal(SimpleBufferingClientHttpRequest.java:76) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:782) ~[spring-web-5.3.26.jar:5.3.26]
+	... 11 common frames omitted
+
+2023-05-06 19:42:39.655  WARN [s3-login,862ae3671df294bb,862ae3671df294bb] 25932 --- [http-nio-10020-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2023-05-06 19:43:54.091  INFO [s3-login,,] 25932 --- [Thread-28] o.s.c.s.a.z.ZipkinAutoConfiguration      : Flushing remaining spans on shutdown
+2023-05-06 19:43:54.091  WARN [s3-login,,] 25932 --- [Thread-6] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+2023-05-06 19:43:54.091  WARN [s3-login,,] 25932 --- [Thread-15] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+2023-05-06 19:43:54.092  WARN [s3-login,,] 25932 --- [Thread-15] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+2023-05-06 19:43:54.092  WARN [s3-login,,] 25932 --- [Thread-6] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+2023-05-06 19:43:54.277  INFO [s3-login,,] 25932 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+2023-05-06 19:43:54.282  INFO [s3-login,,] 25932 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+2023-05-06 19:43:55.436  INFO [s3-login,,] 25932 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2023-05-06 19:43:55.444  INFO [s3-login,,] 25932 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed

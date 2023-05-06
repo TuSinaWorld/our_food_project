@@ -61,10 +61,6 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
-        </dependency>
         <!--gateway 也可以做集群 最好注册到nacos上-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
