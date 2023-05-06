@@ -107,7 +107,7 @@
       <recent name="com.lxx.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.StaticApp">
+  <component name="RunManager" selected="Spring Boot.GateWayApp">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -248,8 +248,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.StaticApp" />
         <item itemvalue="Spring Boot.GateWayApp" />
+        <item itemvalue="Spring Boot.StaticApp" />
         <item itemvalue="Spring Boot.LoginApplication" />
         <item itemvalue="JUnit.Test.login" />
         <item itemvalue="JUnit.Test.test" />
