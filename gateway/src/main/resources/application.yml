@@ -1,9 +1,33 @@
-#spring:
-#  cloud:
-#    nacos:
-#      config:
-#        server-addr: localhost:8848
-#        username: nacos
-#        password: nacos
-#  application:
-#    name: res-gateway
+#系统级别的配置文件,在容器启动时读取
+server:
+  port: 80
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+    gateway:  #基础的路由转发配置
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+#            allowCredentials: true
+      routes: #查看配置源码
+        - id: login  #唯一区别的名字
+          uri: http://localhost:9001 #服务名
+          predicates:
+            - Path=/login/** #表示访问此网站所有路径都要  路由到uri为   百度的地址
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"    # 暴露gateway端点，* 是暴露全部端点
+  endpoint:
+    gateway:
+      enabled: true # default value

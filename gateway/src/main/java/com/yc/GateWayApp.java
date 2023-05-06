@@ -10,7 +10,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @Time: 19:43
  * @Description:
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.yc"})
 @EnableDiscoveryClient
 public class GateWayApp {
     public static void main(String[] args){

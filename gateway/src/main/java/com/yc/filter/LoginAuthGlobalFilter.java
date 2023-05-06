@@ -44,8 +44,11 @@ public class LoginAuthGlobalFilter implements GlobalFilter, Ordered {
             if (token.size() != 1) {
                 throw new RuntimeException();
             }
-
-
+            //判断token是否合法
+            boolean flag = checkToken(token);
+            if(!flag){
+                throw new RuntimeException();
+            }
             return chain.filter(exchange);
         }catch (Exception e){
             log.error("token不存在或错误!");
@@ -58,8 +61,11 @@ public class LoginAuthGlobalFilter implements GlobalFilter, Ordered {
 
     //检测token令牌
     private boolean checkToken(List<String> token) throws Exception {
+        String tokens="eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI5ZTYxZDM4ZTI1N2Q0Y2U2OWUwZjE3YWU1ODJmMzkyYSIsInN1YiI6IjEiLCJpc3MiOiJ5amx5eWRzIiwiaWF0IjoxNjgzMzYyMjMzLCJleHAiOjE2ODMzNjU4MzN9.SxFXv0JT_YkXqoeIeYyswfe20cV9jrV5FYlxzhQgbWk";
         //TODO:解析token进行验证
-        Claims chaims = JwtUtil.parseJWT(token.get(0));
+        Claims chaims = JwtUtil.parseJWT(tokens);
+        System.out.println(chaims);
+
         Object o = redisTemplate.opsForValue().get("");
         if(o  == null){
             return false;
@@ -87,6 +93,6 @@ public class LoginAuthGlobalFilter implements GlobalFilter, Ordered {
 
     @Override
     public int getOrder() {
-        return Ordered.LOWEST_PRECEDENCE;
+        return Ordered.HIGHEST_PRECEDENCE;
     }
 }
