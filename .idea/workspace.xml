@@ -196,13 +196,13 @@
     </configuration>
     <configuration name="LoginApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="yc119_s3_Login" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.s3.LoginApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.s3.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.s3.LoginApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
