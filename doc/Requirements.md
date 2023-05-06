@@ -1,5 +1,5 @@
 gateway端口:80
-nacos端口:8000
+nacos端口:8848
 sentinel端口:9010
 zipkin端口:10000
 静态(static)模块端口:10011,前缀:/static/,占用sentinel端口:20011
