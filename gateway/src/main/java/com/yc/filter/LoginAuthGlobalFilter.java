@@ -12,6 +12,7 @@ import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.server.RequestPath;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
@@ -39,9 +40,14 @@ public class LoginAuthGlobalFilter implements GlobalFilter, Ordered {
     private RedisTemplate redisTemplate;
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        RequestPath path = exchange.getRequest().getPath();
+        System.out.println(path);
+        if(!path.toString().endsWith(".action")) {
+            return chain.filter(exchange);
+        }
         List<String> token = exchange.getRequest().getHeaders().get("token");
         try {
-            if (token.size() != 1) {
+            if (token == null || token.size() != 1) {
                 throw new RuntimeException();
             }
             //判断token是否合法
@@ -71,13 +77,9 @@ public class LoginAuthGlobalFilter implements GlobalFilter, Ordered {
             return false;
         }
         String redisToken = o.toString();
-        if(Boolean.TRUE.equals(redisTemplate.hasKey(""))){
-            //boolean核实无误
-            //token错误,判断为并发登录,强行下线
-            return true;
-        }else {
-            return false;
-        }
+        //boolean核实无误
+        //token错误,判断为并发登录,强行下线
+        return Boolean.TRUE.equals(redisTemplate.hasKey(""));
     }
     private Mono<Void> doResponse(ServerHttpResponse response, Map map){
         response.setStatusCode(UNAUTHORIZED);

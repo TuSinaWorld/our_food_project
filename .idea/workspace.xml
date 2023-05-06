@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="更改部分服务端口并修改对应文档">
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/application.yml" afterDir="false" />
+    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="添加静态网页模块至网关,并优化网关配置与端口.">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,19 +69,19 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -117,21 +120,6 @@
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="yc119_s3_Login" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.s3.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.s3" />
-      <option name="MAIN_CLASS_NAME" value="com.s3.Test" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -197,6 +185,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="GateWayApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.GateWayApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LoginApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="yc119_s3_Login" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.s3.LoginApplication" />
@@ -239,22 +240,22 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.Test.test" />
-      <item itemvalue="JUnit.Test" />
       <item itemvalue="JUnit.Test.login" />
       <item itemvalue="Spring Boot.FoodsApp9002" />
       <item itemvalue="Spring Boot.FoodsApp9003" />
       <item itemvalue="Spring Boot.ResCartsApplication" />
       <item itemvalue="Spring Boot.ResFoodsApplication" />
+      <item itemvalue="Spring Boot.GateWayApp" />
       <item itemvalue="Spring Boot.StaticApp" />
       <item itemvalue="Spring Boot.LoginApplication" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.StaticApp" />
+        <item itemvalue="Spring Boot.GateWayApp" />
         <item itemvalue="Spring Boot.LoginApplication" />
         <item itemvalue="JUnit.Test.login" />
         <item itemvalue="JUnit.Test.test" />
-        <item itemvalue="JUnit.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -374,7 +375,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683370160233</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="添加静态网页模块至网关,并优化网关配置与端口.">
+      <created>1683371159157</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683371159157</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,7 +415,8 @@
     <MESSAGE value="问题测试1" />
     <MESSAGE value="更改部分服务端口" />
     <MESSAGE value="更改部分服务端口并修改对应文档" />
-    <option name="LAST_COMMIT_MESSAGE" value="更改部分服务端口并修改对应文档" />
+    <MESSAGE value="添加静态网页模块至网关,并优化网关配置与端口." />
+    <option name="LAST_COMMIT_MESSAGE" value="添加静态网页模块至网关,并优化网关配置与端口." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -524,7 +533,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/controller/UserControlller.java</url>
-          <line>31</line>
+          <line>32</line>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint type="java-method">

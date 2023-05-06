@@ -7,7 +7,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: localhost:8000
         username: nacos
         password: nacos
     gateway:  #基础的路由转发配置
@@ -20,9 +20,15 @@ spring:
 #            allowCredentials: true
       routes: #查看配置源码
         - id: login  #唯一区别的名字
-          uri: http://localhost:9001 #服务名
+          uri: lb://s3-login #服务名
+          order: 1
           predicates:
-            - Path=/login/** #表示访问此网站所有路径都要  路由到uri为   百度的地址
+            - Path=/user/** #表示访问此网站所有路径都要  路由到uri为   百度的地址
+        - id: static
+          uri: lb://static
+          order: 3
+          predicates:
+            - Path=/static/**
 management:
   endpoints:
     web:
