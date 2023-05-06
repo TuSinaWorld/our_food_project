@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="问题测试1">
-      <change afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/utils/Redisconstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/LoginApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/LoginApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/controller/UserControlller.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/controller/UserControlller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/utils/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/utils/JwtUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/resources/application.yml" afterDir="false" />
+    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="更改部分服务端口">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_6_18_41____.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_6_18_41_取消提交了更改_[更改]/shelved.patch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/Requirements.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/Requirements.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,21 +68,15 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ssm" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -381,7 +372,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -393,7 +383,8 @@
     <MESSAGE value="注册 登入 退出" />
     <MESSAGE value="注册、登入、退出功能的部分完善" />
     <MESSAGE value="问题测试1" />
-    <option name="LAST_COMMIT_MESSAGE" value="问题测试1" />
+    <MESSAGE value="更改部分服务端口" />
+    <option name="LAST_COMMIT_MESSAGE" value="更改部分服务端口" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
