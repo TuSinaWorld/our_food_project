@@ -1,5 +1,5 @@
 server:
-  port: ${port:10001}
+  port: ${port:10011}
 spring:
   application:
     name: static
@@ -17,7 +17,7 @@ spring:
   cloud:
     sentinel:
       transport:
-        port: 10001
+        port: 20011
         dashboard: localhost:9010
       eager: true
     nacos:

@@ -105,7 +105,7 @@
       <recent name="com.lxx.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.LoginApplication">
+  <component name="RunManager" selected="Spring Boot.StaticApp">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -222,9 +222,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ResStaticApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="res-static" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.resstatic.ResStaticApplication" />
+    <configuration name="StaticApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="static" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lxx.StaticApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lxx.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -237,16 +243,16 @@
       <item itemvalue="Spring Boot.FoodsApp9003" />
       <item itemvalue="Spring Boot.ResCartsApplication" />
       <item itemvalue="Spring Boot.ResFoodsApplication" />
-      <item itemvalue="Spring Boot.ResStaticApplication" />
+      <item itemvalue="Spring Boot.StaticApp" />
       <item itemvalue="Spring Boot.LoginApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.StaticApp" />
         <item itemvalue="Spring Boot.LoginApplication" />
         <item itemvalue="JUnit.Test.login" />
         <item itemvalue="JUnit.Test.test" />
         <item itemvalue="JUnit.Test" />
-        <item itemvalue="Spring Boot.ResStaticApplication" />
       </list>
     </recent_temporary>
   </component>
