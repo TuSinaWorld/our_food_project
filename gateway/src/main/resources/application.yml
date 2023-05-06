@@ -7,7 +7,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8000
+        server-addr: localhost:8848
         username: nacos
         password: nacos
     gateway:  #基础的路由转发配置
