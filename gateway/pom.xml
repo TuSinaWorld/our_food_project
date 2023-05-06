@@ -54,7 +54,17 @@
         <dependency>
             <groupId>yc112.cloud</groupId>
             <artifactId>Jwt</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
-
+        <!-- spring boot redis缓存引入 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- lecttuce 缓存连接池-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
     </dependencies>
 </project>
