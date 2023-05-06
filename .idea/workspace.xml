@@ -5,19 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="更改部分端口并优化部分代码">
-      <change afterPath="$PROJECT_DIR$/find_and_cart/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_6_18_41____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_6_18_41____.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_6_19_04____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_6_19_04____.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/src/main/java/util/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/target/classes/JwtUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/yc/Util/JwtUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/Util/JwtUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yc119_s3_Entity/target/classes/com/s3/bean/MemberInfoBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Entity/target/classes/com/s3/bean/MemberInfoBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/Resuser.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Entity/src/main/java/com/s3/bean/Resuser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yc119_s3_Login/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/common/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/common/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/controller/UserControlller.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/controller/UserControlller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/utils/JwtUtil.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yc119_s3_Login/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/common/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/common/Result.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/controller/UserControlller.class" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/controller/UserControlller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/mapper/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/utils/JwtUtil.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,20 +88,13 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "git-widget-placeholder": "master",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -196,26 +200,26 @@
     </configuration>
     <configuration name="GateWayApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="gateway" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.GateWayApp" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.yc.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.GateWayApp" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="LoginApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="yc119_s3_Login" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.s3.LoginApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.s3.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.s3.LoginApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -236,13 +240,13 @@
     </configuration>
     <configuration name="StaticApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="static" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lxx.StaticApp" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.lxx.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lxx.StaticApp" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -261,8 +265,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.LoginApplication" />
-        <item itemvalue="Spring Boot.GateWayApp" />
         <item itemvalue="Spring Boot.StaticApp" />
+        <item itemvalue="Spring Boot.GateWayApp" />
         <item itemvalue="JUnit.Test.login" />
         <item itemvalue="JUnit.Test.test" />
       </list>
@@ -439,6 +443,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>

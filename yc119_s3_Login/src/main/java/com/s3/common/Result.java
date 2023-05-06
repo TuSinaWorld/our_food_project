@@ -16,26 +16,26 @@ public class Result<T>  implements Serializable {
 
 
     public static <T> Result<T> success(){
-        return new Result<T>(200,"success",null);
+        return new Result<T>(1,"success",null);
     }
 
     public static <T> Result<T> success(T data){
-        return new Result<T>(200,"success",data);
+        return new Result<T>(1,"success",data);
     }
 
     public static <T> Result<T> success(T data,String message){
-        return new Result<T>(200,message,data);
+        return new Result<T>(1,message,data);
     }
 
     public static <T> Result<T> success(String message){
-        return new Result<T>(200,message,null);
+        return new Result<T>(1,message,null);
     }
 
 
 
 
     public static <T> Result<T> fail(){
-        return new Result<T>(404,"fail",null);
+        return new Result<T>(0,"fail",null);
     }
 
     public static <T> Result<T> fail(Integer code){
@@ -47,6 +47,6 @@ public class Result<T>  implements Serializable {
     }
 
     public static <T> Result<T> fail(String message){
-        return new Result<T>(404,message,null);
+        return new Result<T>(0,message,null);
     }
 }

@@ -11,5 +11,5 @@ public interface UserService extends IService<MemberInfoBean>{
     MemberInfoBean login(Resuser resuser);
 
 
-    Integer logon(Resuser resuser, HttpServletRequest request);
+    Integer logon(Resuser resuser);
 }

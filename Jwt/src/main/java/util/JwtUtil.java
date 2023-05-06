@@ -1,4 +1,4 @@
-package com.s3.utils; /**
+package util; /**
  * @Author: 乐哥
  * @Date: 2023/4/10
  * @Time: 21:37
@@ -107,4 +107,5 @@ public class JwtUtil {
 
 
 }
+
 

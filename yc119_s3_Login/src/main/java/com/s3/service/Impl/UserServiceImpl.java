@@ -47,9 +47,8 @@ public class UserServiceImpl  extends ServiceImpl<UserMapper,MemberInfoBean> imp
     }
 
     @Override
-    public Integer logon(Resuser resuser, HttpServletRequest request) {
-
-        String pwd1 = request.getParameter("pwd1");
+    public Integer logon(Resuser resuser) {
+        String pwd1 = resuser.getPwd1();
         resuser.setPwd(resuser.getPwd().trim());
         if (  resuser.getNickName()==null || resuser.getPwd()==null || resuser.getEmail()==null){
            throw new RuntimeException("不能为空");

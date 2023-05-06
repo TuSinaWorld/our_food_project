@@ -18,8 +18,6 @@
 
 
     <dependencies>
-
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -66,7 +64,6 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -87,20 +84,8 @@
         <dependency>
             <groupId>yc112.cloud</groupId>
             <artifactId>Jwt</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>yc112.cloud</groupId>
-            <artifactId>Jwt</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
-
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-
     </dependencies>
 
 </project>

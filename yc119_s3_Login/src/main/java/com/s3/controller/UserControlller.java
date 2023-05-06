@@ -6,10 +6,10 @@ import com.s3.bean.Resuser;
 import com.s3.common.Result;
 import com.s3.service.UserService;
 
-import com.s3.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
+import util.JwtUtil;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,9 +52,9 @@ public class UserControlller {
     }
 
     @PostMapping("/logon")
-    public Result Logon(@RequestBody Resuser resuser, HttpServletRequest request){
+    public Result Logon(@RequestBody Resuser resuser){
         try {
-            Integer result = userService.logon(resuser, request);
+            Integer result = userService.logon(resuser);
             return  Result.success("添加成功");
         }catch (Exception e){
             return  Result.fail(e.getMessage());

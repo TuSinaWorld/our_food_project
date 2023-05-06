@@ -24,9 +24,9 @@
 				</div>
 				<div class="form_input">
 					<form>
-						<input type="text" name="username" class="name_input" placeholder="请输入用户名" v-model="nickName"  v-model="nickName">
+						<input type="text" name="username" class="name_input" placeholder="请输入用户名" v-model="user.nickName">
 						<div class="user_error">输入错误</div>
-						<input type="password" name="pwd" class="pass_input" placeholder="请输入密码" v-model="pwd" v-model="pwd">
+						<input type="password" name="pwd" class="pass_input" placeholder="请输入密码" v-model="user.pwd" >
 						<div class="pwd_error">输入错误</div>
 						<div class="more_input clearfix">
 							<input type="checkbox" name="" @click="flag=!flag">
@@ -57,22 +57,20 @@
 <script src="js/vue.js"></script>
 <script src="js/axios.js"></script>
 <script type="text/javascript">
+	var addr_login="http://localhost:80/user/";
 	let vm=new Vue({
 				el: "#app",
 				data: {
-					nickName:'',
-					pwd:'',
+				   user:{
+					   nickName:'hswdawdawddaa',
+					   pwd:'adasdawdawdad'
+				   },
 					valcode:'',
 					flag:false,
 				},
 		methods:{
 			login:function () {
-				var params = new URLSearchParams();
-				params.append("op","login");
-				params.append("nickName",this.nickName);
-				params.append("pwd",this.pwd);
-				params.append("flag",this.flag);
-				axios.post("resuser.action",params).then(data=>{
+				axios.post(addr_login+"login",this.user).then(data=>{
 					var result = data.data;
 					if(result.code==1){
 						alert("登录成功,欢迎您"+result.data.nickName);

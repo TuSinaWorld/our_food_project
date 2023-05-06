@@ -7,6 +7,7 @@ import java.io.Serializable;
 public class Resuser implements Serializable {
     private String nickName;
     private String pwd;
+    private String pwd1;
     private String email;
     private String port;  //验证码
     private Integer mno;  //编号

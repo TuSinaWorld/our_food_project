@@ -2,7 +2,6 @@ package com.yc.filter;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.yc.Util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import util.JwtUtil;
 
 import java.util.HashMap;
 import java.util.List;
