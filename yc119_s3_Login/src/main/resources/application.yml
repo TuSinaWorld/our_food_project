@@ -9,6 +9,14 @@ spring:
   redis:
     host: localhost
     port: 6379
+  cloud:
+    nacos:
+      server-addr: localhost:8848 # 注册到哪
+      # 配置nacos的信息
+      discovery:
+        username: nacos
+        password: nacos
+
 
 mybatis-plus:
   configuration:

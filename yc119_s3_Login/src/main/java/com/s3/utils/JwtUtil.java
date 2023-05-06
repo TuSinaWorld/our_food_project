@@ -5,6 +5,7 @@ package com.s3.utils; /**
  * @Description: Jwt生成器与解析
  */
 
+import com.s3.bean.MemberInfoBean;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -27,15 +28,6 @@ public class JwtUtil {
     public static final String JWT_KEY = "yltService";
 
 
-    /**
-     * 生成jtw
-     * @param subject token中要存放的数据（json格式）
-     * @return
-     */
-    public static String createJWT(String subject) {
-        JwtBuilder builder = getJwtBuilder(subject, null, String.valueOf(UUID.randomUUID()));// 设置过期时间
-        return builder.compact();
-    }
 
     /**
      * 生成jtw
@@ -43,12 +35,12 @@ public class JwtUtil {
      * @param ttlMillis token超时时间
      * @return
      */
-    public static String createJWT(String subject, Long ttlMillis) {
-        JwtBuilder builder = getJwtBuilder(subject, ttlMillis, String.valueOf(UUID.randomUUID()));// 设置过期时间
+    public static String createJWT(MemberInfoBean memberInfoBean, String subject, Long ttlMillis) {
+        JwtBuilder builder = getJwtBuilder(memberInfoBean,subject, ttlMillis, String.valueOf(UUID.randomUUID()));// 设置过期时间
         return builder.compact();
     }
 
-    private static JwtBuilder getJwtBuilder(String subject, Long ttlMillis, String uuid) {
+    private static JwtBuilder getJwtBuilder(MemberInfoBean memberInfoBean,String subject, Long ttlMillis, String uuid) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
         SecretKey secretKey = generalKey();
         long nowMillis = System.currentTimeMillis();
@@ -65,6 +57,7 @@ public class JwtUtil {
                 .setHeaderParam("alg", "HS256")
                 //TODO:将用户信息存入token
                 //.claim("user","user")
+                .claim("user",memberInfoBean)
                 .setId(uuid)              //唯一的ID
                 .setSubject(subject)   // 主题  可以是JSON数据
                 .setIssuer("yjlyyds")     // 签发者
@@ -81,8 +74,8 @@ public class JwtUtil {
      * @param ttlMillis
      * @return
      */
-    public static String createJWT(String id, String subject, Long ttlMillis) {
-        JwtBuilder builder = getJwtBuilder(subject, ttlMillis, id);// 设置过期时间
+    public static String createJWT(MemberInfoBean memberInfoBean,String id, String subject, Long ttlMillis) {
+        JwtBuilder builder = getJwtBuilder(memberInfoBean,subject, ttlMillis, id);// 设置过期时间
         return builder.compact();
     }
 
