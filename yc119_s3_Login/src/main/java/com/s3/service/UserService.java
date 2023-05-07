@@ -6,7 +6,7 @@ import com.s3.bean.Resuser;
 
 import javax.servlet.http.HttpServletRequest;
 
-public interface UserService extends IService<MemberInfoBean>{
+public interface UserService extends IService<MemberInfoBean >{
 
     MemberInfoBean login(Resuser resuser);
 

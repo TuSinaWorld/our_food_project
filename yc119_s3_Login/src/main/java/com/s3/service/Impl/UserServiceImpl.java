@@ -17,10 +17,9 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpServletRequest;
 
 @Service
-public class UserServiceImpl  extends ServiceImpl<UserMapper,MemberInfoBean> implements UserService {
+public class UserServiceImpl  extends ServiceImpl<UserMapper,MemberInfoBean> implements UserService  {
 
     @Autowired(required = false)
     private UserMapper userMapper;

@@ -44,7 +44,7 @@ public class UserControlller {
 
 
 
-    @GetMapping("/logout/{mno}")
+    @GetMapping("/logout/{mno}" )
     public Result Logout(@PathVariable("mno") String mno){
         //退出 删除 redis中的token
         redisTemplate.delete(LOGIN_USER + mno);

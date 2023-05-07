@@ -13,6 +13,7 @@
       <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/service/Impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yc119_s3_Login/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/target/classes/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/common/dto/Resuser.class" beforeDir="false" />
@@ -75,23 +76,6 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "spring.configuration.checksum": "5efafdd2e12e2b6fe8487adf3079a227",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -121,19 +105,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.GateWayApp">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Test.login" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="yc119_s3_Login" />
       <extension name="coverage">
@@ -197,26 +168,26 @@
     </configuration>
     <configuration name="GateWayApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="gateway" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.GateWayApp" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.yc.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.GateWayApp" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="LoginApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="yc119_s3_Login" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.s3.LoginApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.s3.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.s3.LoginApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -237,13 +208,13 @@
     </configuration>
     <configuration name="StaticApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="static" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lxx.StaticApp" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.lxx.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lxx.StaticApp" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -441,6 +412,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -568,11 +540,6 @@
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-gateway-server/3.1.6/spring-cloud-gateway-server-3.1.6-sources.jar!/org/springframework/cloud/gateway/handler/FilteringWebHandler.java</url>
           <line>78</line>
           <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/service/Impl/UserServiceImpl.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java</url>
