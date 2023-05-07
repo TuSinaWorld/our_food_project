@@ -4,19 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="完善token验证">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_6_18_41____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_6_18_41____.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_6_19_04____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_6_19_04____.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jwt/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/pom.xml" afterDir="false" />
+    <list default="true" id="b2227a25-127f-42f9-b19d-aa4a0fa40710" name="更改" comment="登入，注册与前端交互">
       <change beforePath="$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/java/com/s3/service/Impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/yc119_s3_Login/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yc119_s3_Login/target/classes/com/s3/common/dto/Resuser.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +64,12 @@
   </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
@@ -392,7 +387,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683372235348</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="登入，注册与前端交互">
+      <created>1683423316535</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1683423316535</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,7 +433,8 @@
     <MESSAGE value="更改部分端口与文档描述" />
     <MESSAGE value="更改部分端口" />
     <MESSAGE value="更改部分端口并优化部分代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="更改部分端口并优化部分代码" />
+    <MESSAGE value="登入，注册与前端交互" />
+    <option name="LAST_COMMIT_MESSAGE" value="登入，注册与前端交互" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
