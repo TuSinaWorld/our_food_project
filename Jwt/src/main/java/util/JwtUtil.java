@@ -6,6 +6,7 @@ package util; /**
  */
 
 import com.s3.bean.MemberInfoBean;
+import com.s3.bean.UserInfo;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -35,14 +36,13 @@ public class JwtUtil {
      * @param ttlMillis token超时时间
      * @return
      */
-    public static String createJWT(MemberInfoBean memberInfoBean, String subject, Long ttlMillis) {
-        JwtBuilder builder = getJwtBuilder(memberInfoBean,subject, ttlMillis, String.valueOf(UUID.randomUUID()));// 设置过期时间
+    public static String createJWT(UserInfo userInfo, String subject, Long ttlMillis) {
+        JwtBuilder builder = getJwtBuilder(userInfo,subject, ttlMillis, String.valueOf(UUID.randomUUID()));// 设置过期时间
         return builder.compact();
     }
 
-    private static JwtBuilder getJwtBuilder(MemberInfoBean memberInfoBean,String subject, Long ttlMillis, String uuid) {
+    private static JwtBuilder getJwtBuilder(UserInfo userInfo,String subject, Long ttlMillis, String uuid) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
-        SecretKey secretKey = generalKey();
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
         if(ttlMillis==null){
@@ -57,12 +57,12 @@ public class JwtUtil {
                 .setHeaderParam("alg", "HS256")
                 //TODO:将用户信息存入token
                 //.claim("user","user")
-                .claim("user",memberInfoBean)
+                .claim("user",userInfo)
                 .setId(uuid)              //唯一的ID
                 .setSubject(subject)   // 主题  可以是JSON数据
                 .setIssuer("yjlyyds")     // 签发者
                 .setIssuedAt(now)      // 签发时间
-                .signWith(signatureAlgorithm, secretKey) //使用HS256对称加密算法签名, 第二个参数为秘钥
+                .signWith(signatureAlgorithm, JWT_KEY) //使用HS256对称加密算法签名, 第二个参数为秘钥
                 .setExpiration(expDate);//过期时间
 
     }
@@ -74,20 +74,9 @@ public class JwtUtil {
      * @param ttlMillis
      * @return
      */
-    public static String createJWT(MemberInfoBean memberInfoBean,String id, String subject, Long ttlMillis) {
-        JwtBuilder builder = getJwtBuilder(memberInfoBean,subject, ttlMillis, id);// 设置过期时间
+    public static String createJWT(UserInfo userInfo,String id, String subject, Long ttlMillis) {
+        JwtBuilder builder = getJwtBuilder(userInfo,subject, ttlMillis, id);// 设置过期时间
         return builder.compact();
-    }
-
-
-    /**
-     * 生成加密后的秘钥 secretKey
-     * @return
-     */
-    public static SecretKey generalKey() {
-        byte[] encodedKey = Base64.getDecoder().decode(JwtUtil.JWT_KEY);
-        SecretKey key = new SecretKeySpec(encodedKey, 0, encodedKey.length, "AES");
-        return key;
     }
 
     /**
@@ -98,14 +87,11 @@ public class JwtUtil {
      * @throws Exception
      */
     public static Claims parseJWT(String jwt) throws Exception {
-        SecretKey secretKey = generalKey();
         return Jwts.parser()
-                .setSigningKey(secretKey)
+                .setSigningKey(JWT_KEY)
                 .parseClaimsJws(jwt)
                 .getBody();
     }
-
-
 }
 
 

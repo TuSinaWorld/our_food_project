@@ -101,11 +101,13 @@
                     alert("请输入密码");
                     return;
                 }
+                this.user.level = "管理员";
                 if (!this.user.level) {
                     alert("请选择角色");
                     return;
                 }
-                axios.post('/login', this.user).then(res => {
+                let params = new URLSearchParams(this.user);
+                axios.post('/user/login', params).then(res => {
                     if(res.data.code === '0') {
                         localStorage.setItem('user', JSON.stringify(res.data.data));
                         window.location = '/front/index.html';

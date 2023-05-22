@@ -7,7 +7,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@MapperScan("com.s3.mapper")
+@MapperScan("com.s3.dao")
 @EnableTransactionManagement
 @EnableDiscoveryClient
 public class LoginApplication {

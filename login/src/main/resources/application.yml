@@ -1,8 +1,8 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
-    password: a
+    url: jdbc:mysql://localhost:3306/food?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    password: 123456
     username: root
   application:
     name: s3-login
@@ -20,8 +20,8 @@ spring:
 
 mybatis-plus:
   configuration:
+    map-underscore-to-camel-case: false
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启SQL语句打印
-  mapper-locations: classpath:mapper/*.xml   #配置xml文件是 ，文件放置的地方
 
 server:
   port: ${port:10020}
@@ -32,3 +32,4 @@ logging:
     org.springframework: info
   file:
     path: ./logs
+
