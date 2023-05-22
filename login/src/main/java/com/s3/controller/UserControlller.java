@@ -2,7 +2,7 @@ package com.s3.controller;
 
 
 import com.s3.bean.MemberInfoBean;
-import com.s3.bean.Resuser;
+import com.s3.bean.UserInfo;
 import com.s3.common.Result;
 import com.s3.service.UserService;
 
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import util.JwtUtil;
 
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.TimeUnit;
 
 import static com.s3.utils.Redisconstants.LOGIN_USER;
@@ -28,7 +27,7 @@ public class UserControlller {
     private RedisTemplate redisTemplate;
 
     @PostMapping("/login")
-    public Result Login(@RequestBody Resuser resuser){
+    public Result Login(@RequestBody UserInfo resuser){
         try {
             MemberInfoBean result = userService.login(resuser);
             //subject 存的mno claim 存的是对象
@@ -52,7 +51,7 @@ public class UserControlller {
     }
 
     @PostMapping("/logon")
-    public Result Logon(@RequestBody Resuser resuser){
+    public Result Logon(@RequestBody UserInfo resuser){
         try {
             Integer result = userService.logon(resuser);
             return  Result.success("添加成功");

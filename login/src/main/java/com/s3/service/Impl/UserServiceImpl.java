@@ -3,8 +3,6 @@ package com.s3.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.s3.bean.MemberInfoBean;
-import com.s3.bean.Resuser;
 import com.s3.mapper.UserMapper;
 import com.s3.service.UserService;
 import com.s3.utils.Md5;

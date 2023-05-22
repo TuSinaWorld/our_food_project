@@ -4,8 +4,48 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22283820-736b-440b-897f-714141f84727" name="更改" comment="测试">
+    <list default="true" id="3385eafc-c4fd-412a-8b7d-54b40e203a9b" name="Changes" comment="完善项目基础架构">
+      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/AdminInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/AdvertiserInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/CollectInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/CommentNotesInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/FoodsMaterialInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/FoodsMenuInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/MessageInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/NewsInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/NotesInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/NxSystemFileInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/PraiseInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/SubClassifyInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Addr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/AdminPwdBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/AlipayBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Cart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Discuss.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/GoodSelectBeanX.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Goods.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/GoodsInfoBeanX.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/GoodsType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/OrderInfoBeanX.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/OrderItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/OrderShowInfoBeanX.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Orderiteminfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/PageBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Resuser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserControlller.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserControlller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/src/main/java/com/s3/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/com/s3/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/src/main/java/com/s3/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/com/s3/service/Impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/src/main/java/com/s3/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/com/s3/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/src/test/java/com/s3/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/test/java/com/s3/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,85 +61,91 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
+        <option name="localRepository" value="D:\MavenRepository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="D:\apache-maven-3.6.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
-  <component name="ProjectCodeStyleSettingsMigration">
-    <option name="version" value="2" />
+  <component name="ProjectId" id="2Q91Ai4G6OfXQcCQzsWcIC8isqF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectId" id="2Q8xYEjWvfz3PG48q6JaOQNlyrA" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "F:/mygit/yc119_s3_project",
+    "last_opened_file_path": "D:/java2/java2/our_food_project/entity/src/main/java/com/s3/bean",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "模块",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog",
-    "spring.configuration.checksum": "2c017f48fb9eb4baf97bd4aead601794",
+    "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\mygit\yc119_s3_project\static\src\main\resources\static" />
+      <recent name="D:\java2\java2\our_food_project\entity\src\main\java\com\s3\bean" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.s3.bean" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="RunManager">
+    <configuration name="GateWayApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.GateWayApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.GateWayApp" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="默认任务">
-      <changelist id="22283820-736b-440b-897f-714141f84727" name="更改" comment="" />
-      <created>1684749061552</created>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3385eafc-c4fd-412a-8b7d-54b40e203a9b" name="Changes" comment="" />
+      <created>1684750846933</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1684749061552</updated>
-      <workItem from="1684749066375" duration="522000" />
-      <workItem from="1684749870445" duration="511000" />
+      <updated>1684750846933</updated>
+      <workItem from="1684750848525" duration="167000" />
+      <workItem from="1684751022024" duration="139000" />
+      <workItem from="1684751162932" duration="350000" />
     </task>
-    <task id="LOCAL-00001" summary="测试">
-      <created>1684749993873</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1684749993873</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="CODE_SMELLS_PROFILE" value="Default" />
-    <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="测试" />
+    <MESSAGE value="完善项目基础架构" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善项目基础架构" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,7 +1,6 @@
 package com.s3;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.s3.bean.MemberInfoBean;
 import com.s3.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

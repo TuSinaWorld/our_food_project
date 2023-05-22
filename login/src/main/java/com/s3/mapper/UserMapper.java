@@ -2,7 +2,6 @@ package com.s3.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.s3.bean.MemberInfoBean;
 import org.apache.ibatis.annotations.Param;
 
 
