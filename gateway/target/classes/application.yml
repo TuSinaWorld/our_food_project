@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: gateway
+  redis:
+    host: localhost
+    port: 6379
   cloud:
     nacos:
       discovery:
@@ -29,6 +32,11 @@ spring:
           order: 3
           predicates:
             - Path=/static/**
+        - id: product
+          uri: lb://product
+          order: 4
+          predicates:
+            - Path=/product/**
 management:
   endpoints:
     web:

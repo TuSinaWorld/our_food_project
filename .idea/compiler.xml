@@ -2,44 +2,29 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="yc119_s3_Login" />
-        <module name="yc119_s3_Entity" />
         <module name="static" />
-        <module name="gateway" />
+        <module name="displayproducts" />
         <module name="Jwt" />
         <module name="find_and_cart" />
+        <module name="login" />
+        <module name="gateway" />
+        <module name="entity" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="res-api" target="1.8" />
-      <module name="res-carts" target="1.8" />
-      <module name="res-entity" target="1.8" />
-      <module name="res-foods" target="1.8" />
-      <module name="res-getway" target="1.8" />
-      <module name="res-static" target="1.8" />
-      <module name="yc119_cloud_res_parent" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Jwt" options="-parameters" />
+      <module name="displayproducts" options="-parameters" />
+      <module name="entity" options="-parameters" />
       <module name="find_and_cart" options="-parameters" />
       <module name="gateway" options="-parameters" />
-      <module name="res-api" options="-parameters" />
-      <module name="res-carts" options="-parameters" />
-      <module name="res-entity" options="-parameters" />
-      <module name="res-foods" options="-parameters" />
-      <module name="res-getway" options="-parameters" />
-      <module name="res-static" options="-parameters" />
+      <module name="login" options="-parameters" />
       <module name="static" options="-parameters" />
-      <module name="yc119_cloud_res_parent" options="" />
-      <module name="yc119_s3_Entity" options="-parameters" />
-      <module name="yc119_s3_Login" options="-parameters" />
     </option>
   </component>
 </project>

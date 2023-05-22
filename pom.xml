@@ -11,10 +11,11 @@
     <modules>
         <module>gateway</module>
         <module>static</module>
-        <module>yc119_s3_Entity</module>
-        <module>yc119_s3_Login</module>
+        <module>entity</module>
+        <module>login</module>
         <module>Jwt</module>
         <module>find_and_cart</module>
+        <module>displayproducts</module>
     </modules>
 
     <parent>

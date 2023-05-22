@@ -34,7 +34,7 @@ import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 @Component
 @Slf4j
 public class LoginAuthGlobalFilter implements GlobalFilter, Ordered {
-
+    static String  logins="LoginToken_";
     @Autowired
     @Qualifier("redisTemplate")
     private RedisTemplate redisTemplate;
@@ -42,9 +42,9 @@ public class LoginAuthGlobalFilter implements GlobalFilter, Ordered {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         RequestPath path = exchange.getRequest().getPath();
         System.out.println(path);
-//        if(!path.toString().endsWith(".action")) {
-//            return chain.filter(exchange);
-//        }
+        if(!path.toString().endsWith(".action")) {
+            return chain.filter(exchange);
+        }
         List<String> token = exchange.getRequest().getHeaders().get("token");
         try {
             if (token == null || token.size() != 1) {
@@ -67,19 +67,24 @@ public class LoginAuthGlobalFilter implements GlobalFilter, Ordered {
 
     //检测token令牌
     private boolean checkToken(List<String> token) throws Exception {
-        String tokens="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7Im1ubyI6MTAsIm5pY2tOYW1lIjoiaHN3ZGF3ZGF3ZGQiLCJyZWFsTmFtZSI6bnVsbCwicHdkIjoiZWU2MmMzY2EwY2E1M2FjMTEzZjY4OWE1MDAwYWUwZjMiLCJ0ZWwiOiIxMzMzMzMzMzMzMyIsImVtYWlsIjoiMTYwNzY2NzM2OEBxcS5jb20iLCJwaG90byI6bnVsbCwicmVnRGF0ZSI6IjIwMjMtMDUtMDYgMTU6MzA6MjMiLCJzdGF0dXMiOjF9LCJqdGkiOiJiN2U2NGJhZS1jNzM1LTRlMmYtYmY0Mi0zM2RkYzU5NDE3YWMiLCJzdWIiOiIxMCIsImlzcyI6InlqbHl5ZHMiLCJpYXQiOjE2ODMzNzYzNjAsImV4cCI6MTY4MzM3OTk2MH0.a9793QK6Kj9it_-AaHgrsEVohfltAgewFndDVsFgMpg";
+        System.out.println(token.get(0));
         //TODO:解析token进行验证
-        Claims chaims = JwtUtil.parseJWT(tokens);
-        System.out.println(chaims);
+        Claims chaims = JwtUtil.parseJWT(token.get(0));
+        System.out.println(chaims.get("user"));
 
-        Object o = redisTemplate.opsForValue().get("");
+        System.out.println("key值:"+logins+chaims.getSubject());
+        Object o = redisTemplate.opsForValue().get(logins+chaims.getSubject());
         if(o  == null){
             return false;
         }
         String redisToken = o.toString();
-        //boolean核实无误
-        //token错误,判断为并发登录,强行下线
-        return Boolean.TRUE.equals(redisTemplate.hasKey(""));
+        if(Boolean.TRUE.equals(redisTemplate.hasKey(logins+chaims.getSubject()))){
+            //boolean核实无误
+            //token错误,判断为并发登录,强行下线
+            return token.get(0).equals(redisToken);
+        }else {
+            return false;
+        }
     }
     private Mono<Void> doResponse(ServerHttpResponse response, Map map){
         response.setStatusCode(UNAUTHORIZED);
