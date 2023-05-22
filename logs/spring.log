@@ -3919,3 +3919,76 @@ Caused by: java.net.SocketTimeoutException: connect timed out
 2023-05-22 21:04:19.034  WARN [s3-login,,] 20172 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login] & group[DEFAULT_GROUP]
 2023-05-22 21:04:19.058  WARN [s3-login,,] 20172 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login.properties] & group[DEFAULT_GROUP]
 2023-05-22 21:04:19.059  INFO [s3-login,,] 20172 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-s3-login.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-s3-login,DEFAULT_GROUP'}]
+2023-05-22 21:04:19.089  INFO [s3-login,,] 20172 --- [main] com.s3.LoginApplication                  : No active profile set, falling back to 1 default profile: "default"
+2023-05-22 21:04:20.379  INFO [s3-login,,] 20172 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-22 21:04:20.383  INFO [s3-login,,] 20172 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-22 21:04:20.420  INFO [s3-login,,] 20172 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2023-05-22 21:04:20.798  INFO [s3-login,,] 20172 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=25d4f9a2-8a16-32d9-afb7-0d400867a243
+2023-05-22 21:04:21.715  INFO [s3-login,,] 20172 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10020 (http)
+2023-05-22 21:04:21.722  INFO [s3-login,,] 20172 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.33] using APR version [1.7.0].
+2023-05-22 21:04:21.722  INFO [s3-login,,] 20172 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2023-05-22 21:04:21.723  INFO [s3-login,,] 20172 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2023-05-22 21:04:21.728  INFO [s3-login,,] 20172 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1o  3 May 2022]
+2023-05-22 21:04:21.737  INFO [s3-login,,] 20172 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-22 21:04:21.738  INFO [s3-login,,] 20172 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2023-05-22 21:04:22.014  INFO [s3-login,,] 20172 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-22 21:04:22.015  INFO [s3-login,,] 20172 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2899 ms
+2023-05-22 21:04:22.151  INFO [s3-login,,] 20172 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2023-05-22 21:04:22.303  INFO [s3-login,,] 20172 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2023-05-22 21:04:23.840  WARN [s3-login,,] 20172 --- [pool-3-thread-1] o.s.c.s.a.z.ZipkinAutoConfiguration      : Check result of the [RestTemplateSender{http://localhost:9411/api/v2/spans}] contains an error [CheckResult{ok=false, error=org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:9411/api/v2/spans": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out}]
+2023-05-22 21:04:24.933  INFO [s3-login,,] 20172 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2023-05-22 21:04:29.536  INFO [s3-login,,] 20172 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2023-05-22 21:04:29.691  WARN [s3-login,,] 20172 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-05-22 21:04:29.770  INFO [s3-login,,] 20172 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-05-22 21:04:29.907  INFO [s3-login,,] 20172 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 10020 (http) with context path ''
+2023-05-22 21:04:29.928  INFO [s3-login,,] 20172 --- [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+2023-05-22 21:04:29.928  INFO [s3-login,,] 20172 --- [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+2023-05-22 21:04:30.371  INFO [s3-login,,] 20172 --- [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP s3-login 192.168.6.25:10020 register finished
+2023-05-22 21:04:31.695  INFO [s3-login,,] 20172 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2023-05-22 21:04:31.723  INFO [s3-login,,] 20172 --- [main] com.s3.LoginApplication                  : Started LoginApplication in 18.714 seconds (JVM running for 20.196)
+2023-05-22 21:04:31.746  INFO [s3-login,,] 20172 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=s3-login, group=DEFAULT_GROUP
+2023-05-22 21:04:31.747  INFO [s3-login,,] 20172 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=s3-login.properties, group=DEFAULT_GROUP
+2023-05-22 21:04:32.622  INFO [s3-login,,] 20172 --- [RMI TCP Connection(10)-192.168.6.25] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-22 21:04:32.622  INFO [s3-login,,] 20172 --- [RMI TCP Connection(10)-192.168.6.25] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-22 21:04:32.625  INFO [s3-login,,] 20172 --- [RMI TCP Connection(10)-192.168.6.25] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-05-22 21:04:35.563  WARN [s3-login,,] 20172 --- [AsyncReporter{RestTemplateSender{http://localhost:9411/api/v2/spans}}] z.r.AsyncReporter$BoundedAsyncReporter   : Spans were dropped due to exceptions. All subsequent errors will be logged at FINE level.
+2023-05-22 21:04:35.567  WARN [s3-login,,] 20172 --- [AsyncReporter{RestTemplateSender{http://localhost:9411/api/v2/spans}}] z.r.AsyncReporter$BoundedAsyncReporter   : Dropped 2 spans due to ResourceAccessException(I/O error on POST request for "http://localhost:9411/api/v2/spans": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out)
+
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:9411/api/v2/spans": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:791) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.sleuth.zipkin2.ZipkinRestTemplateWrapper.doExecute(ZipkinRestTemplateWrapper.java:67) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:666) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.sleuth.zipkin2.RestTemplateSender.post(RestTemplateSender.java:51) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
+	at org.springframework.cloud.sleuth.zipkin2.RestTemplateSender.lambda$new$0(RestTemplateSender.java:44) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
+	at org.springframework.cloud.sleuth.zipkin2.HttpSender.post(HttpSender.java:137) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
+	at org.springframework.cloud.sleuth.zipkin2.HttpSender$HttpPostCall.doExecute(HttpSender.java:150) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
+	at org.springframework.cloud.sleuth.zipkin2.HttpSender$HttpPostCall.doExecute(HttpSender.java:140) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
+	at zipkin2.Call$Base.execute(Call.java:391) ~[zipkin-2.23.2.jar:na]
+	at zipkin2.reporter.AsyncReporter$BoundedAsyncReporter.flush(AsyncReporter.java:299) ~[zipkin-reporter-2.16.3.jar:na]
+	at zipkin2.reporter.AsyncReporter$Flusher.run(AsyncReporter.java:378) [zipkin-reporter-2.16.3.jar:na]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_65]
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method) ~[na:1.8.0_65]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85) ~[na:1.8.0_65]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_65]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_65]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_65]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[na:1.8.0_65]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_65]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_65]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175) ~[na:1.8.0_65]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[na:1.8.0_65]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[na:1.8.0_65]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[na:1.8.0_65]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[na:1.8.0_65]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[na:1.8.0_65]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1169) ~[na:1.8.0_65]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1105) ~[na:1.8.0_65]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:999) ~[na:1.8.0_65]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:933) ~[na:1.8.0_65]
+	at org.springframework.http.client.SimpleBufferingClientHttpRequest.executeInternal(SimpleBufferingClientHttpRequest.java:76) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:782) ~[spring-web-5.3.26.jar:5.3.26]
+	... 11 common frames omitted
+
