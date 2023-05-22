@@ -1,0 +1,664 @@
+Index: gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.yc.filter;\r\n\r\nimport com.fasterxml.jackson.core.JsonProcessingException;\r\nimport com.fasterxml.jackson.databind.ObjectMapper;\r\nimport io.jsonwebtoken.Claims;\r\nimport lombok.extern.slf4j.Slf4j;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.beans.factory.annotation.Qualifier;\r\nimport org.springframework.cloud.gateway.filter.GatewayFilterChain;\r\nimport org.springframework.cloud.gateway.filter.GlobalFilter;\r\nimport org.springframework.core.Ordered;\r\nimport org.springframework.core.io.buffer.DataBuffer;\r\nimport org.springframework.data.redis.core.RedisTemplate;\r\nimport org.springframework.http.server.RequestPath;\r\nimport org.springframework.http.server.reactive.ServerHttpResponse;\r\nimport org.springframework.stereotype.Component;\r\nimport org.springframework.web.server.ServerWebExchange;\r\nimport reactor.core.publisher.Flux;\r\nimport reactor.core.publisher.Mono;\r\nimport util.JwtUtil;\r\n\r\nimport java.util.HashMap;\r\nimport java.util.List;\r\nimport java.util.Map;\r\n\r\nimport static org.springframework.http.HttpStatus.UNAUTHORIZED;\r\n\r\n/**\r\n * @Author: 乐哥\r\n * @Date: 2023/4/28\r\n * @Time: 20:38\r\n * @Description:  授权验证全局过滤器\r\n */\r\n@Component\r\n@Slf4j\r\npublic class LoginAuthGlobalFilter implements GlobalFilter, Ordered {\r\n    static String  logins=\"LoginToken_\";\r\n    @Autowired\r\n    @Qualifier(\"redisTemplate\")\r\n    private RedisTemplate redisTemplate;\r\n    @Override\r\n    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {\r\n        RequestPath path = exchange.getRequest().getPath();\r\n        System.out.println(path);\r\n        if(!path.toString().endsWith(\".action\")) {\r\n            return chain.filter(exchange);\r\n        }\r\n        List<String> token = exchange.getRequest().getHeaders().get(\"token\");\r\n        try {\r\n            if (token == null || token.size() != 1) {\r\n                throw new RuntimeException();\r\n            }\r\n            //判断token是否合法\r\n            boolean flag = checkToken(token);\r\n            if(!flag){\r\n                throw new RuntimeException();\r\n            }\r\n            return chain.filter(exchange);\r\n        }catch (Exception e){\r\n            log.error(\"token不存在或错误!\");\r\n            Map<String,Object> map = new HashMap<>();\r\n            map.put(\"code\",0);\r\n            map.put(\"msg\",\"token不存在或错误\");\r\n            return doResponse(exchange.getResponse(),map);\r\n        }\r\n    }\r\n\r\n    //检测token令牌\r\n    private boolean checkToken(List<String> token) throws Exception {\r\n        System.out.println(token.get(0));\r\n        //TODO:解析token进行验证\r\n        Claims chaims = JwtUtil.parseJWT(token.get(0));\r\n        System.out.println(chaims.get(\"user\"));\r\n\r\n        System.out.println(\"key值:\"+logins+chaims.getSubject());\r\n        Object o = redisTemplate.opsForValue().get(logins+chaims.getSubject());\r\n        if(o  == null){\r\n            return false;\r\n        }\r\n        String redisToken = o.toString();\r\n        if(Boolean.TRUE.equals(redisTemplate.hasKey(logins+chaims.getSubject()))){\r\n            //boolean核实无误\r\n            //token错误,判断为并发登录,强行下线\r\n            return token.get(0).equals(redisToken);\r\n        }else {\r\n            return false;\r\n        }\r\n    }\r\n    private Mono<Void> doResponse(ServerHttpResponse response, Map map){\r\n        response.setStatusCode(UNAUTHORIZED);\r\n        ObjectMapper objectMapper = new ObjectMapper();\r\n        try {\r\n            String json = objectMapper.writeValueAsString(map);\r\n            DataBuffer wrap = response.bufferFactory().wrap(json.getBytes());\r\n            return response.writeWith(Flux.just(wrap));\r\n        } catch (JsonProcessingException e) {\r\n            throw new RuntimeException(e);\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public int getOrder() {\r\n        return Ordered.HIGHEST_PRECEDENCE;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java b/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java
+--- a/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java	(revision 986eb1fc235bf792b7adce8297cde74544b832c0)
++++ b/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java	(date 1684758664954)
+@@ -17,7 +17,6 @@
+ import org.springframework.web.server.ServerWebExchange;
+ import reactor.core.publisher.Flux;
+ import reactor.core.publisher.Mono;
+-import util.JwtUtil;
+ 
+ import java.util.HashMap;
+ import java.util.List;
+Index: login/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>spring:\r\n  datasource:\r\n    driver-class-name: com.mysql.cj.jdbc.Driver\r\n    url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8\r\n    password: a\r\n    username: root\r\n  application:\r\n    name: s3-login\r\n  redis:\r\n    host: localhost\r\n    port: 6379\r\n  cloud:\r\n    nacos:\r\n      server-addr: localhost:8848 # 注册到哪\r\n      # 配置nacos的信息\r\n      discovery:\r\n        username: nacos\r\n        password: nacos\r\n\r\n\r\nmybatis-plus:\r\n  configuration:\r\n    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启SQL语句打印\r\n  mapper-locations: classpath:mapper/*.xml   #配置xml文件是 ，文件放置的地方\r\n\r\nserver:\r\n  port: ${port:10020}\r\nlogging:\r\n  level:\r\n    root: info\r\n    com.yc: info\r\n    org.springframework: info\r\n  file:\r\n    path: ./logs\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/login/src/main/resources/application.yml b/login/src/main/resources/application.yml
+--- a/login/src/main/resources/application.yml	(revision 986eb1fc235bf792b7adce8297cde74544b832c0)
++++ b/login/src/main/resources/application.yml	(date 1684758538230)
+@@ -1,7 +1,7 @@
+ spring:
+   datasource:
+     driver-class-name: com.mysql.cj.jdbc.Driver
+-    url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
++    url: jdbc:mysql://localhost:3306/food?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+     password: a
+     username: root
+   application:
+@@ -17,11 +17,11 @@
+         username: nacos
+         password: nacos
+ 
+-
+ mybatis-plus:
+   configuration:
+     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启SQL语句打印
+-  mapper-locations: classpath:mapper/*.xml   #配置xml文件是 ，文件放置的地方
++    map-underscore-to-camel-case: false
++
+ 
+ server:
+   port: ${port:10020}
+Index: login/target/classes/mapper/UserMapper.xml
+===================================================================
+diff --git a/login/target/classes/mapper/UserMapper.xml b/login/target/classes/mapper/UserMapper.xml
+deleted file mode 100644
+--- a/login/target/classes/mapper/UserMapper.xml	(revision 986eb1fc235bf792b7adce8297cde74544b832c0)
++++ /dev/null	(revision 986eb1fc235bf792b7adce8297cde74544b832c0)
+@@ -1,15 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8" ?>  <!--这里是映射文件 ！！！ -->
+-<!DOCTYPE mapper
+-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+-<!--这里面主要写的是sql语句 -->
+-<mapper namespace="com.s3.mapper.UserMapper">  <!--这里和mapper接口对应上了 -->
+-
+-    <!--    mapper接口与映射文件对应-->
+-    <!--    接口中的方法与id一致-->
+-    <!--    配置文件中的引入映射文件与映射文件对应-->
+-    <insert id="saveLogon">
+-        insert into memberinfo(nickName,pwd,email,regDate,status,tel) values(#{nickName},#{pwd},#{email},#{regDate},1,13333333333)
+-    </insert>
+-
+-</mapper>
+\ No newline at end of file
+Index: Jwt/src/main/java/util/JwtUtil.java
+===================================================================
+diff --git a/Jwt/src/main/java/util/JwtUtil.java b/Jwt/src/main/java/util/JwtUtil.java
+deleted file mode 100644
+--- a/Jwt/src/main/java/util/JwtUtil.java	(revision 986eb1fc235bf792b7adce8297cde74544b832c0)
++++ /dev/null	(revision 986eb1fc235bf792b7adce8297cde74544b832c0)
+@@ -1,111 +0,0 @@
+-package util; /**
+- * @Author: 乐哥
+- * @Date: 2023/4/10
+- * @Time: 21:37
+- * @Description: Jwt生成器与解析
+- */
+-
+-import com.s3.bean.MemberInfoBean;
+-import io.jsonwebtoken.Claims;
+-import io.jsonwebtoken.JwtBuilder;
+-import io.jsonwebtoken.Jwts;
+-import io.jsonwebtoken.SignatureAlgorithm;
+-
+-import javax.crypto.SecretKey;
+-import javax.crypto.spec.SecretKeySpec;
+-import java.util.Base64;
+-import java.util.Date;
+-import java.util.UUID;
+-
+-/**
+- * JWT工具类
+- */
+-public class JwtUtil {
+-
+-    //有效期为
+-    public static final Long JWT_TTL = 60 * 60 *1000L;// 60 * 60 *1000  有效期:一个小时
+-    //设置秘钥明文
+-    public static final String JWT_KEY = "yltService";
+-
+-
+-
+-    /**
+-     * 生成jtw
+-     * @param subject token中要存放的数据（json格式）
+-     * @param ttlMillis token超时时间
+-     * @return
+-     */
+-    public static String createJWT(MemberInfoBean memberInfoBean, String subject, Long ttlMillis) {
+-        JwtBuilder builder = getJwtBuilder(memberInfoBean,subject, ttlMillis, String.valueOf(UUID.randomUUID()));// 设置过期时间
+-        return builder.compact();
+-    }
+-
+-    private static JwtBuilder getJwtBuilder(MemberInfoBean memberInfoBean,String subject, Long ttlMillis, String uuid) {
+-        SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+-        SecretKey secretKey = generalKey();
+-        long nowMillis = System.currentTimeMillis();
+-        Date now = new Date(nowMillis);
+-        if(ttlMillis==null){
+-            ttlMillis=JwtUtil.JWT_TTL;
+-        }
+-        long expMillis = nowMillis + ttlMillis;
+-        Date expDate = new Date(expMillis);
+-        return Jwts.builder()
+-                //设置token类型
+-                .setHeaderParam("typ", "JWT")
+-                //设置加密算法
+-                .setHeaderParam("alg", "HS256")
+-                //TODO:将用户信息存入token
+-                //.claim("user","user")
+-                .claim("user",memberInfoBean)
+-                .setId(uuid)              //唯一的ID
+-                .setSubject(subject)   // 主题  可以是JSON数据
+-                .setIssuer("yjlyyds")     // 签发者
+-                .setIssuedAt(now)      // 签发时间
+-                .signWith(signatureAlgorithm, secretKey) //使用HS256对称加密算法签名, 第二个参数为秘钥
+-                .setExpiration(expDate);//过期时间
+-
+-    }
+-
+-    /**
+-     * 创建token
+-     * @param id
+-     * @param subject
+-     * @param ttlMillis
+-     * @return
+-     */
+-    public static String createJWT(MemberInfoBean memberInfoBean,String id, String subject, Long ttlMillis) {
+-        JwtBuilder builder = getJwtBuilder(memberInfoBean,subject, ttlMillis, id);// 设置过期时间
+-        return builder.compact();
+-    }
+-
+-
+-    /**
+-     * 生成加密后的秘钥 secretKey
+-     * @return
+-     */
+-    public static SecretKey generalKey() {
+-        byte[] encodedKey = Base64.getDecoder().decode(JwtUtil.JWT_KEY);
+-        SecretKey key = new SecretKeySpec(encodedKey, 0, encodedKey.length, "AES");
+-        return key;
+-    }
+-
+-    /**
+-     * 解析
+-     *
+-     * @param jwt
+-     * @return
+-     * @throws Exception
+-     */
+-    public static Claims parseJWT(String jwt) throws Exception {
+-        SecretKey secretKey = generalKey();
+-        return Jwts.parser()
+-                .setSigningKey(secretKey)
+-                .parseClaimsJws(jwt)
+-                .getBody();
+-    }
+-
+-
+-}
+-
+-
+Index: login/target/classes/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/login/target/classes/application.yml b/login/target/classes/application.yml
+deleted file mode 100644
+--- a/login/target/classes/application.yml	(revision 986eb1fc235bf792b7adce8297cde74544b832c0)
++++ /dev/null	(revision 986eb1fc235bf792b7adce8297cde74544b832c0)
+@@ -1,34 +0,0 @@
+-spring:
+-  datasource:
+-    driver-class-name: com.mysql.cj.jdbc.Driver
+-    url: jdbc:mysql://localhost:3306/fresh?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+-    password: a
+-    username: root
+-  application:
+-    name: s3-login
+-  redis:
+-    host: localhost
+-    port: 6379
+-  cloud:
+-    nacos:
+-      server-addr: localhost:8848 # 注册到哪
+-      # 配置nacos的信息
+-      discovery:
+-        username: nacos
+-        password: nacos
+-
+-
+-mybatis-plus:
+-  configuration:
+-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启SQL语句打印
+-  mapper-locations: classpath:mapper/*.xml   #配置xml文件是 ，文件放置的地方
+-
+-server:
+-  port: ${port:10020}
+-logging:
+-  level:
+-    root: info
+-    com.yc: info
+-    org.springframework: info
+-  file:
+-    path: ./logs
+Index: login/src/main/resources/mapper/UserMapper.xml
+===================================================================
+diff --git a/login/src/main/resources/mapper/UserMapper.xml b/login/src/main/resources/mapper/UserMapper.xml
+deleted file mode 100644
+--- a/login/src/main/resources/mapper/UserMapper.xml	(revision 986eb1fc235bf792b7adce8297cde74544b832c0)
++++ /dev/null	(revision 986eb1fc235bf792b7adce8297cde74544b832c0)
+@@ -1,15 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8" ?>  <!--这里是映射文件 ！！！ -->
+-<!DOCTYPE mapper
+-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+-<!--这里面主要写的是sql语句 -->
+-<mapper namespace="com.s3.mapper.UserMapper">  <!--这里和mapper接口对应上了 -->
+-
+-    <!--    mapper接口与映射文件对应-->
+-    <!--    接口中的方法与id一致-->
+-    <!--    配置文件中的引入映射文件与映射文件对应-->
+-    <insert id="saveLogon">
+-        insert into memberinfo(nickName,pwd,email,regDate,status,tel) values(#{nickName},#{pwd},#{email},#{regDate},1,13333333333)
+-    </insert>
+-
+-</mapper>
+\ No newline at end of file
+Index: login/src/main/java/com/s3/controller/HelloController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/login/src/main/java/com/s3/controller/HelloController.java b/login/src/main/java/com/s3/controller/HelloController.java
+new file mode 100644
+--- /dev/null	(date 1684753793038)
++++ b/login/src/main/java/com/s3/controller/HelloController.java	(date 1684753793038)
+@@ -0,0 +1,20 @@
++package com.s3.controller;
++
++import org.springframework.web.bind.annotation.RequestMapping;
++import org.springframework.web.bind.annotation.RestController;
++
++/**
++ * @Author: 乐哥
++ * @Date: 2023/5/22
++ * @Time: 19:09
++ * @Description:
++ */
++@RestController
++@RequestMapping("/user")
++public class HelloController {
++
++    @RequestMapping("/login")
++    public String get(){
++        return "Ok";
++    }
++}
+Index: logs/spring.log
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>2023-05-07 09:34:05.345  WARN [s3-login,,] 3852 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login] & group[DEFAULT_GROUP]\r\n2023-05-07 09:34:05.672  WARN [s3-login,,] 3852 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login.properties] & group[DEFAULT_GROUP]\r\n2023-05-07 09:34:05.673  INFO [s3-login,,] 3852 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-s3-login.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-s3-login,DEFAULT_GROUP'}]\r\n2023-05-07 09:34:05.699  INFO [s3-login,,] 3852 --- [main] com.s3.LoginApplication                  : No active profile set, falling back to 1 default profile: \"default\"\r\n2023-05-07 09:34:06.645  INFO [s3-login,,] 3852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode\r\n2023-05-07 09:34:06.648  INFO [s3-login,,] 3852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.\r\n2023-05-07 09:34:06.675  INFO [s3-login,,] 3852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.\r\n2023-05-07 09:34:06.868  WARN [s3-login,,] 3852 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.tyl.vueblog.mapper]' package. Please check your configuration.\r\n2023-05-07 09:34:06.925  INFO [s3-login,,] 3852 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=50738c96-8130-3a30-aea3-98f2205990fd\r\n2023-05-07 09:34:07.518  INFO [s3-login,,] 3852 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10020 (http)\r\n2023-05-07 09:34:07.519  INFO [s3-login,,] 3852 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.26] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]\r\n2023-05-07 09:34:07.519  INFO [s3-login,,] 3852 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.26] using APR version [1.7.0].\r\n2023-05-07 09:34:07.519  INFO [s3-login,,] 3852 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].\r\n2023-05-07 09:34:07.520  INFO [s3-login,,] 3852 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]\r\n2023-05-07 09:34:07.530  INFO [s3-login,,] 3852 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1i  8 Dec 2020]\r\n2023-05-07 09:34:07.539  INFO [s3-login,,] 3852 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]\r\n2023-05-07 09:34:07.539  INFO [s3-login,,] 3852 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]\r\n2023-05-07 09:34:07.768  INFO [s3-login,,] 3852 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext\r\n2023-05-07 09:34:07.769  INFO [s3-login,,] 3852 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2050 ms\r\n2023-05-07 09:34:07.874  INFO [s3-login,,] 3852 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource\r\n2023-05-07 09:34:07.983  INFO [s3-login,,] 3852 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited\r\n2023-05-07 09:34:09.345  WARN [s3-login,,] 3852 --- [pool-5-thread-1] o.s.c.s.a.z.ZipkinAutoConfiguration      : Check result of the [RestTemplateSender{http://localhost:9411/api/v2/spans}] contains an error [CheckResult{ok=false, error=org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"http://localhost:9411/api/v2/spans\": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out}]\r\n2023-05-07 09:34:11.770  WARN [s3-login,,] 3852 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.\r\n2023-05-07 09:34:11.842  INFO [s3-login,,] 3852 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'\r\n2023-05-07 09:34:11.933  INFO [s3-login,,] 3852 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 10020 (http) with context path ''\r\n2023-05-07 09:34:11.948  INFO [s3-login,,] 3852 --- [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.\r\n2023-05-07 09:34:11.948  INFO [s3-login,,] 3852 --- [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.\r\n2023-05-07 09:34:23.399 ERROR [s3-login,,] 3852 --- [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, s3-login register failed...NacosRegistration{nacosDiscoveryProperties=NacosDiscoveryProperties{serverAddr='localhost:8848', username='nacos', password='nacos', endpoint='', namespace='', watchDelay=30000, logName='', service='s3-login', weight=1.0, clusterName='DEFAULT', group='DEFAULT_GROUP', namingLoadCacheAtStart='false', metadata={IPv6=null, preserved.register.source=SPRING_CLOUD}, registerEnabled=true, ip='172.20.86.46', networkInterface='', port=10020, secure=false, accessKey='', secretKey='', heartBeatInterval=null, heartBeatTimeout=null, ipDeleteTimeout=null, instanceEnabled=true, ephemeral=true, failureToleranceEnabled=false}, ipDeleteTimeout=null, failFast=true}},\r\n\r\ncom.alibaba.nacos.api.exception.NacosException: Client not connected, current status:STARTING\r\n\tat com.alibaba.nacos.common.remote.client.RpcClient.request(RpcClient.java:639) ~[nacos-client-2.2.0.jar:na]\r\n\tat com.alibaba.nacos.common.remote.client.RpcClient.request(RpcClient.java:619) ~[nacos-client-2.2.0.jar:na]\r\n\tat com.alibaba.nacos.client.naming.remote.gprc.NamingGrpcClientProxy.requestToServer(NamingGrpcClientProxy.java:356) ~[nacos-client-2.2.0.jar:na]\r\n\tat com.alibaba.nacos.client.naming.remote.gprc.NamingGrpcClientProxy.doRegisterService(NamingGrpcClientProxy.java:209) ~[nacos-client-2.2.0.jar:na]\r\n\tat com.alibaba.nacos.client.naming.remote.gprc.NamingGrpcClientProxy.registerService(NamingGrpcClientProxy.java:123) ~[nacos-client-2.2.0.jar:na]\r\n\tat com.alibaba.nacos.client.naming.remote.NamingClientProxyDelegate.registerService(NamingClientProxyDelegate.java:98) ~[nacos-client-2.2.0.jar:na]\r\n\tat com.alibaba.nacos.client.naming.NacosNamingService.registerInstance(NacosNamingService.java:152) ~[nacos-client-2.2.0.jar:na]\r\n\tat com.alibaba.cloud.nacos.registry.NacosServiceRegistry.register(NacosServiceRegistry.java:75) ~[spring-cloud-starter-alibaba-nacos-discovery-2021.0.5.0.jar:2021.0.5.0]\r\n\tat org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.register(AbstractAutoServiceRegistration.java:232) [spring-cloud-commons-3.1.6.jar:3.1.6]\r\n\tat com.alibaba.cloud.nacos.registry.NacosAutoServiceRegistration.register(NacosAutoServiceRegistration.java:78) [spring-cloud-starter-alibaba-nacos-discovery-2021.0.5.0.jar:2021.0.5.0]\r\n\tat org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.start(AbstractAutoServiceRegistration.java:133) [spring-cloud-commons-3.1.6.jar:3.1.6]\r\n\tat org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.bind(AbstractAutoServiceRegistration.java:98) [spring-cloud-commons-3.1.6.jar:3.1.6]\r\n\tat org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.onApplicationEvent(AbstractAutoServiceRegistration.java:86) [spring-cloud-commons-3.1.6.jar:3.1.6]\r\n\tat org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.onApplicationEvent(AbstractAutoServiceRegistration.java:47) [spring-cloud-commons-3.1.6.jar:3.1.6]\r\n\tat org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) [spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) [spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) [spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) [spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) [spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.boot.web.servlet.context.WebServerStartStopLifecycle.start(WebServerStartStopLifecycle.java:46) [spring-boot-2.7.10.jar:2.7.10]\r\n\tat org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:178) [spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:54) [spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:356) [spring-context-5.3.26.jar:5.3.26]\r\n\tat java.lang.Iterable.forEach(Iterable.java:75) ~[na:1.8.0_65]\r\n\tat org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:155) [spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:123) [spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:937) [spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) [spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.10.jar:2.7.10]\r\n\tat org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.10.jar:2.7.10]\r\n\tat org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.10.jar:2.7.10]\r\n\tat org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.10.jar:2.7.10]\r\n\tat org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.10.jar:2.7.10]\r\n\tat org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.10.jar:2.7.10]\r\n\tat com.s3.LoginApplication.main(LoginApplication.java:15) ~[classes/:na]\r\n\r\n2023-05-07 09:34:23.402  WARN [s3-login,,] 3852 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is java.lang.reflect.UndeclaredThrowableException\r\n2023-05-07 09:34:24.452  WARN [s3-login,,] 3852 --- [main] z.r.AsyncReporter$BoundedAsyncReporter   : Timed out waiting for in-flight spans to send\r\n2023-05-07 09:34:24.456  INFO [s3-login,,] 3852 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...\r\n2023-05-07 09:34:24.458  INFO [s3-login,,] 3852 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed\r\n2023-05-07 09:34:24.735  INFO [s3-login,,] 3852 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]\r\n2023-05-07 09:34:24.775  INFO [s3-login,,] 3852 --- [main] ConditionEvaluationReportLoggingListener : \r\n\r\nError starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.\r\n2023-05-07 09:34:24.826 ERROR [s3-login,,] 3852 --- [main] o.s.boot.SpringApplication               : Application run failed\r\n\r\norg.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is java.lang.reflect.UndeclaredThrowableException\r\n\tat org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:181) ~[spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:54) ~[spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:356) ~[spring-context-5.3.26.jar:5.3.26]\r\n\tat java.lang.Iterable.forEach(Iterable.java:75) ~[na:1.8.0_65]\r\n\tat org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:155) ~[spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:123) ~[spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:937) ~[spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.10.jar:2.7.10]\r\n\tat org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) [spring-boot-2.7.10.jar:2.7.10]\r\n\tat org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) [spring-boot-2.7.10.jar:2.7.10]\r\n\tat org.springframework.boot.SpringApplication.run(SpringApplication.java:307) [spring-boot-2.7.10.jar:2.7.10]\r\n\tat org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) [spring-boot-2.7.10.jar:2.7.10]\r\n\tat org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) [spring-boot-2.7.10.jar:2.7.10]\r\n\tat com.s3.LoginApplication.main(LoginApplication.java:15) [classes/:na]\r\nCaused by: java.lang.reflect.UndeclaredThrowableException: null\r\n\tat org.springframework.util.ReflectionUtils.rethrowRuntimeException(ReflectionUtils.java:147) ~[spring-core-5.3.26.jar:5.3.26]\r\n\tat com.alibaba.cloud.nacos.registry.NacosServiceRegistry.register(NacosServiceRegistry.java:83) ~[spring-cloud-starter-alibaba-nacos-discovery-2021.0.5.0.jar:2021.0.5.0]\r\n\tat org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.register(AbstractAutoServiceRegistration.java:232) ~[spring-cloud-commons-3.1.6.jar:3.1.6]\r\n\tat com.alibaba.cloud.nacos.registry.NacosAutoServiceRegistration.register(NacosAutoServiceRegistration.java:78) ~[spring-cloud-starter-alibaba-nacos-discovery-2021.0.5.0.jar:2021.0.5.0]\r\n\tat org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.start(AbstractAutoServiceRegistration.java:133) ~[spring-cloud-commons-3.1.6.jar:3.1.6]\r\n\tat org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.bind(AbstractAutoServiceRegistration.java:98) ~[spring-cloud-commons-3.1.6.jar:3.1.6]\r\n\tat org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.onApplicationEvent(AbstractAutoServiceRegistration.java:86) ~[spring-cloud-commons-3.1.6.jar:3.1.6]\r\n\tat org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.onApplicationEvent(AbstractAutoServiceRegistration.java:47) ~[spring-cloud-commons-3.1.6.jar:3.1.6]\r\n\tat org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]\r\n\tat org.springframework.boot.web.servlet.context.WebServerStartStopLifecycle.start(WebServerStartStopLifecycle.java:46) ~[spring-boot-2.7.10.jar:2.7.10]\r\n\tat org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:178) ~[spring-context-5.3.26.jar:5.3.26]\r\n\t... 14 common frames omitted\r\nCaused by: com.alibaba.nacos.api.exception.NacosException: Client not connected, current status:STARTING\r\n\tat com.alibaba.nacos.common.remote.client.RpcClient.request(RpcClient.java:639) ~[nacos-client-2.2.0.jar:na]\r\n\tat com.alibaba.nacos.common.remote.client.RpcClient.request(RpcClient.java:619) ~[nacos-client-2.2.0.jar:na]\r\n\tat com.alibaba.nacos.client.naming.remote.gprc.NamingGrpcClientProxy.requestToServer(NamingGrpcClientProxy.java:356) ~[nacos-client-2.2.0.jar:na]\r\n\tat com.alibaba.nacos.client.naming.remote.gprc.NamingGrpcClientProxy.doRegisterService(NamingGrpcClientProxy.java:209) ~[nacos-client-2.2.0.jar:na]\r\n\tat com.alibaba.nacos.client.naming.remote.gprc.NamingGrpcClientProxy.registerService(NamingGrpcClientProxy.java:123) ~[nacos-client-2.2.0.jar:na]\r\n\tat com.alibaba.nacos.client.naming.remote.NamingClientProxyDelegate.registerService(NamingClientProxyDelegate.java:98) ~[nacos-client-2.2.0.jar:na]\r\n\tat com.alibaba.nacos.client.naming.NacosNamingService.registerInstance(NacosNamingService.java:152) ~[nacos-client-2.2.0.jar:na]\r\n\tat com.alibaba.cloud.nacos.registry.NacosServiceRegistry.register(NacosServiceRegistry.java:75) ~[spring-cloud-starter-alibaba-nacos-discovery-2021.0.5.0.jar:2021.0.5.0]\r\n\t... 27 common frames omitted\r\n\r\n2023-05-07 09:34:24.828  WARN [s3-login,,] 3852 --- [Thread-2] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient\r\n2023-05-07 09:34:24.828  WARN [s3-login,,] 3852 --- [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher\r\n2023-05-07 09:34:24.829  WARN [s3-login,,] 3852 --- [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end\r\n2023-05-07 09:34:24.829  WARN [s3-login,,] 3852 --- [Thread-2] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end\r\n2023-05-07 09:34:24.830  INFO [s3-login,,] 3852 --- [Thread-34] o.s.c.s.a.z.ZipkinAutoConfiguration      : Flushing remaining spans on shutdown\r\n2023-05-07 09:34:36.562  WARN [s3-login,,] 18840 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login] & group[DEFAULT_GROUP]\r\n2023-05-07 09:34:36.573  WARN [s3-login,,] 18840 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login.properties] & group[DEFAULT_GROUP]\r\n2023-05-07 09:34:36.574  INFO [s3-login,,] 18840 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-s3-login.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-s3-login,DEFAULT_GROUP'}]\r\n2023-05-07 09:34:36.604  INFO [s3-login,,] 18840 --- [main] com.s3.LoginApplication                  : No active profile set, falling back to 1 default profile: \"default\"\r\n2023-05-07 09:34:37.587  INFO [s3-login,,] 18840 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode\r\n2023-05-07 09:34:37.590  INFO [s3-login,,] 18840 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.\r\n2023-05-07 09:34:37.617  INFO [s3-login,,] 18840 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.\r\n2023-05-07 09:34:37.836  WARN [s3-login,,] 18840 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.tyl.vueblog.mapper]' package. Please check your configuration.\r\n2023-05-07 09:34:37.921  INFO [s3-login,,] 18840 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=50738c96-8130-3a30-aea3-98f2205990fd\r\n2023-05-07 09:34:38.672  INFO [s3-login,,] 18840 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10020 (http)\r\n2023-05-07 09:34:38.673  INFO [s3-login,,] 18840 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.26] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]\r\n2023-05-07 09:34:38.674  INFO [s3-login,,] 18840 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.26] using APR version [1.7.0].\r\n2023-05-07 09:34:38.674  INFO [s3-login,,] 18840 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].\r\n2023-05-07 09:34:38.674  INFO [s3-login,,] 18840 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]\r\n2023-05-07 09:34:38.677  INFO [s3-login,,] 18840 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1i  8 Dec 2020]\r\n2023-05-07 09:34:38.688  INFO [s3-login,,] 18840 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]\r\n2023-05-07 09:34:38.688  INFO [s3-login,,] 18840 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]\r\n2023-05-07 09:34:38.869  INFO [s3-login,,] 18840 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext\r\n2023-05-07 09:34:38.870  INFO [s3-login,,] 18840 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2247 ms\r\n2023-05-07 09:34:38.966  INFO [s3-login,,] 18840 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource\r\n2023-05-07 09:34:39.079  INFO [s3-login,,] 18840 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited\r\n2023-05-07 09:34:40.430  WARN [s3-login,,] 18840 --- [pool-3-thread-1] o.s.c.s.a.z.ZipkinAutoConfiguration      : Check result of the [RestTemplateSender{http://localhost:9411/api/v2/spans}] contains an error [CheckResult{ok=false, error=org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"http://localhost:9411/api/v2/spans\": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out}]\r\n2023-05-07 09:34:42.955  WARN [s3-login,,] 18840 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.\r\n2023-05-07 09:34:43.006  INFO [s3-login,,] 18840 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'\r\n2023-05-07 09:34:43.100  INFO [s3-login,,] 18840 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 10020 (http) with context path ''\r\n2023-05-07 09:34:43.115  INFO [s3-login,,] 18840 --- [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.\r\n2023-05-07 09:34:43.115  INFO [s3-login,,] 18840 --- [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.\r\n2023-05-07 09:34:43.556  INFO [s3-login,,] 18840 --- [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP s3-login 172.20.86.46:10020 register finished\r\n2023-05-07 09:34:43.867  INFO [s3-login,,] 18840 --- [main] com.s3.LoginApplication                  : Started LoginApplication in 10.567 seconds (JVM running for 11.602)\r\n2023-05-07 09:34:43.882  INFO [s3-login,,] 18840 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=s3-login, group=DEFAULT_GROUP\r\n2023-05-07 09:34:43.883  INFO [s3-login,,] 18840 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=s3-login.properties, group=DEFAULT_GROUP\r\n2023-05-07 09:34:44.693  INFO [s3-login,,] 18840 --- [RMI TCP Connection(2)-172.20.86.46] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'\r\n2023-05-07 09:34:44.693  INFO [s3-login,,] 18840 --- [RMI TCP Connection(2)-172.20.86.46] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'\r\n2023-05-07 09:34:44.696  INFO [s3-login,,] 18840 --- [RMI TCP Connection(2)-172.20.86.46] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms\r\n2023-05-07 09:34:47.366  WARN [s3-login,,] 18840 --- [boundedElastic-1] o.s.b.a.r.RedisReactiveHealthIndicator   : Redis health check failed\r\n\r\norg.springframework.data.redis.RedisConnectionFailureException: Unable to connect to Redis; nested exception is io.lettuce.core.RedisConnectionException: Unable to connect to localhost:6379\r\n\tat org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$ExceptionTranslatingConnectionProvider.translateException(LettuceConnectionFactory.java:1689) ~[spring-data-redis-2.7.10.jar:2.7.10]\r\n\tat org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$ExceptionTranslatingConnectionProvider.getConnection(LettuceConnectionFactory.java:1597) ~[spring-data-redis-2.7.10.jar:2.7.10]\r\n\tat org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.getNativeConnection(LettuceConnectionFactory.java:1383) ~[spring-data-redis-2.7.10.jar:2.7.10]\r\n\tat org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.getConnection(LettuceConnectionFactory.java:1366) ~[spring-data-redis-2.7.10.jar:2.7.10]\r\n\tat org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getSharedReactiveConnection(LettuceConnectionFactory.java:1117) ~[spring-data-redis-2.7.10.jar:2.7.10]\r\n\tat org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getReactiveConnection(LettuceConnectionFactory.java:509) ~[spring-data-redis-2.7.10.jar:2.7.10]\r\n\tat org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getReactiveConnection(LettuceConnectionFactory.java:103) ~[spring-data-redis-2.7.10.jar:2.7.10]\r\n\tat reactor.core.publisher.MonoSupplier.call(MonoSupplier.java:86) ~[reactor-core-3.4.28.jar:3.4.28]\r\n\tat reactor.core.publisher.FluxSubscribeOnCallable$CallableSubscribeOnSubscription.run(FluxSubscribeOnCallable.java:227) ~[reactor-core-3.4.28.jar:3.4.28]\r\n\tat org.springframework.cloud.sleuth.instrument.reactor.ReactorSleuth.lambda$null$6(ReactorSleuth.java:327) ~[spring-cloud-sleuth-instrumentation-3.1.7.jar:3.1.7]\r\n\tat reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68) ~[reactor-core-3.4.28.jar:3.4.28]\r\n\tat reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28) ~[reactor-core-3.4.28.jar:3.4.28]\r\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[na:1.8.0_65]\r\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) ~[na:1.8.0_65]\r\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) ~[na:1.8.0_65]\r\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) ~[na:1.8.0_65]\r\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) ~[na:1.8.0_65]\r\n\tat java.lang.Thread.run(Thread.java:745) ~[na:1.8.0_65]\r\nCaused by: io.lettuce.core.RedisConnectionException: Unable to connect to localhost:6379\r\n\tat io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:78) ~[lettuce-core-6.1.10.RELEASE.jar:6.1.10.RELEASE]\r\n\tat io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:56) ~[lettuce-core-6.1.10.RELEASE.jar:6.1.10.RELEASE]\r\n\tat io.lettuce.core.AbstractRedisClient.getConnection(AbstractRedisClient.java:330) ~[lettuce-core-6.1.10.RELEASE.jar:6.1.10.RELEASE]\r\n\tat io.lettuce.core.RedisClient.connect(RedisClient.java:216) ~[lettuce-core-6.1.10.RELEASE.jar:6.1.10.RELEASE]\r\n\tat org.springframework.data.redis.connection.lettuce.StandaloneConnectionProvider.lambda$getConnection$1(StandaloneConnectionProvider.java:115) ~[spring-data-redis-2.7.10.jar:2.7.10]\r\n\tat java.util.Optional.orElseGet(Optional.java:267) ~[na:1.8.0_65]\r\n\tat org.springframework.data.redis.connection.lettuce.StandaloneConnectionProvider.getConnection(StandaloneConnectionProvider.java:115) ~[spring-data-redis-2.7.10.jar:2.7.10]\r\n\tat org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$ExceptionTranslatingConnectionProvider.getConnection(LettuceConnectionFactory.java:1595) ~[spring-data-redis-2.7.10.jar:2.7.10]\r\n\t... 16 common frames omitted\r\nCaused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:6379\r\nCaused by: java.net.ConnectException: Connection refused: no further information\r\n\tat sun.nio.ch.SocketChannelImpl.checkConnect(Native Method) ~[na:1.8.0_65]\r\n\tat sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717) ~[na:1.8.0_65]\r\n\tat io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337) ~[netty-transport-4.1.90.Final.jar:4.1.90.Final]\r\n\tat io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334) ~[netty-transport-4.1.90.Final.jar:4.1.90.Final]\r\n\tat io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776) ~[netty-transport-4.1.90.Final.jar:4.1.90.Final]\r\n\tat io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.90.Final.jar:4.1.90.Final]\r\n\tat io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.90.Final.jar:4.1.90.Final]\r\n\tat io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.90.Final.jar:4.1.90.Final]\r\n\tat io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.90.Final.jar:4.1.90.Final]\r\n\tat io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.90.Final.jar:4.1.90.Final]\r\n\tat io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.90.Final.jar:4.1.90.Final]\r\n\tat java.lang.Thread.run(Thread.java:745) ~[na:1.8.0_65]\r\n\r\n2023-05-07 09:35:10.253  WARN [s3-login,,] 18840 --- [Thread-4] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient\r\n2023-05-07 09:35:10.253  WARN [s3-login,,] 18840 --- [Thread-11] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher\r\n2023-05-07 09:35:10.253  INFO [s3-login,,] 18840 --- [Thread-23] o.s.c.s.a.z.ZipkinAutoConfiguration      : Flushing remaining spans on shutdown\r\n2023-05-07 09:35:10.254  WARN [s3-login,,] 18840 --- [Thread-11] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end\r\n2023-05-07 09:35:10.255  WARN [s3-login,,] 18840 --- [Thread-4] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end\r\n2023-05-07 09:35:10.443  INFO [s3-login,,] 18840 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...\r\n2023-05-07 09:35:10.448  INFO [s3-login,,] 18840 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.\r\n2023-05-07 09:35:11.627  INFO [s3-login,,] 18840 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...\r\n2023-05-07 09:35:11.633  INFO [s3-login,,] 18840 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed\r\n2023-05-07 09:35:18.812  WARN [s3-login,,] 7812 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login] & group[DEFAULT_GROUP]\r\n2023-05-07 09:35:18.821  WARN [s3-login,,] 7812 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login.properties] & group[DEFAULT_GROUP]\r\n2023-05-07 09:35:18.822  INFO [s3-login,,] 7812 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-s3-login.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-s3-login,DEFAULT_GROUP'}]\r\n2023-05-07 09:35:18.848  INFO [s3-login,,] 7812 --- [main] com.s3.LoginApplication                  : No active profile set, falling back to 1 default profile: \"default\"\r\n2023-05-07 09:35:19.714  INFO [s3-login,,] 7812 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode\r\n2023-05-07 09:35:19.716  INFO [s3-login,,] 7812 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.\r\n2023-05-07 09:35:19.742  INFO [s3-login,,] 7812 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.\r\n2023-05-07 09:35:19.934  WARN [s3-login,,] 7812 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.tyl.vueblog.mapper]' package. Please check your configuration.\r\n2023-05-07 09:35:19.993  INFO [s3-login,,] 7812 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=50738c96-8130-3a30-aea3-98f2205990fd\r\n2023-05-07 09:35:20.570  INFO [s3-login,,] 7812 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10020 (http)\r\n2023-05-07 09:35:20.571  INFO [s3-login,,] 7812 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.26] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]\r\n2023-05-07 09:35:20.571  INFO [s3-login,,] 7812 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.26] using APR version [1.7.0].\r\n2023-05-07 09:35:20.572  INFO [s3-login,,] 7812 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].\r\n2023-05-07 09:35:20.572  INFO [s3-login,,] 7812 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]\r\n2023-05-07 09:35:20.574  INFO [s3-login,,] 7812 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1i  8 Dec 2020]\r\n2023-05-07 09:35:20.583  INFO [s3-login,,] 7812 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]\r\n2023-05-07 09:35:20.583  INFO [s3-login,,] 7812 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]\r\n2023-05-07 09:35:20.748  INFO [s3-login,,] 7812 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext\r\n2023-05-07 09:35:20.748  INFO [s3-login,,] 7812 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1882 ms\r\n2023-05-07 09:35:20.842  INFO [s3-login,,] 7812 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource\r\n2023-05-07 09:35:20.947  INFO [s3-login,,] 7812 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited\r\n2023-05-07 09:35:22.373  WARN [s3-login,,] 7812 --- [pool-3-thread-1] o.s.c.s.a.z.ZipkinAutoConfiguration      : Check result of the [RestTemplateSender{http://localhost:9411/api/v2/spans}] contains an error [CheckResult{ok=false, error=org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"http://localhost:9411/api/v2/spans\": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out}]\r\n2023-05-07 09:35:25.892  WARN [s3-login,,] 7812 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.\r\n2023-05-07 09:35:25.970  INFO [s3-login,,] 7812 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'\r\n2023-05-07 09:35:26.064  INFO [s3-login,,] 7812 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 10020 (http) with context path ''\r\n2023-05-07 09:35:26.079  INFO [s3-login,,] 7812 --- [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.\r\n2023-05-07 09:35:26.079  INFO [s3-login,,] 7812 --- [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.\r\n2023-05-07 09:35:26.340  INFO [s3-login,,] 7812 --- [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP s3-login 172.20.86.46:10020 register finished\r\n2023-05-07 09:35:26.758  INFO [s3-login,,] 7812 --- [main] com.s3.LoginApplication                  : Started LoginApplication in 10.783 seconds (JVM running for 11.991)\r\n2023-05-07 09:35:26.787  INFO [s3-login,,] 7812 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=s3-login, group=DEFAULT_GROUP\r\n2023-05-07 09:35:26.788  INFO [s3-login,,] 7812 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=s3-login.properties, group=DEFAULT_GROUP\r\n2023-05-07 09:35:27.496  INFO [s3-login,,] 7812 --- [RMI TCP Connection(2)-172.20.86.46] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'\r\n2023-05-07 09:35:27.496  INFO [s3-login,,] 7812 --- [RMI TCP Connection(2)-172.20.86.46] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'\r\n2023-05-07 09:35:27.501  INFO [s3-login,,] 7812 --- [RMI TCP Connection(2)-172.20.86.46] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms\r\n2023-05-07 09:35:30.535  WARN [s3-login,,] 7812 --- [AsyncReporter{RestTemplateSender{http://localhost:9411/api/v2/spans}}] z.r.AsyncReporter$BoundedAsyncReporter   : Spans were dropped due to exceptions. All subsequent errors will be logged at FINE level.\r\n2023-05-07 09:35:30.540  WARN [s3-login,,] 7812 --- [AsyncReporter{RestTemplateSender{http://localhost:9411/api/v2/spans}}] z.r.AsyncReporter$BoundedAsyncReporter   : Dropped 1 spans due to ResourceAccessException(I/O error on POST request for \"http://localhost:9411/api/v2/spans\": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out)\r\n\r\norg.springframework.web.client.ResourceAccessException: I/O error on POST request for \"http://localhost:9411/api/v2/spans\": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out\r\n\tat org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:791) ~[spring-web-5.3.26.jar:5.3.26]\r\n\tat org.springframework.cloud.sleuth.zipkin2.ZipkinRestTemplateWrapper.doExecute(ZipkinRestTemplateWrapper.java:67) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]\r\n\tat org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:666) ~[spring-web-5.3.26.jar:5.3.26]\r\n\tat org.springframework.cloud.sleuth.zipkin2.RestTemplateSender.post(RestTemplateSender.java:51) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]\r\n\tat org.springframework.cloud.sleuth.zipkin2.RestTemplateSender.lambda$new$0(RestTemplateSender.java:44) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]\r\n\tat org.springframework.cloud.sleuth.zipkin2.HttpSender.post(HttpSender.java:137) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]\r\n\tat org.springframework.cloud.sleuth.zipkin2.HttpSender$HttpPostCall.doExecute(HttpSender.java:150) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]\r\n\tat org.springframework.cloud.sleuth.zipkin2.HttpSender$HttpPostCall.doExecute(HttpSender.java:140) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]\r\n\tat zipkin2.Call$Base.execute(Call.java:391) ~[zipkin-2.23.2.jar:na]\r\n\tat zipkin2.reporter.AsyncReporter$BoundedAsyncReporter.flush(AsyncReporter.java:299) ~[zipkin-reporter-2.16.3.jar:na]\r\n\tat zipkin2.reporter.AsyncReporter$Flusher.run(AsyncReporter.java:378) [zipkin-reporter-2.16.3.jar:na]\r\n\tat java.lang.Thread.run(Thread.java:745) [na:1.8.0_65]\r\nCaused by: java.net.SocketTimeoutException: connect timed out\r\n\tat java.net.DualStackPlainSocketImpl.waitForConnect(Native Method) ~[na:1.8.0_65]\r\n\tat java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85) ~[na:1.8.0_65]\r\n\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_65]\r\n\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_65]\r\n\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_65]\r\n\tat java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[na:1.8.0_65]\r\n\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_65]\r\n\tat java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_65]\r\n\tat sun.net.NetworkClient.doConnect(NetworkClient.java:175) ~[na:1.8.0_65]\r\n\tat sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[na:1.8.0_65]\r\n\tat sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[na:1.8.0_65]\r\n\tat sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[na:1.8.0_65]\r\n\tat sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[na:1.8.0_65]\r\n\tat sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[na:1.8.0_65]\r\n\tat sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1169) ~[na:1.8.0_65]\r\n\tat sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1105) ~[na:1.8.0_65]\r\n\tat sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:999) ~[na:1.8.0_65]\r\n\tat sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:933) ~[na:1.8.0_65]\r\n\tat org.springframework.http.client.SimpleBufferingClientHttpRequest.executeInternal(SimpleBufferingClientHttpRequest.java:76) ~[spring-web-5.3.26.jar:5.3.26]\r\n\tat org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48) ~[spring-web-5.3.26.jar:5.3.26]\r\n\tat org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66) ~[spring-web-5.3.26.jar:5.3.26]\r\n\tat org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:782) ~[spring-web-5.3.26.jar:5.3.26]\r\n\t... 11 common frames omitted\r\n\r\n2023-05-07 09:47:48.525  WARN [s3-login,,] 7812 --- [Thread-2] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient\r\n2023-05-07 09:47:48.525  INFO [s3-login,,] 7812 --- [Thread-21] o.s.c.s.a.z.ZipkinAutoConfiguration      : Flushing remaining spans on shutdown\r\n2023-05-07 09:47:48.525  WARN [s3-login,,] 7812 --- [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher\r\n2023-05-07 09:47:48.527  WARN [s3-login,,] 7812 --- [Thread-2] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end\r\n2023-05-07 09:47:48.527  WARN [s3-login,,] 7812 --- [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end\r\n2023-05-07 09:47:48.822  INFO [s3-login,,] 7812 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...\r\n2023-05-07 09:47:48.827  INFO [s3-login,,] 7812 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.\r\n2023-05-07 09:47:49.965  INFO [s3-login,,] 7812 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...\r\n2023-05-07 09:47:49.972  INFO [s3-login,,] 7812 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed\r\n2023-05-07 09:48:06.827  WARN [s3-login,,] 19776 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login] & group[DEFAULT_GROUP]\r\n2023-05-07 09:48:06.833  WARN [s3-login,,] 19776 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login.properties] & group[DEFAULT_GROUP]\r\n2023-05-07 09:48:06.834  INFO [s3-login,,] 19776 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-s3-login.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-s3-login,DEFAULT_GROUP'}]\r\n2023-05-07 09:48:06.857  INFO [s3-login,,] 19776 --- [main] com.s3.LoginApplication                  : No active profile set, falling back to 1 default profile: \"default\"\r\n2023-05-07 09:48:07.728  INFO [s3-login,,] 19776 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode\r\n2023-05-07 09:48:07.733  INFO [s3-login,,] 19776 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.\r\n2023-05-07 09:48:07.759  INFO [s3-login,,] 19776 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.\r\n2023-05-07 09:48:07.945  WARN [s3-login,,] 19776 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.tyl.vueblog.mapper]' package. Please check your configuration.\r\n2023-05-07 09:48:08.025  INFO [s3-login,,] 19776 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=50738c96-8130-3a30-aea3-98f2205990fd\r\n2023-05-07 09:48:08.705  INFO [s3-login,,] 19776 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10020 (http)\r\n2023-05-07 09:48:08.706  INFO [s3-login,,] 19776 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.26] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]\r\n2023-05-07 09:48:08.707  INFO [s3-login,,] 19776 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.26] using APR version [1.7.0].\r\n2023-05-07 09:48:08.707  INFO [s3-login,,] 19776 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].\r\n2023-05-07 09:48:08.707  INFO [s3-login,,] 19776 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]\r\n2023-05-07 09:48:08.711  INFO [s3-login,,] 19776 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1i  8 Dec 2020]\r\n2023-05-07 09:48:08.721  INFO [s3-login,,] 19776 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]\r\n2023-05-07 09:48:08.722  INFO [s3-login,,] 19776 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]\r\n2023-05-07 09:48:08.917  INFO [s3-login,,] 19776 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext\r\n2023-05-07 09:48:08.917  INFO [s3-login,,] 19776 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2044 ms\r\n2023-05-07 09:48:09.013  INFO [s3-login,,] 19776 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource\r\n2023-05-07 09:48:09.113  INFO [s3-login,,] 19776 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited\r\n2023-05-07 09:48:10.516  WARN [s3-login,,] 19776 --- [pool-3-thread-1] o.s.c.s.a.z.ZipkinAutoConfiguration      : Check result of the [RestTemplateSender{http://localhost:9411/api/v2/spans}] contains an error [CheckResult{ok=false, error=org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"http://localhost:9411/api/v2/spans\": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out}]\r\n2023-05-07 09:48:11.374  INFO [s3-login,,] 19776 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname\r\n2023-05-07 09:48:15.064  INFO [s3-login,,] 19776 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname\r\n2023-05-07 09:48:15.289  WARN [s3-login,,] 19776 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.\r\n2023-05-07 09:48:15.394  INFO [s3-login,,] 19776 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'\r\n2023-05-07 09:48:15.520  INFO [s3-login,,] 19776 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 10020 (http) with context path ''\r\n2023-05-07 09:48:15.542  INFO [s3-login,,] 19776 --- [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.\r\n2023-05-07 09:48:15.542  INFO [s3-login,,] 19776 --- [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.\r\n2023-05-07 09:48:15.812  INFO [s3-login,,] 19776 --- [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP s3-login 172.20.86.46:10020 register finished\r\n2023-05-07 09:48:17.120  INFO [s3-login,,] 19776 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname\r\n2023-05-07 09:48:17.139  INFO [s3-login,,] 19776 --- [main] com.s3.LoginApplication                  : Started LoginApplication in 15.246 seconds (JVM running for 16.168)\r\n2023-05-07 09:48:17.156  INFO [s3-login,,] 19776 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=s3-login, group=DEFAULT_GROUP\r\n2023-05-07 09:48:17.157  INFO [s3-login,,] 19776 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=s3-login.properties, group=DEFAULT_GROUP\r\n2023-05-07 09:48:17.494  INFO [s3-login,,] 19776 --- [RMI TCP Connection(4)-172.20.86.46] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'\r\n2023-05-07 09:48:17.494  INFO [s3-login,,] 19776 --- [RMI TCP Connection(4)-172.20.86.46] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'\r\n2023-05-07 09:48:17.498  INFO [s3-login,,] 19776 --- [RMI TCP Connection(4)-172.20.86.46] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms\r\n2023-05-07 09:48:20.115  WARN [s3-login,,] 19776 --- [AsyncReporter{RestTemplateSender{http://localhost:9411/api/v2/spans}}] z.r.AsyncReporter$BoundedAsyncReporter   : Spans were dropped due to exceptions. All subsequent errors will be logged at FINE level.\r\n2023-05-07 09:48:20.119  WARN [s3-login,,] 19776 --- [AsyncReporter{RestTemplateSender{http://localhost:9411/api/v2/spans}}] z.r.AsyncReporter$BoundedAsyncReporter   : Dropped 1 spans due to ResourceAccessException(I/O error on POST request for \"http://localhost:9411/api/v2/spans\": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out)\r\n\r\norg.springframework.web.client.ResourceAccessException: I/O error on POST request for \"http://localhost:9411/api/v2/spans\": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out\r\n\tat org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:791) ~[spring-web-5.3.26.jar:5.3.26]\r\n\tat org.springframework.cloud.sleuth.zipkin2.ZipkinRestTemplateWrapper.doExecute(ZipkinRestTemplateWrapper.java:67) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]\r\n\tat org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:666) ~[spring-web-5.3.26.jar:5.3.26]\r\n\tat org.springframework.cloud.sleuth.zipkin2.RestTemplateSender.post(RestTemplateSender.java:51) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]\r\n\tat org.springframework.cloud.sleuth.zipkin2.RestTemplateSender.lambda$new$0(RestTemplateSender.java:44) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]\r\n\tat org.springframework.cloud.sleuth.zipkin2.HttpSender.post(HttpSender.java:137) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]\r\n\tat org.springframework.cloud.sleuth.zipkin2.HttpSender$HttpPostCall.doExecute(HttpSender.java:150) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]\r\n\tat org.springframework.cloud.sleuth.zipkin2.HttpSender$HttpPostCall.doExecute(HttpSender.java:140) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]\r\n\tat zipkin2.Call$Base.execute(Call.java:391) ~[zipkin-2.23.2.jar:na]\r\n\tat zipkin2.reporter.AsyncReporter$BoundedAsyncReporter.flush(AsyncReporter.java:299) ~[zipkin-reporter-2.16.3.jar:na]\r\n\tat zipkin2.reporter.AsyncReporter$Flusher.run(AsyncReporter.java:378) [zipkin-reporter-2.16.3.jar:na]\r\n\tat java.lang.Thread.run(Thread.java:745) [na:1.8.0_65]\r\nCaused by: java.net.SocketTimeoutException: connect timed out\r\n\tat java.net.DualStackPlainSocketImpl.waitForConnect(Native Method) ~[na:1.8.0_65]\r\n\tat java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85) ~[na:1.8.0_65]\r\n\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_65]\r\n\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_65]\r\n\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_65]\r\n\tat java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[na:1.8.0_65]\r\n\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_65]\r\n\tat java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_65]\r\n\tat sun.net.NetworkClient.doConnect(NetworkClient.java:175) ~[na:1.8.0_65]\r\n\tat sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[na:1.8.0_65]\r\n\tat sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[na:1.8.0_65]\r\n\tat sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[na:1.8.0_65]\r\n\tat sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[na:1.8.0_65]\r\n\tat sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[na:1.8.0_65]\r\n\tat sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1169) ~[na:1.8.0_65]\r\n\tat sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1105) ~[na:1.8.0_65]\r\n\tat sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:999) ~[na:1.8.0_65]\r\n\tat sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:933) ~[na:1.8.0_65]\r\n\tat org.springframework.http.client.SimpleBufferingClientHttpRequest.executeInternal(SimpleBufferingClientHttpRequest.java:76) ~[spring-web-5.3.26.jar:5.3.26]\r\n\tat org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48) ~[spring-web-5.3.26.jar:5.3.26]\r\n\tat org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66) ~[spring-web-5.3.26.jar:5.3.26]\r\n\tat org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:782) ~[spring-web-5.3.26.jar:5.3.26]\r\n\t... 11 common frames omitted\r\n\r\n2023-05-07 09:57:26.378  WARN [s3-login,0a644d9772d7d835,e96f4850f3f7934d] 19776 --- [http-nio-10020-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.s3.common.Result com.s3.controller.UserControlller.Login(com.s3.bean.Resuser)]\r\n2023-05-07 10:16:07.113  WARN [s3-login,8842bb4d319e5f8b,665281c9464b94e0] 19776 --- [http-nio-10020-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.s3.common.Result com.s3.controller.UserControlller.Login(com.s3.bean.Resuser)]\r\n2023-05-07 10:31:08.459  WARN [s3-login,,] 19776 --- [Thread-6] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient\r\n2023-05-07 10:31:08.459  INFO [s3-login,,] 19776 --- [Thread-27] o.s.c.s.a.z.ZipkinAutoConfiguration      : Flushing remaining spans on shutdown\r\n2023-05-07 10:31:08.459  WARN [s3-login,,] 19776 --- [Thread-15] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher\r\n2023-05-07 10:31:08.460  WARN [s3-login,,] 19776 --- [Thread-15] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end\r\n2023-05-07 10:31:08.460  WARN [s3-login,,] 19776 --- [Thread-6] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end\r\n2023-05-07 10:31:08.704  INFO [s3-login,,] 19776 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...\r\n2023-05-07 10:31:08.706  INFO [s3-login,,] 19776 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.\r\n2023-05-07 10:31:09.964  INFO [s3-login,,] 19776 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...\r\n2023-05-07 10:31:09.965  INFO [s3-login,,] 19776 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/logs/spring.log b/logs/spring.log
+--- a/logs/spring.log	(revision 986eb1fc235bf792b7adce8297cde74544b832c0)
++++ b/logs/spring.log	(date 1684758368024)
+@@ -385,3 +385,177 @@
+ 2023-05-07 10:31:08.706  INFO [s3-login,,] 19776 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+ 2023-05-07 10:31:09.964  INFO [s3-login,,] 19776 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+ 2023-05-07 10:31:09.965  INFO [s3-login,,] 19776 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
++2023-05-22 19:11:05.378  WARN [s3-login,,] 21952 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login] & group[DEFAULT_GROUP]
++2023-05-22 19:11:05.386  WARN [s3-login,,] 21952 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login.properties] & group[DEFAULT_GROUP]
++2023-05-22 19:11:05.388  INFO [s3-login,,] 21952 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-s3-login.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-s3-login,DEFAULT_GROUP'}]
++2023-05-22 19:11:05.419  INFO [s3-login,,] 21952 --- [main] com.s3.LoginApplication                  : No active profile set, falling back to 1 default profile: "default"
++2023-05-22 19:11:06.547  INFO [s3-login,,] 21952 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
++2023-05-22 19:11:06.552  INFO [s3-login,,] 21952 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
++2023-05-22 19:11:06.585  INFO [s3-login,,] 21952 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
++2023-05-22 19:11:06.815  WARN [s3-login,,] 21952 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.tyl.vueblog.mapper]' package. Please check your configuration.
++2023-05-22 19:11:06.876  INFO [s3-login,,] 21952 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=b88b159f-b12d-3172-8474-2e28bad2f780
++2023-05-22 19:11:07.564  INFO [s3-login,,] 21952 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10020 (http)
++2023-05-22 19:11:07.566  INFO [s3-login,,] 21952 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.26] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
++2023-05-22 19:11:07.567  INFO [s3-login,,] 21952 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.26] using APR version [1.7.0].
++2023-05-22 19:11:07.568  INFO [s3-login,,] 21952 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
++2023-05-22 19:11:07.569  INFO [s3-login,,] 21952 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
++2023-05-22 19:11:07.573  INFO [s3-login,,] 21952 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1i  8 Dec 2020]
++2023-05-22 19:11:07.587  INFO [s3-login,,] 21952 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
++2023-05-22 19:11:07.588  INFO [s3-login,,] 21952 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
++2023-05-22 19:11:07.800  INFO [s3-login,,] 21952 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
++2023-05-22 19:11:07.800  INFO [s3-login,,] 21952 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2358 ms
++2023-05-22 19:11:07.914  INFO [s3-login,,] 21952 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
++2023-05-22 19:11:08.025  INFO [s3-login,,] 21952 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
++2023-05-22 19:11:09.453  WARN [s3-login,,] 21952 --- [pool-3-thread-1] o.s.c.s.a.z.ZipkinAutoConfiguration      : Check result of the [RestTemplateSender{http://localhost:9411/api/v2/spans}] contains an error [CheckResult{ok=false, error=org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:9411/api/v2/spans": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out}]
++2023-05-22 19:11:10.495  INFO [s3-login,,] 21952 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
++2023-05-22 19:11:11.043  WARN [s3-login,,] 21952 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userControlller': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.s3.controller.UserControlller] from ClassLoader [sun.misc.Launcher$AppClassLoader@14dad5dc]
++2023-05-22 19:11:12.071  WARN [s3-login,,] 21952 --- [main] z.r.AsyncReporter$BoundedAsyncReporter   : Timed out waiting for in-flight spans to send
++2023-05-22 19:11:12.073  INFO [s3-login,,] 21952 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
++2023-05-22 19:11:12.074  INFO [s3-login,,] 21952 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
++2023-05-22 19:11:12.077  INFO [s3-login,,] 21952 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
++2023-05-22 19:11:12.080  WARN [s3-login,,] 21952 --- [main] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [spring.cloud.inetutils] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
++ java.net.Inet6AddressImpl.getHostByAddr(Native Method)
++ java.net.InetAddress$2.getHostByAddr(InetAddress.java:932)
++ java.net.InetAddress.getHostFromNameService(InetAddress.java:617)
++ java.net.InetAddress.getHostName(InetAddress.java:559)
++ java.net.InetAddress.getHostName(InetAddress.java:531)
++ org.springframework.cloud.commons.util.InetUtils$$Lambda$92/952562199.call(Unknown Source)
++ java.util.concurrent.FutureTask.run(FutureTask.java:266)
++ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
++ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
++ java.lang.Thread.run(Thread.java:745)
++2023-05-22 19:11:12.105  INFO [s3-login,,] 21952 --- [main] ConditionEvaluationReportLoggingListener : 
++
++Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
++2023-05-22 19:11:12.140 ERROR [s3-login,,] 21952 --- [main] o.s.boot.SpringApplication               : Application run failed
++
++org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userControlller': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.s3.controller.UserControlller] from ClassLoader [sun.misc.Launcher$AppClassLoader@14dad5dc]
++	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:289) ~[spring-beans-5.3.26.jar:5.3.26]
++	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1302) ~[spring-beans-5.3.26.jar:5.3.26]
++	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219) ~[spring-beans-5.3.26.jar:5.3.26]
++	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.26.jar:5.3.26]
++	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.26.jar:5.3.26]
++	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.26.jar:5.3.26]
++	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.26.jar:5.3.26]
++	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.26.jar:5.3.26]
++	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.26.jar:5.3.26]
++	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955) ~[spring-beans-5.3.26.jar:5.3.26]
++	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920) ~[spring-context-5.3.26.jar:5.3.26]
++	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.26.jar:5.3.26]
++	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.10.jar:2.7.10]
++	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) [spring-boot-2.7.10.jar:2.7.10]
++	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) [spring-boot-2.7.10.jar:2.7.10]
++	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) [spring-boot-2.7.10.jar:2.7.10]
++	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) [spring-boot-2.7.10.jar:2.7.10]
++	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) [spring-boot-2.7.10.jar:2.7.10]
++	at com.s3.LoginApplication.main(LoginApplication.java:15) [classes/:na]
++Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.s3.controller.UserControlller] from ClassLoader [sun.misc.Launcher$AppClassLoader@14dad5dc]
++	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:485) ~[spring-core-5.3.26.jar:5.3.26]
++	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:321) ~[spring-core-5.3.26.jar:5.3.26]
++	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:267) ~[spring-beans-5.3.26.jar:5.3.26]
++	... 18 common frames omitted
++Caused by: java.lang.NoClassDefFoundError: com/s3/bean/Resuser
++	at java.lang.Class.getDeclaredMethods0(Native Method) ~[na:1.8.0_65]
++	at java.lang.Class.privateGetDeclaredMethods(Class.java:2701) ~[na:1.8.0_65]
++	at java.lang.Class.getDeclaredMethods(Class.java:1975) ~[na:1.8.0_65]
++	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:467) ~[spring-core-5.3.26.jar:5.3.26]
++	... 20 common frames omitted
++Caused by: java.lang.ClassNotFoundException: com.s3.bean.Resuser
++	at java.net.URLClassLoader.findClass(URLClassLoader.java:381) ~[na:1.8.0_65]
++	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_65]
++	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_65]
++	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_65]
++	... 24 common frames omitted
++
++2023-05-22 19:11:12.141  WARN [s3-login,,] 21952 --- [Thread-17] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
++2023-05-22 19:11:12.142  INFO [s3-login,,] 21952 --- [Thread-31] o.s.c.s.a.z.ZipkinAutoConfiguration      : Flushing remaining spans on shutdown
++2023-05-22 19:11:12.142  WARN [s3-login,,] 21952 --- [Thread-17] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
++2023-05-22 19:11:12.142  WARN [s3-login,,] 21952 --- [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
++2023-05-22 19:11:12.143  WARN [s3-login,,] 21952 --- [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
++2023-05-22 19:12:43.434  WARN [s3-login,,] 12716 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login] & group[DEFAULT_GROUP]
++2023-05-22 19:12:43.442  WARN [s3-login,,] 12716 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login.properties] & group[DEFAULT_GROUP]
++2023-05-22 19:12:43.443  INFO [s3-login,,] 12716 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-s3-login.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-s3-login,DEFAULT_GROUP'}]
++2023-05-22 19:12:43.472  INFO [s3-login,,] 12716 --- [main] com.s3.LoginApplication                  : No active profile set, falling back to 1 default profile: "default"
++2023-05-22 19:12:44.566  INFO [s3-login,,] 12716 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
++2023-05-22 19:12:44.569  INFO [s3-login,,] 12716 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
++2023-05-22 19:12:44.599  INFO [s3-login,,] 12716 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
++2023-05-22 19:12:44.871  WARN [s3-login,,] 12716 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s3.mapper]' package. Please check your configuration.
++2023-05-22 19:12:44.927  INFO [s3-login,,] 12716 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=d5c9db47-732e-3ed5-bcde-992fe0d6635f
++2023-05-22 19:12:45.610  INFO [s3-login,,] 12716 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10020 (http)
++2023-05-22 19:12:45.611  INFO [s3-login,,] 12716 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.26] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
++2023-05-22 19:12:45.613  INFO [s3-login,,] 12716 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.26] using APR version [1.7.0].
++2023-05-22 19:12:45.613  INFO [s3-login,,] 12716 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
++2023-05-22 19:12:45.614  INFO [s3-login,,] 12716 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
++2023-05-22 19:12:45.618  INFO [s3-login,,] 12716 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1i  8 Dec 2020]
++2023-05-22 19:12:45.629  INFO [s3-login,,] 12716 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
++2023-05-22 19:12:45.630  INFO [s3-login,,] 12716 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
++2023-05-22 19:12:45.817  INFO [s3-login,,] 12716 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
++2023-05-22 19:12:45.817  INFO [s3-login,,] 12716 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2312 ms
++2023-05-22 19:12:45.968  INFO [s3-login,,] 12716 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
++2023-05-22 19:12:46.079  INFO [s3-login,,] 12716 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
++2023-05-22 19:12:47.503  WARN [s3-login,,] 12716 --- [pool-3-thread-1] o.s.c.s.a.z.ZipkinAutoConfiguration      : Check result of the [RestTemplateSender{http://localhost:9411/api/v2/spans}] contains an error [CheckResult{ok=false, error=org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:9411/api/v2/spans": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out}]
++2023-05-22 19:12:48.570  INFO [s3-login,,] 12716 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
++2023-05-22 19:12:52.627  INFO [s3-login,,] 12716 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
++2023-05-22 19:12:52.735  WARN [s3-login,,] 12716 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
++2023-05-22 19:12:52.792  INFO [s3-login,,] 12716 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
++2023-05-22 19:12:52.892  INFO [s3-login,,] 12716 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 10020 (http) with context path ''
++2023-05-22 19:12:52.913  INFO [s3-login,,] 12716 --- [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
++2023-05-22 19:12:52.913  INFO [s3-login,,] 12716 --- [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
++2023-05-22 19:12:53.167  INFO [s3-login,,] 12716 --- [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP s3-login 172.20.166.41:10020 register finished
++2023-05-22 19:12:54.516  INFO [s3-login,,] 12716 --- [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
++2023-05-22 19:12:54.541  INFO [s3-login,,] 12716 --- [main] com.s3.LoginApplication                  : Started LoginApplication in 17.058 seconds (JVM running for 19.743)
++2023-05-22 19:12:54.561  INFO [s3-login,,] 12716 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=s3-login, group=DEFAULT_GROUP
++2023-05-22 19:12:54.563  INFO [s3-login,,] 12716 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=s3-login.properties, group=DEFAULT_GROUP
++2023-05-22 19:12:54.931  INFO [s3-login,,] 12716 --- [RMI TCP Connection(7)-172.20.166.41] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
++2023-05-22 19:12:54.932  INFO [s3-login,,] 12716 --- [RMI TCP Connection(7)-172.20.166.41] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
++2023-05-22 19:12:54.935  INFO [s3-login,,] 12716 --- [RMI TCP Connection(7)-172.20.166.41] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
++2023-05-22 19:12:57.694  WARN [s3-login,,] 12716 --- [AsyncReporter{RestTemplateSender{http://localhost:9411/api/v2/spans}}] z.r.AsyncReporter$BoundedAsyncReporter   : Spans were dropped due to exceptions. All subsequent errors will be logged at FINE level.
++2023-05-22 19:12:57.699  WARN [s3-login,,] 12716 --- [AsyncReporter{RestTemplateSender{http://localhost:9411/api/v2/spans}}] z.r.AsyncReporter$BoundedAsyncReporter   : Dropped 2 spans due to ResourceAccessException(I/O error on POST request for "http://localhost:9411/api/v2/spans": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out)
++
++org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:9411/api/v2/spans": connect timed out; nested exception is java.net.SocketTimeoutException: connect timed out
++	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:791) ~[spring-web-5.3.26.jar:5.3.26]
++	at org.springframework.cloud.sleuth.zipkin2.ZipkinRestTemplateWrapper.doExecute(ZipkinRestTemplateWrapper.java:67) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
++	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:666) ~[spring-web-5.3.26.jar:5.3.26]
++	at org.springframework.cloud.sleuth.zipkin2.RestTemplateSender.post(RestTemplateSender.java:51) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
++	at org.springframework.cloud.sleuth.zipkin2.RestTemplateSender.lambda$new$0(RestTemplateSender.java:44) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
++	at org.springframework.cloud.sleuth.zipkin2.HttpSender.post(HttpSender.java:137) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
++	at org.springframework.cloud.sleuth.zipkin2.HttpSender$HttpPostCall.doExecute(HttpSender.java:150) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
++	at org.springframework.cloud.sleuth.zipkin2.HttpSender$HttpPostCall.doExecute(HttpSender.java:140) ~[spring-cloud-sleuth-zipkin-3.1.7.jar:3.1.7]
++	at zipkin2.Call$Base.execute(Call.java:391) ~[zipkin-2.23.2.jar:na]
++	at zipkin2.reporter.AsyncReporter$BoundedAsyncReporter.flush(AsyncReporter.java:299) ~[zipkin-reporter-2.16.3.jar:na]
++	at zipkin2.reporter.AsyncReporter$Flusher.run(AsyncReporter.java:378) [zipkin-reporter-2.16.3.jar:na]
++	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_65]
++Caused by: java.net.SocketTimeoutException: connect timed out
++	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method) ~[na:1.8.0_65]
++	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85) ~[na:1.8.0_65]
++	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_65]
++	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_65]
++	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_65]
++	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[na:1.8.0_65]
++	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_65]
++	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_65]
++	at sun.net.NetworkClient.doConnect(NetworkClient.java:175) ~[na:1.8.0_65]
++	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[na:1.8.0_65]
++	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[na:1.8.0_65]
++	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[na:1.8.0_65]
++	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[na:1.8.0_65]
++	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[na:1.8.0_65]
++	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1169) ~[na:1.8.0_65]
++	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1105) ~[na:1.8.0_65]
++	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:999) ~[na:1.8.0_65]
++	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:933) ~[na:1.8.0_65]
++	at org.springframework.http.client.SimpleBufferingClientHttpRequest.executeInternal(SimpleBufferingClientHttpRequest.java:76) ~[spring-web-5.3.26.jar:5.3.26]
++	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48) ~[spring-web-5.3.26.jar:5.3.26]
++	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66) ~[spring-web-5.3.26.jar:5.3.26]
++	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:782) ~[spring-web-5.3.26.jar:5.3.26]
++	... 11 common frames omitted
++
++2023-05-22 20:26:06.612  INFO [s3-login,,] 12716 --- [Thread-29] o.s.c.s.a.z.ZipkinAutoConfiguration      : Flushing remaining spans on shutdown
++2023-05-22 20:26:06.612  WARN [s3-login,,] 12716 --- [Thread-16] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
++2023-05-22 20:26:06.612  WARN [s3-login,,] 12716 --- [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
++2023-05-22 20:26:06.614  WARN [s3-login,,] 12716 --- [Thread-16] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
++2023-05-22 20:26:06.615  WARN [s3-login,,] 12716 --- [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
++2023-05-22 20:26:06.861  INFO [s3-login,,] 12716 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
++2023-05-22 20:26:06.864  INFO [s3-login,,] 12716 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
++2023-05-22 20:26:08.022  INFO [s3-login,,] 12716 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
++2023-05-22 20:26:08.023  INFO [s3-login,,] 12716 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"3385eafc-c4fd-412a-8b7d-54b40e203a9b\" name=\"Changes\" comment=\"完善项目基础架构\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/checkstyle-idea.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/modules.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/AdminInfo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/AdvertiserInfo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/CollectInfo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/CommentNotesInfo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/FoodsMaterialInfo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/FoodsMenuInfo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/MessageInfo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/NewsInfo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/NotesInfo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/NxSystemFileInfo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/PraiseInfo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/SubClassifyInfo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/UserInfo.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/compiler.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/compiler.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/jarRepositories.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/jarRepositories.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/vcs.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Addr.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/AdminPwdBean.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/AlipayBean.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Cart.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Discuss.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/GoodSelectBeanX.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Goods.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/GoodsInfoBeanX.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/GoodsType.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Order.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/OrderInfoBeanX.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/OrderItem.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/OrderShowInfoBeanX.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Orderiteminfo.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/PageBean.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Resuser.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserControlller.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserControlller.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/login/src/main/java/com/s3/mapper/UserMapper.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/login/src/main/java/com/s3/mapper/UserMapper.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/login/src/main/java/com/s3/service/Impl/UserServiceImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/login/src/main/java/com/s3/service/Impl/UserServiceImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/login/src/main/java/com/s3/service/UserService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/login/src/main/java/com/s3/service/UserService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/login/src/test/java/com/s3/Test.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/login/src/test/java/com/s3/Test.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"localRepository\" value=\"D:\\MavenRepository\" />\r\n        <option name=\"mavenHome\" value=\"$PROJECT_DIR$/../../../apache-maven-3.6.3\" />\r\n        <option name=\"userSettingsFile\" value=\"D:\\apache-maven-3.6.3\\conf\\settings.xml\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n    <option name=\"importingSettings\">\r\n      <MavenImportingSettings>\r\n        <option name=\"workspaceImportEnabled\" value=\"true\" />\r\n      </MavenImportingSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2Q91Ai4G6OfXQcCQzsWcIC8isqF\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n    <option name=\"showMembers\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"last_opened_file_path\": \"D:/java2/java2/our_food_project/entity/src/main/java/com/s3/bean\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\",\r\n    \"settings.editor.selected.configurable\": \"MavenSettings\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\java2\\java2\\our_food_project\\entity\\src\\main\\java\\com\\s3\\bean\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"com.s3.bean\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"GateWayApp\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"gateway\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.yc.GateWayApp\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.yc.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Spring Boot.GateWayApp\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"3385eafc-c4fd-412a-8b7d-54b40e203a9b\" name=\"Changes\" comment=\"\" />\r\n      <created>1684750846933</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1684750846933</updated>\r\n      <workItem from=\"1684750848525\" duration=\"167000\" />\r\n      <workItem from=\"1684751022024\" duration=\"139000\" />\r\n      <workItem from=\"1684751162932\" duration=\"350000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"完善项目基础架构\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"完善项目基础架构\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 986eb1fc235bf792b7adce8297cde74544b832c0)
++++ b/.idea/workspace.xml	(date 1684758880897)
+@@ -5,53 +5,39 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="3385eafc-c4fd-412a-8b7d-54b40e203a9b" name="Changes" comment="完善项目基础架构">
+-      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/AdminInfo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/AdvertiserInfo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/CollectInfo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/CommentNotesInfo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/FoodsMaterialInfo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/FoodsMenuInfo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/MessageInfo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/NewsInfo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/NotesInfo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/NxSystemFileInfo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/PraiseInfo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/SubClassifyInfo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/UserInfo.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/HelloController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Addr.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/AdminPwdBean.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/AlipayBean.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Cart.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Discuss.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/GoodSelectBeanX.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Goods.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/GoodsInfoBeanX.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/GoodsType.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Order.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/OrderInfoBeanX.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/OrderItem.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/OrderShowInfoBeanX.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Orderiteminfo.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/PageBean.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/Resuser.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserControlller.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserControlller.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/login/src/main/java/com/s3/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/com/s3/mapper/UserMapper.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/login/src/main/java/com/s3/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/com/s3/service/Impl/UserServiceImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/login/src/main/java/com/s3/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/com/s3/service/UserService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/login/src/test/java/com/s3/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/test/java/com/s3/Test.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Jwt/src/main/java/util/JwtUtil.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/login/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/resources/application.yml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/login/src/main/resources/mapper/UserMapper.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/login/target/classes/application.yml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/LoginApplication.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/common/Result.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/config/MybatisPlusConfig.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/config/RedisConfig.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/controller/UserControlller.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/mapper/UserMapper.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/service/Impl/UserServiceImpl.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/service/UserService.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/utils/Md5.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/utils/Redisconstants.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/login/target/classes/mapper/UserMapper.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="FxmlFile" />
++        <option value="Class" />
++      </list>
++    </option>
++  </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+@@ -82,18 +68,21 @@
+   </component>
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
++    "RequestMappingsPanelOrder0": "0",
++    "RequestMappingsPanelOrder1": "1",
++    "RequestMappingsPanelWidth0": "75",
++    "RequestMappingsPanelWidth1": "75",
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+     "WebServerToolWindowFactoryState": "false",
+     "last_opened_file_path": "D:/java2/java2/our_food_project/entity/src/main/java/com/s3/bean",
+     "node.js.detected.package.eslint": "true",
+     "node.js.detected.package.tslint": "true",
+     "node.js.selected.package.eslint": "(autodetect)",
+     "node.js.selected.package.tslint": "(autodetect)",
+-    "project.structure.last.edited": "Modules",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.0",
++    "project.structure.last.edited": "Problems",
++    "project.structure.proportion": "0.15",
++    "project.structure.side.proportion": "0.2",
+     "settings.editor.selected.configurable": "MavenSettings",
+     "vue.rearranger.settings.migration": "true"
+   }
+@@ -106,7 +95,7 @@
+       <recent name="com.s3.bean" />
+     </key>
+   </component>
+-  <component name="RunManager">
++  <component name="RunManager" selected="Spring Boot.LoginApplication">
+     <configuration name="GateWayApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+       <module name="gateway" />
+       <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.GateWayApp" />
+@@ -120,8 +109,22 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
++    <configuration name="LoginApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
++      <module name="login" />
++      <option name="SPRING_BOOT_MAIN_CLASS" value="com.s3.LoginApplication" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.s3.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Spring Boot.LoginApplication" />
+         <item itemvalue="Spring Boot.GateWayApp" />
+       </list>
+     </recent_temporary>
+@@ -136,8 +139,37 @@
+       <updated>1684750846933</updated>
+       <workItem from="1684750848525" duration="167000" />
+       <workItem from="1684751022024" duration="139000" />
+-      <workItem from="1684751162932" duration="350000" />
++      <workItem from="1684751162932" duration="5850000" />
++    </task>
++    <task id="LOCAL-00001" summary="完善项目基础架构">
++      <created>1684751596663</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1684751596663</updated>
++    </task>
++    <task id="LOCAL-00002" summary="完善项目基础架构">
++      <created>1684751678269</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1684751678269</updated>
++    </task>
++    <task id="LOCAL-00003" summary="完善项目基础架构">
++      <created>1684751692198</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1684751692198</updated>
+     </task>
++    <task id="LOCAL-00004" summary="完善项目基础架构">
++      <created>1684753136433</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1684753136433</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">

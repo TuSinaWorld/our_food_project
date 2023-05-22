@@ -54,7 +54,7 @@ public class UserInfo implements Serializable {
     /**
      * 生日
      */
-    private LocalDateTime birthday;
+    private String birthday;
 
     /**
      * 手机号
@@ -130,13 +130,7 @@ public class UserInfo implements Serializable {
         this.age = age;
     }
 
-    public LocalDateTime getBirthday() {
-        return birthday;
-    }
 
-    public void setBirthday(LocalDateTime birthday) {
-        this.birthday = birthday;
-    }
 
     public String getPhone() {
         return phone;
