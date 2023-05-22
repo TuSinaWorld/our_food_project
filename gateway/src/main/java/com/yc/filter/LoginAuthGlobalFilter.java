@@ -34,7 +34,7 @@ import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 @Component
 @Slf4j
 public class LoginAuthGlobalFilter implements GlobalFilter, Ordered {
-    static String  logins="LoginToken_";
+    static String logins="LoginToken_";
     @Autowired
     @Qualifier("redisTemplate")
     private RedisTemplate redisTemplate;
