@@ -3907,3 +3907,15 @@ Caused by: java.net.SocketTimeoutException: connect timed out
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:782) ~[spring-web-5.3.26.jar:5.3.26]
 	... 11 common frames omitted
 
+2023-05-22 21:04:02.121  WARN [s3-login,,] 23748 --- [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+2023-05-22 21:04:02.121  WARN [s3-login,,] 23748 --- [Thread-16] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+2023-05-22 21:04:02.121  INFO [s3-login,,] 23748 --- [Thread-30] o.s.c.s.a.z.ZipkinAutoConfiguration      : Flushing remaining spans on shutdown
+2023-05-22 21:04:02.122  WARN [s3-login,,] 23748 --- [Thread-16] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+2023-05-22 21:04:02.123  WARN [s3-login,,] 23748 --- [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+2023-05-22 21:04:02.604  INFO [s3-login,,] 23748 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+2023-05-22 21:04:02.615  INFO [s3-login,,] 23748 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+2023-05-22 21:04:03.819  INFO [s3-login,,] 23748 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2023-05-22 21:04:03.837  INFO [s3-login,,] 23748 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2023-05-22 21:04:19.034  WARN [s3-login,,] 20172 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login] & group[DEFAULT_GROUP]
+2023-05-22 21:04:19.058  WARN [s3-login,,] 20172 --- [main] c.a.c.n.c.NacosPropertySourceBuilder     : Ignore the empty nacos configuration and get it based on dataId[s3-login.properties] & group[DEFAULT_GROUP]
+2023-05-22 21:04:19.059  INFO [s3-login,,] 20172 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-s3-login.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-s3-login,DEFAULT_GROUP'}]
