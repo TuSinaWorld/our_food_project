@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>注册页面</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/font-awesome.css" rel="stylesheet"/>
+    <link href="../end/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../end/css/font-awesome.css" rel="stylesheet"/>
 
     <style>
         [v-cloak] {
@@ -69,7 +69,7 @@
                     </div>
                     <hr/>
                     <div style="text-align: center">
-                        已有账号 ? <a href="login.html" target="_blank">点我登录 </a>
+                        已有账号 ? <a href="../end/page/login.html" target="_blank">点我登录 </a>
                     </div>
                 </form>
             </div>
@@ -78,8 +78,8 @@
     </div>
 </div>
 
-<script src="../js/vue2.6.11/vue.min.js"></script>
-<script src="../js/vue2.6.11/axios.js"></script>
+<script src="../end/js/vue2.6.11/vue.min.js"></script>
+<script src="../end/js/vue2.6.11/axios.js"></script>
 
 <script>
     new Vue({
@@ -118,16 +118,18 @@
                     alert("两次密码输入不一致");
                     return;
                 }
+                this.user.level = "用户";
                 if (!this.user.level) {
                     alert("请选择角色");
                     return;
                 }
-                axios.post('/register', this.user).then(res => {
+                let params = new URLSearchParams(this.user);
+                axios.post('/user/register', params).then(res => {
                     if(res.data.code === '0') {
                         localStorage.setItem('user', JSON.stringify(res.data.data));
-                        window.location = '/front/index.html';
                     } else {
                         alert(res.data.msg);
+                        window.location.href = 'login.html';
                     }
                 });
             }

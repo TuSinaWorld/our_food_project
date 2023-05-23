@@ -1046,7 +1046,7 @@ var Quill = function () {
       return this.imports[name];
     }
   }, {
-    key: 'register',
+    key: 'static.front.register',
     value: function register(path, target) {
       var _this = this;
 
@@ -10949,7 +10949,7 @@ var Formula = function (_Module) {
   _inherits(Formula, _Module);
 
   _createClass(Formula, null, [{
-    key: 'register',
+    key: 'static.front.register',
     value: function register() {
       _quill2.default.register(FormulaBlot, true);
     }
@@ -11056,7 +11056,7 @@ var Syntax = function (_Module) {
   _inherits(Syntax, _Module);
 
   _createClass(Syntax, null, [{
-    key: 'register',
+    key: 'static.front.register',
     value: function register() {
       _quill2.default.register(CodeToken, true);
       _quill2.default.register(SyntaxCodeBlock, true);

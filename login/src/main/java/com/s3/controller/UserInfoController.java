@@ -2,6 +2,7 @@ package com.s3.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.api.R;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.s3.bean.AdminInfo;
 import com.s3.bean.Result;
@@ -38,6 +39,13 @@ public class UserInfoController {
     @Resource
     private UserInfoDao userInfoDao;
 
+    /**
+     * 用户登录功能
+     * @param level 用户身份
+     * @param name 用户名
+     * @param password 以后慢慢
+     * @return
+     */
     @RequestMapping("/login")
     public Result login(@RequestParam String level,@RequestParam String name,@RequestParam String password){
         try {
@@ -66,7 +74,12 @@ public class UserInfoController {
         }
     }
 
-    @RequestMapping("/checklogin")
+    /**
+     * 检测用户是否登录
+     * @param token 前端Token
+     * @return
+     */
+    @RequestMapping("/checkLogin")
     public Result CheckLogin(@RequestHeader String token)  {
         //判断前端是否传来token或token为空值时
         if(token == null || "".equals(token)){
@@ -93,5 +106,50 @@ public class UserInfoController {
         //修改密码，防止密码暴露
         userInfo.setPassword("*****");
         return Result.success("用户已登陆",userInfo);
+    }
+
+
+
+    /**
+     * 用户注册功能
+     * @param level 身份信息
+     * @param name 用户名
+     * @param password 用户密码
+     * @param sex 用户性别
+     * @return
+     */
+    @RequestMapping ("/register")
+    public Result Regist(@RequestParam String level,@RequestParam String name,@RequestParam String password,@RequestParam String sex){
+        System.out.println(userInfoDao);
+        UserInfo userInfo = new UserInfo();
+        userInfo.setName(name);
+        userInfo.setPassword(password);
+        userInfo.setSex(sex);
+        userInfoDao.insert(userInfo);
+        return Result.success("用户注册成功 ...",null);
+    }
+
+    /**
+     * 重置密码
+     * @param name 用户名
+     * @param level 用户身份
+     * @return
+     */
+    @RequestMapping("/resetPassword")
+    public Result ResetPassword(@RequestParam String name,@RequestParam String level){
+        //条件查询用户
+        QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("name",name);
+        UserInfo userInfo = userInfoDao.selectOne(queryWrapper);
+        //判断该用户是否存在
+        if (userInfo == null){
+            return Result.failure("不存在该用户 ...",null);
+        }
+        //将密码重置为123456
+        userInfo.setPassword("123456");
+        userInfo.getId();
+        userInfoDao.updateById(userInfo);
+
+        return Result.success("重置密码成功...密码为:123456...",userInfo);
     }
 }
