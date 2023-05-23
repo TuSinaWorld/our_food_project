@@ -37,6 +37,11 @@ spring:
           order: 4
           predicates:
             - Path=/product/**
+        - id: food
+          uri: lb://food
+          order: 5
+          predicates:
+            - Path=/food/**
 management:
   endpoints:
     web:

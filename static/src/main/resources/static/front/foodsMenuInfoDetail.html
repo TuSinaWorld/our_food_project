@@ -86,9 +86,7 @@
 							<div class="row p-10">
 								<div class="col-md-2">菜谱图片：</div>
 								<div class="col-md-10">
-									<img v-if="obj.fileType === 'image'" :style="'width:' + imgWidth" :src="fileSrc" alt="">
-									<div v-if="obj.fileType === 'video'"><video controls="controls" :src="fileSrc" style="width: 100%"></video></div>
-									<div v-if="obj.fileType === 'other'">该文件不支持预览，只有视频和图片支持预览</div>
+                                    <img style="width: 200px; height: 180px" :src='"../file/" + obj.fileName' alt="">
 								</div>
 							</div>
 
@@ -188,49 +186,18 @@
             isShow: false
         },
         created() {
-            axios.get('/auth').then(res => {
-                if (res.data.code === '0') {
-                    this.user = res.data.data;
-                    if (this.user.level !== 3) {
-                        this.isShow = true;
-                    }
-                }
-            });
             this.load();
         },
         methods: {
             load() {
                 let id = this.getQueryVariable('id');
+                console.info("接收id为:"+id);
                 this.comment.foreignId = id;
                 if (id !== 0) {
-                    axios.get('/foodsMenuInfo/' + id).then(res => {
-                        if (res.data.code === '0') {
-                            let obj = res.data.data;
-                            this.obj = obj;
-                            if (obj.fileName) {
-                                if (/\.(png|jpg|gif|jpeg|webp)$/.test(obj.fileName)) {
-                                    this.obj.fileType = 'image';
-                                } else if (/\.mp4$/.test(obj.fileName)) {
-                                    this.obj.fileType = 'video';
-                                } else {
-                                    this.obj.fileType = 'other';
-                                }
-                                this.fileSrc = '/files/download/' + obj.fileId;
-
-                                let img = new Image();
-                                img.src = this.fileSrc;
-                                let _this = this;
-                                img.onload = function(){
-                                    if (img.width > 590) {
-                                        _this.imgWidth = "100%";
-                                    } else {
-                                        _this.imgWidth = img.width + "px";
-                                    }
-                                };
-                            }
-                            /*richText
-                            $('#view-notice-body').html(obj.content);
-                            richText*/
+                    axios.get('/food/menuDetail?id=' + id).then(res => {
+                        if (res.data.code == 1) {
+                            this.obj = res.data.data;
+                            console.info("接收到的obj:"+obj);
                         } else {
                             alert(res.data.msg)
                         }

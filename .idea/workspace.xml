@@ -4,23 +4,54 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3385eafc-c4fd-412a-8b7d-54b40e203a9b" name="Changes" comment="完善登录模块">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_18_35____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_18_35____.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_18_59____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_18_59____.xml" afterDir="false" />
+    <list default="true" id="3385eafc-c4fd-412a-8b7d-54b40e203a9b" name="Changes" comment="修复登录bug">
+      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/FindAndCartApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/config/MybatisPlusConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/controller/FoodMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/mapper/FoodsMaterialInfoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/mapper/FoodsMenuInfoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/util/Result.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jwt/src/main/java/JwtUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jwt/target/classes/JwtUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jwt/target/classes/util/JwtUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/target/classes/util/JwtUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/Requirements.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/Requirements.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entity/target/classes/com/s3/bean/UserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/entity/target/classes/com/s3/bean/UserInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/login/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/find_and_cart/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/find_and_cart/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/find_and_cart/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/find_and_cart/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log.2023-05-05.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log.2023-05-06.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/可乐鸡翅1601438117374.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/可乐鸡翅.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/土豆1601459240858.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/土豆.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/大虾1601439149080.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/大虾.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/山药1601459251759.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/山药.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/牛肉1601459286317.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/牛肉.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/白菜1601459261990.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/白菜.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/红烧肉1601439136536.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/红烧肉.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/羊肉1601459272290.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/羊肉.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/老鸭汤1601473385688.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/老鸭汤.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/茄子1601459321029.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/茄子.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/鱼1601459303467.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/鱼.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/鲍鱼1601459358338.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/鲍鱼.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMenuInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMenuInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMenuInfoDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMenuInfoDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,7 +87,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/javaee project/login/src/main/java/com/s3/controller&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/java2/java2/our_food_project/find_and_cart/src/main/java/com/yc/mapper&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -65,11 +96,13 @@
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;88712580bf82ddef99ef5df8b4b2e795&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java2\java2\our_food_project\find_and_cart\src\main\java\com\yc\mapper" />
       <recent name="E:\javaee project\login\src\main\java\com\s3\controller" />
       <recent name="E:\javaee project\login\src\main\java\com\s3" />
       <recent name="D:\java2\java2\our_food_project\entity\src\main\java\com\s3\bean" />
@@ -80,10 +113,24 @@
       <recent name="E:\javaee project\login\src\main\java\com\s3" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yc.util" />
       <recent name="com.s3.bean" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.LoginApplication">
+  <component name="RunManager" selected="Spring Boot.StaticApp">
+    <configuration name="FindAndCartApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="find_and_cart" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.FindAndCartApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GateWayApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.GateWayApp" />
@@ -125,9 +172,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.LoginApplication" />
         <item itemvalue="Spring Boot.StaticApp" />
+        <item itemvalue="Spring Boot.FindAndCartApp" />
         <item itemvalue="Spring Boot.GateWayApp" />
+        <item itemvalue="Spring Boot.LoginApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -142,6 +190,9 @@
       <workItem from="1684750848525" duration="167000" />
       <workItem from="1684751022024" duration="139000" />
       <workItem from="1684751162932" duration="350000" />
+      <workItem from="1684821575330" duration="4598000" />
+      <workItem from="1684826447240" duration="765000" />
+      <workItem from="1684828124148" duration="3325000" />
     </task>
     <task id="LOCAL-00001" summary="完善登录模块">
       <created>1684758399404</created>
@@ -150,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684758399404</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="修复登录bug">
+      <created>1684759581856</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1684759581856</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,7 +217,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="完善项目基础架构" />
     <MESSAGE value="完善登录模块" />
-    <option name="LAST_COMMIT_MESSAGE" value="完善登录模块" />
+    <MESSAGE value="修复登录bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复登录bug" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

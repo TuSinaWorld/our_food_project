@@ -66,10 +66,10 @@
             <div class="row">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img class="carousel-img" src="/front/img/carousel/1.jpg" alt=""></div>
-                        <div class="swiper-slide"><img class="carousel-img" src="/front/img/carousel/2.jpg" alt=""></div>
-                        <div class="swiper-slide"><img class="carousel-img" src="/front/img/carousel/3.jpg" alt=""></div>
-                        <div class="swiper-slide"><img class="carousel-img" src="/front/img/carousel/4.jpg" alt=""></div>
+                        <div class="swiper-slide"><img class="carousel-img" src="/static/front/img/carousel/1.jpg" alt=""></div>
+                        <div class="swiper-slide"><img class="carousel-img" src="/static/front/img/carousel/2.jpg" alt=""></div>
+                        <div class="swiper-slide"><img class="carousel-img" src="/static/front/img/carousel/3.jpg" alt=""></div>
+                        <div class="swiper-slide"><img class="carousel-img" src="/static/front/img/carousel/4.jpg" alt=""></div>
                     </div>
                     <!-- 如果需要分页器 -->
                     <div class="swiper-pagination"></div>
@@ -88,7 +88,7 @@
         <div>
             <div style="width: 25%; display: inline-block; padding: 10px; text-align: center" v-for="item in tableData" :key="item.id">
                 <a :href="'foodsMenuInfoDetail.html?id='+item.id">
-                    <img style="width: 100%; height: 180px; border-radius: 10px" :src='"/files/download/" + item.fileId' alt="">
+                    <img style="width: 100%; height: 180px; border-radius: 10px" :src='"../file/" + item.fileName' alt="">
                 </a>
                 <div style="padding-top: 10px"><b>{{item.name}}</b></div>
                 <div> #{{item.tips}}# {{item.description}}</div>
@@ -101,7 +101,7 @@
         <div>
             <div style="width: 20%; display: inline-block; padding: 10px; text-align: center" v-for="item in materialTableData" :key="item.id">
                 <a :href="'foodsMaterialInfoDetail.html?id='+item.id">
-                    <img style="width: 100%; height: 180px; border-radius: 10px" :src='"/files/download/" + item.fileId' alt="">
+                    <img style="width: 100%; height: 180px; border-radius: 10px" :src='"../file/" + item.fileName' alt="">
                 </a>
                 <div style="padding-top: 10px"><b>{{item.name}}</b></div>
             </div>
@@ -171,24 +171,27 @@
                 }
             });
 
-            this.loadTable();
+            this.query();
             this.loadMaTable();
 
         },
         methods: {
-            loadTable() {
-                axios.get("/foodsMenuInfo/page/all?" + "pageSize=8").then(res => {
-                    if (res.data.code === '0') {
-                        this.tableData = res.data.data.list;
-                    } else {
+            query(page){
+                page = page || 1;
+                axios.get("/food/all?pages="+page).then(res=>{
+                    if(res.data.code==1){
+                        this.tableData = res.data.data;
+                    }else{
                         alert(res.data.msg);
                     }
-                });
+
+                })
             },
-            loadMaTable() {
-                axios.get("/foodsMaterialInfo/page/all?pageSize=10").then(res => {
-                    if (res.data.code === '0') {
-                        this.materialTableData = res.data.data.list;
+            loadMaTable(page) {
+                page = page || 1;
+                axios.get("/food/materialAll?pages="+page).then(res => {
+                    if (res.data.code == 1) {
+                        this.materialTableData = res.data.data;
                     } else {
                         alert(res.data.msg);
                     }

@@ -42,27 +42,28 @@ public class LoginAuthGlobalFilter implements GlobalFilter, Ordered {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         RequestPath path = exchange.getRequest().getPath();
         System.out.println(path);
-        if(!path.toString().endsWith(".action")) {
-            return chain.filter(exchange);
-        }
-        List<String> token = exchange.getRequest().getHeaders().get("token");
-        try {
-            if (token == null || token.size() != 1) {
-                throw new RuntimeException();
-            }
-            //判断token是否合法
-            boolean flag = checkToken(token);
-            if(!flag){
-                throw new RuntimeException();
-            }
-            return chain.filter(exchange);
-        }catch (Exception e){
-            log.error("token不存在或错误!");
-            Map<String,Object> map = new HashMap<>();
-            map.put("code",0);
-            map.put("msg","token不存在或错误");
-            return doResponse(exchange.getResponse(),map);
-        }
+//        if(!path.toString().endsWith(".action")) {
+//            return chain.filter(exchange);
+//        }
+        return chain.filter(exchange);
+//        List<String> token = exchange.getRequest().getHeaders().get("token");
+//        try {
+//            if (token == null || token.size() != 1) {
+//                throw new RuntimeException();
+//            }
+//            //判断token是否合法
+//            boolean flag = checkToken(token);
+//            if(!flag){
+//                throw new RuntimeException();
+//            }
+//            return chain.filter(exchange);
+//        }catch (Exception e){
+//            log.error("token不存在或错误!");
+//            Map<String,Object> map = new HashMap<>();
+//            map.put("code",0);
+//            map.put("msg","token不存在或错误");
+//            return doResponse(exchange.getResponse(),map);
+//        }
     }
 
     //检测token令牌

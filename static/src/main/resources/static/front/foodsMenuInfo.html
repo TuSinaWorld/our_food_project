@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,9 +7,9 @@
     <meta http-equiv="content-type" content="no-cache, must-revalidate"/>
     <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT"/>
     <title>菜谱</title>
-    <link href="/front/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/front/css/my.css" rel="stylesheet">
-    <link href="/front/css/nav.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/my.css" rel="stylesheet">
+    <link href="css/nav.css" rel="stylesheet">
     <link href="css/element/index.css" rel="stylesheet"/>
 
     <style>
@@ -24,6 +24,7 @@
         <!-- 头部开始 -->
         <div class="nx-header">
             <div style="display: flex;width: 100%; height: 30px; line-height: 30px; background-color: #eee;">
+
                 <div style="flex: 5; text-align: right">
                     <span v-if="user.name">
                     欢迎您，{{user.name}}
@@ -35,17 +36,16 @@
             </div>
 
 
-
             <div>
                 <ul style="display: flex; background-color: orange; height: 30px">
-                    <li class="nav-item"><a href="index.html">首页</a></li>
+                    <li class="nav-item"><a class="active" href="index.html">首页</a></li>
                     <li class="nav-item"><a href="advertiserInfo.html">系统公告</a></li>
-					<li class="nav-item"><a class="active" href="foodsMenuInfo.html">菜谱</a></li>
-<!--					<li class="nav-item"><a href="foodsMaterialInfo.html">食材</a></li>-->
-					<li class="nav-item"><a href="collectInfo.html">收藏</a></li>
-					<li class="nav-item"><a href="notesInfo.html">笔记</a></li>
-					<li class="nav-item"><a href="newsInfo.html">饮食资讯</a></li>
-					<li class="nav-item"><a href="messageInfo.html">趣味答题</a></li>
+                    <li class="nav-item"><a href="foodsMenuInfo.html">菜谱</a></li>
+                    <!--					<li class="nav-item"><a href="foodsMaterialInfo.html">食材</a></li>-->
+                    <li class="nav-item"><a href="collectInfo.html">收藏</a></li>
+                    <li class="nav-item"><a href="notesInfo.html">笔记</a></li>
+                    <li class="nav-item"><a href="newsInfo.html">饮食资讯</a></li>
+                    <li class="nav-item"><a href="messageInfo.html">趣味答题</a></li>
 
                     <li v-if="isShow" class="nav-item"><a href="/end/page/index.html" target="_blank">进入后台系统</a></li>
                 </ul>
@@ -104,24 +104,6 @@
         </div>
 
 
-    </div>
-    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    文件预览
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="cancel">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" style="height: 300px; text-align: center">
-                    <img id="view-img" v-if="imgShow" :src="url" alt="" style="width: 400px;">
-                    <video v-if="videoShow" id="video-control" :src="url" controls="controls" style="width: 80%">
-                        您的浏览器不支持 video 标签。
-                    </video>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
