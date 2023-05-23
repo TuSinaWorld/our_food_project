@@ -5,52 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3385eafc-c4fd-412a-8b7d-54b40e203a9b" name="Changes" comment="完善登录模块">
-      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/ourfood/background/BackGroundApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/ourfood/background/bean/Result.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/ourfood/background/config/RedisConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/ourfood/background/controller/BackController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/ourfood/background/dao/AdminInfoDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/ourfood/background/util/Redisconstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_22_20_38__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_22_20_38__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_18_35____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_18_35____.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_18_59____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_18_59____.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/_22_5_2023_8_48_pm____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_22_5_2023_8_48_pm____.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_21_08____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_21_08____.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_21_36____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_21_36____.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jwt/src/main/java/util/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/src/main/java/util/JwtUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jwt/target/Jwt-1.0-SNAPSHOT.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Jwt/target/classes/util/JwtUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/target/classes/util/JwtUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jwt/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jwt/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jwt/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jwt/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jwt/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/displayproducts/target/classes/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/UserInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/target/classes/com/s3/bean/UserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/entity/target/classes/com/s3/bean/UserInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/target/classes/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/GateWayApp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/configs/GatewayConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/configs/RedisConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/target/classes/logback.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/target/classes/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/LoginApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/bean/Result.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/config/RedisConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/controller/UserInfoController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/dao/UserInfoDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/util/Redisconstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/AdminInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/AdminInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/target/classes/com/s3/bean/AdminInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/entity/target/classes/com/s3/bean/AdminInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/spring.log.2023-05-05.0.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/spring.log.2023-05-06.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/end/page/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/end/page/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/end/page/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/end/page/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,6 +53,9 @@
         <option name="userSettingsFile" value="D:\apache-maven-3.6.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="2Q91Ai4G6OfXQcCQzsWcIC8isqF" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -86,7 +76,8 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "E:/javaee project/static/src/main/resources/static/end/page",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "F:/mygit/yc119_s3_project/background/src/main/java/com/ourfood/background",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -95,12 +86,13 @@
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "Errors",
-    "spring.configuration.checksum": "714140463030b6ead508398b02d05c2a",
+    "spring.configuration.checksum": "3cae55680f654ced57769217b554a709",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\mygit\yc119_s3_project\background\src\main\java\com\ourfood\background" />
       <recent name="E:\javaee project\login\src\main\java\com\s3\controller" />
       <recent name="E:\javaee project\login\src\main\java\com\s3" />
       <recent name="D:\java2\java2\our_food_project\entity\src\main\java\com\s3\bean" />
@@ -114,7 +106,20 @@
       <recent name="com.s3.bean" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.GateWayApp">
+  <component name="RunManager" selected="Spring Boot.StaticApp">
+    <configuration name="BackGroundApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="background" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ourfood.background.BackGroundApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ourfood.background.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GateWayApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.GateWayApp" />
@@ -156,8 +161,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.GateWayApp" />
         <item itemvalue="Spring Boot.StaticApp" />
+        <item itemvalue="Spring Boot.BackGroundApplication" />
+        <item itemvalue="Spring Boot.GateWayApp" />
         <item itemvalue="Spring Boot.LoginApplication" />
       </list>
     </recent_temporary>
@@ -175,6 +181,7 @@
       <workItem from="1684751162932" duration="350000" />
       <workItem from="1684762939391" duration="1827000" />
       <workItem from="1684821634651" duration="5021000" />
+      <workItem from="1684828706098" duration="1969000" />
     </task>
     <task id="LOCAL-00001" summary="完善登录模块">
       <created>1684758399404</created>

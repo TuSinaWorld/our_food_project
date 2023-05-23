@@ -54,7 +54,7 @@ public class AdminInfo implements Serializable {
     /**
      * 生日
      */
-    private LocalDateTime birthday;
+    private String birthday;
 
     /**
      * 手机号
@@ -137,11 +137,11 @@ public class AdminInfo implements Serializable {
         this.age = age;
     }
 
-    public LocalDateTime getBirthday() {
+    public String  getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDateTime birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
