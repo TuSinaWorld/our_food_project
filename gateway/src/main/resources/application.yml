@@ -34,9 +34,14 @@ spring:
             - Path=/static/**
         - id: product
           uri: lb://product
-          order: 4
+          order: 3
           predicates:
             - Path=/product/**
+        - id: background
+          uri: lb://background
+          order: 1
+          predicates:
+            - Path=/background/**
 management:
   endpoints:
     web:
