@@ -883,3 +883,12 @@ Caused by: java.net.SocketTimeoutException: connect timed out
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:782) ~[spring-web-5.3.26.jar:5.3.26]
 	... 11 common frames omitted
 
+2023-05-23 16:55:17.825  INFO [food,,] 10196 --- [Thread-21] o.s.c.s.a.z.ZipkinAutoConfiguration      : Flushing remaining spans on shutdown
+2023-05-23 16:55:17.825  WARN [food,,] 10196 --- [Thread-10] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+2023-05-23 16:55:17.826  WARN [food,,] 10196 --- [Thread-10] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+2023-05-23 16:55:17.827  WARN [food,,] 10196 --- [Thread-3] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+2023-05-23 16:55:17.828  WARN [food,,] 10196 --- [Thread-3] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+2023-05-23 16:55:18.168  INFO [food,,] 10196 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+2023-05-23 16:55:18.173  INFO [food,,] 10196 --- [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+2023-05-23 16:55:19.197  INFO [food,,] 10196 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-23 16:55:19.209  INFO [food,,] 10196 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

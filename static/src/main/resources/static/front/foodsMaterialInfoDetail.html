@@ -11,7 +11,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/my.css" rel="stylesheet"/>
     <link href="css/nav.css" rel="stylesheet">
-    <link href="/end/css/quill.snow.css" rel="stylesheet">
+    <link href="../end/css/quill.snow.css" rel="stylesheet">
 
     <style>
         [v-cloak] {
@@ -80,10 +80,7 @@
 							<div class="row p-10">
 								<div class="col-md-2">图片：</div>
 								<div class="col-md-10">
-									<img v-if="obj.fileType === 'image'" :style="'width:' + imgWidth" :src="fileSrc" alt="">
-									<div v-if="obj.fileType === 'video'"><video controls="controls" :src="fileSrc" style="width: 100%"></video></div>
-									<div v-if="obj.fileType === 'other'">该文件不支持预览，只有视频和图片支持预览</div>
-								</div>
+                                    <img style="width: 200px; height: 180px" :src='"../file/" + obj.fileName' alt="">
 							</div>
 
                         </div>
@@ -165,19 +162,10 @@
             isShow: false
         },
         created() {
-            axios.get('/auth').then(res => {
-                if (res.data.code === '0') {
-                    this.user = res.data.data;
-                    if (this.user.level !== 3) {
-                        this.isShow = true;
-                    }
-                }
-            });
-
             let id = this.getQueryVariable('id');
             this.comment.foreignId = id;
             if (id !== 0) {
-                axios.get('/foodsMaterialInfo/' + id).then(res => {
+                axios.get('/food/me' + id).then(res => {
                     if (res.data.code === '0') {
                         let obj = res.data.data;
                         this.obj = obj;

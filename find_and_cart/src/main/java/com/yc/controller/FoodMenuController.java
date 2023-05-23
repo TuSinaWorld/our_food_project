@@ -52,6 +52,14 @@ public class FoodMenuController {
         }
         return new Result(1,"查询成功",foodsMenuInfo);
     }
+    @RequestMapping("/materialDetail")
+    public Result materialDetail(String id){
+        FoodsMaterialInfo foodsMaterialInfo = foodsMaterialInfoMapper.selectById(id);
+        if(foodsMaterialInfo==null){
+            return new Result(0,"查询失败");
+        }
+        return new Result(1,"查询成功",foodsMaterialInfo);
+    }
     @RequestMapping("/materialAll")
     public Result material(String pages){
         Long l = new Long(pages);

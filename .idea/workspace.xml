@@ -4,41 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3385eafc-c4fd-412a-8b7d-54b40e203a9b" name="Changes" comment="修复登录bug">
-      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/FindAndCartApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/config/MybatisPlusConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/controller/FoodMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/mapper/FoodsMaterialInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/mapper/FoodsMenuInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/util/Result.java" afterDir="false" />
+    <list default="true" id="3385eafc-c4fd-412a-8b7d-54b40e203a9b" name="Changes" comment="完成显示首页信息以及菜品详细信息">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/Requirements.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/Requirements.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/target/classes/com/s3/bean/UserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/entity/target/classes/com/s3/bean/UserInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/find_and_cart/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/find_and_cart/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/find_and_cart/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/find_and_cart/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/controller/FoodMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/controller/FoodMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/spring.log.2023-05-05.0.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/spring.log.2023-05-06.0.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/可乐鸡翅1601438117374.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/可乐鸡翅.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/土豆1601459240858.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/土豆.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/大虾1601439149080.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/大虾.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/山药1601459251759.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/山药.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/牛肉1601459286317.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/牛肉.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/白菜1601459261990.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/白菜.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/红烧肉1601439136536.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/红烧肉.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/羊肉1601459272290.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/羊肉.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/老鸭汤1601473385688.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/老鸭汤.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/茄子1601459321029.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/茄子.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/鱼1601459303467.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/鱼.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/鲍鱼1601459358338.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/鲍鱼.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMenuInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMenuInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMenuInfoDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMenuInfoDetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMaterialInfoDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMaterialInfoDetail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +162,7 @@
       <workItem from="1684751162932" duration="350000" />
       <workItem from="1684821575330" duration="4598000" />
       <workItem from="1684826447240" duration="765000" />
-      <workItem from="1684828124148" duration="3325000" />
+      <workItem from="1684828124148" duration="3996000" />
     </task>
     <task id="LOCAL-00001" summary="完善登录模块">
       <created>1684758399404</created>
@@ -208,17 +178,36 @@
       <option name="project" value="LOCAL" />
       <updated>1684759581856</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="完成显示首页信息以及菜品详细信息">
+      <created>1684831783329</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1684831783329</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="完善项目基础架构" />
     <MESSAGE value="完善登录模块" />
     <MESSAGE value="修复登录bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复登录bug" />
+    <MESSAGE value="完成显示首页信息以及菜品详细信息" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成显示首页信息以及菜品详细信息" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
