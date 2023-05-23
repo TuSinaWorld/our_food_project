@@ -16,6 +16,7 @@
         <module>Jwt</module>
         <module>find_and_cart</module>
         <module>displayproducts</module>
+        <module>background</module>
     </modules>
 
     <parent>

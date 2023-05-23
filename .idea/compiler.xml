@@ -11,18 +11,17 @@
         <module name="static" />
         <module name="Jwt" />
         <module name="find_and_cart" />
+        <module name="background" />
         <module name="login" />
         <module name="entity" />
         <module name="gateway" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="our_food_project" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Jwt" options="-parameters" />
+      <module name="background" options="-parameters" />
       <module name="displayproducts" options="-parameters" />
       <module name="entity" options="-parameters" />
       <module name="find_and_cart" options="-parameters" />

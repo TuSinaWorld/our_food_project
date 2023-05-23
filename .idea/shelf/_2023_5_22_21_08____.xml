@@ -1,0 +1,154 @@
+<changelist name="在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]" date="1684760917776" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]/shelved.patch" />
+  <option name="DESCRIPTION" value="在进行更新之前于 2023/5/22 21:08 取消提交了更改 [更改]" />
+  <binary>
+    <option name="BEFORE_PATH" value="login/target/classes/com/s3/bean/Result.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Jwt/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="login/target/classes/com/s3/config/RedisConfig.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="login/target/classes/com/s3/LoginApplication.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Jwt/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="login/target/classes/com/s3/controller/UserInfoController.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="entity/target/classes/com/s3/bean/PraiseInfo.class" />
+    <option name="AFTER_PATH" value="entity/target/classes/com/s3/bean/PraiseInfo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]/PraiseInfo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="entity/target/classes/com/s3/bean/NewsInfo.class" />
+    <option name="AFTER_PATH" value="entity/target/classes/com/s3/bean/NewsInfo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]/NewsInfo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="gateway/target/classes/com/yc/configs/RedisConfig.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="entity/target/classes/com/s3/bean/MemberInfoBean.class" />
+    <option name="AFTER_PATH" value="entity/target/classes/com/s3/bean/MemberInfoBean.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]/MemberInfoBean.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="entity/target/classes/com/s3/bean/CollectInfo.class" />
+    <option name="AFTER_PATH" value="entity/target/classes/com/s3/bean/CollectInfo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]/CollectInfo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="entity/target/classes/com/s3/bean/SubClassifyInfo.class" />
+    <option name="AFTER_PATH" value="entity/target/classes/com/s3/bean/SubClassifyInfo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]/SubClassifyInfo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="entity/target/classes/com/s3/bean/FoodsMenuInfo.class" />
+    <option name="AFTER_PATH" value="entity/target/classes/com/s3/bean/FoodsMenuInfo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]/FoodsMenuInfo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="entity/target/classes/com/s3/bean/FoodsMaterialInfo.class" />
+    <option name="AFTER_PATH" value="entity/target/classes/com/s3/bean/FoodsMaterialInfo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]/FoodsMaterialInfo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="gateway/target/classes/com/yc/GateWayApp.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Jwt/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="login/target/classes/com/s3/dao/UserInfoDao.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="entity/target/classes/com/s3/bean/MessageInfo.class" />
+    <option name="AFTER_PATH" value="entity/target/classes/com/s3/bean/MessageInfo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]/MessageInfo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="entity/target/classes/com/s3/bean/NotesInfo.class" />
+    <option name="AFTER_PATH" value="entity/target/classes/com/s3/bean/NotesInfo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]/NotesInfo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Jwt/target/Jwt-1.0-SNAPSHOT.jar" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="entity/target/classes/com/s3/bean/AdminInfo.class" />
+    <option name="AFTER_PATH" value="entity/target/classes/com/s3/bean/AdminInfo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]/AdminInfo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="login/target/classes/com/s3/util/Redisconstants.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="gateway/target/classes/com/yc/configs/GatewayConfiguration.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Jwt/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="entity/target/classes/com/s3/bean/AdvertiserInfo.class" />
+    <option name="AFTER_PATH" value="entity/target/classes/com/s3/bean/AdvertiserInfo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]/AdvertiserInfo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Jwt/target/classes/util/JwtUtil.class" />
+    <option name="AFTER_PATH" value="Jwt/target/classes/util/JwtUtil.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]/JwtUtil.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="entity/target/classes/com/s3/bean/UserInfo.class" />
+    <option name="AFTER_PATH" value="entity/target/classes/com/s3/bean/UserInfo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]/UserInfo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="entity/target/classes/com/s3/bean/CommentNotesInfo.class" />
+    <option name="AFTER_PATH" value="entity/target/classes/com/s3/bean/CommentNotesInfo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]/CommentNotesInfo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="entity/target/classes/com/s3/bean/NxSystemFileInfo.class" />
+    <option name="AFTER_PATH" value="entity/target/classes/com/s3/bean/NxSystemFileInfo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2023_5_22_21_08_取消提交了更改_[更改]/NxSystemFileInfo.class" />
+  </binary>
+</changelist>
