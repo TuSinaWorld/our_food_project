@@ -36,12 +36,12 @@ public class JwtUtil {
      * @param ttlMillis token超时时间
      * @return
      */
-    public static String createJWT(UserInfo userInfo, String subject, Long ttlMillis) {
-        JwtBuilder builder = getJwtBuilder(userInfo,subject, ttlMillis, String.valueOf(UUID.randomUUID()));// 设置过期时间
+    public static String createJWT(String userId, String subject, Long ttlMillis) {
+        JwtBuilder builder = getJwtBuilder(userId,subject, ttlMillis, String.valueOf(UUID.randomUUID()));// 设置过期时间
         return builder.compact();
     }
 
-    private static JwtBuilder getJwtBuilder(UserInfo userInfo,String subject, Long ttlMillis, String uuid) {
+    private static JwtBuilder getJwtBuilder(String userId,String subject, Long ttlMillis, String uuid) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
@@ -57,7 +57,7 @@ public class JwtUtil {
                 .setHeaderParam("alg", "HS256")
                 //TODO:将用户信息存入token
                 //.claim("user","user")
-                .claim("user",userInfo)
+                .claim("user",userId)
                 .setId(uuid)              //唯一的ID
                 .setSubject(subject)   // 主题  可以是JSON数据
                 .setIssuer("yjlyyds")     // 签发者
@@ -74,8 +74,8 @@ public class JwtUtil {
      * @param ttlMillis
      * @return
      */
-    public static String createJWT(UserInfo userInfo,String id, String subject, Long ttlMillis) {
-        JwtBuilder builder = getJwtBuilder(userInfo,subject, ttlMillis, id);// 设置过期时间
+    public static String createJWT(String userId,String id, String subject, Long ttlMillis) {
+        JwtBuilder builder = getJwtBuilder(userId,subject, ttlMillis, id);// 设置过期时间
         return builder.compact();
     }
 

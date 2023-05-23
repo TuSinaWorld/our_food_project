@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>登陆页面</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/font-awesome.css" rel="stylesheet"/>
+    <link href="../end/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../end/css/font-awesome.css" rel="stylesheet"/>
 
     <style>
         [v-cloak] {
@@ -18,7 +18,7 @@
 <div id="app" class="container" v-cloak>
     <div class="row text-center " style="padding-top:100px;">
         <div class="col-md-12">
-           <h2>欢迎登陆后台管理系统</h2>
+           <h2>欢迎用户登陆</h2>
         </div>
     </div>
     <div class="row ">
@@ -68,8 +68,8 @@
     </div>
 </div>
 
-<script src="../js/vue2.6.11/vue.min.js"></script>
-<script src="../js/vue2.6.11/axios.js"></script>
+<script src="../end/js/vue2.6.11/vue.min.js"></script>
+<script src="../end/js/vue2.6.11/axios.js"></script>
 
 <script>
 
@@ -131,7 +131,7 @@
                 axios.post('/user/login', params).then(res => {
                     if(res.data.code === '0') {
                         localStorage.setItem('token', JSON.stringify(res.data.data));
-                        location.href = '/static/front/index.html';
+                        location.href = 'index.html';
                     } else {
                         alert(res.data.msg);
                     }

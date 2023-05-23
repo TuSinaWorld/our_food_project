@@ -5,12 +5,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3385eafc-c4fd-412a-8b7d-54b40e203a9b" name="Changes" comment="完善登录模块">
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_22_20_38__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_22_20_38__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_18_35____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_18_35____.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_18_59____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_18_59____.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_22_5_2023_8_48_pm____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_22_5_2023_8_48_pm____.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/yc/filter/LoginAuthGlobalFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/src/main/java/util/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/src/main/java/util/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/target/Jwt-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/target/classes/util/JwtUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/target/classes/util/JwtUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/displayproducts/target/classes/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/target/classes/com/s3/bean/UserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/entity/target/classes/com/s3/bean/UserInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/GateWayApp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/configs/GatewayConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/configs/RedisConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/yc/filter/LoginAuthGlobalFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/login/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/target/classes/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/LoginApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/bean/Result.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/config/RedisConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/controller/UserInfoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/dao/UserInfoDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/util/Redisconstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log.2023-05-05.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log.2023-05-06.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/end/page/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/end/page/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/end/page/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/end/page/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,29 +75,30 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/javaee project/login/src/main/java/com/s3/controller&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "E:/javaee project/static/src/main/resources/static/end/page",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "Errors",
+    "spring.configuration.checksum": "714140463030b6ead508398b02d05c2a",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\javaee project\login\src\main\java\com\s3\controller" />
@@ -121,8 +157,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.GateWayApp" />
-        <item itemvalue="Spring Boot.LoginApplication" />
         <item itemvalue="Spring Boot.StaticApp" />
+        <item itemvalue="Spring Boot.LoginApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -137,6 +173,8 @@
       <workItem from="1684750848525" duration="167000" />
       <workItem from="1684751022024" duration="139000" />
       <workItem from="1684751162932" duration="350000" />
+      <workItem from="1684762939391" duration="1827000" />
+      <workItem from="1684821634651" duration="5021000" />
     </task>
     <task id="LOCAL-00001" summary="完善登录模块">
       <created>1684758399404</created>

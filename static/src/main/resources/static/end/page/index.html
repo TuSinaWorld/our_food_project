@@ -245,6 +245,9 @@
             echartsShowArr: [],
             echartsType: 'pie'
         },
+		mounted(){
+			this.checklogin();
+		},
         created: function () {
             axios.get('/echarts/options').then(res => {
                 this.echartsModelOptions = res.data.data;
@@ -283,6 +286,13 @@
 
         },
         methods: {
+			checklogin(){
+				axios.post('/user/checklogin', params).then(res=>{
+					if (res.data.code == 0){
+						alert(res.data.msg);
+					}
+				})
+			},
             drawLine() {
                 axios.get('/echarts/get/' + this.echartsModel).then(res => {
                     // 基于准备好的dom，初始化echarts实例
