@@ -138,6 +138,7 @@
         </div>
     </div>
 </div>
+</div>
 <script src="js/jquery-1.10.2.js"></script>
 <script src="js/vue2.6.11/vue.min.js"></script>
 <script src="js/vue2.6.11/axios.js"></script>
@@ -165,34 +166,9 @@
             let id = this.getQueryVariable('id');
             this.comment.foreignId = id;
             if (id !== 0) {
-                axios.get('/food/me' + id).then(res => {
-                    if (res.data.code === '0') {
-                        let obj = res.data.data;
-                        this.obj = obj;
-                        if (obj.fileName) {
-                            if (/\.(png|jpg|gif|jpeg|webp)$/.test(obj.fileName)) {
-                                this.obj.fileType = 'image';
-                            } else if (/\.mp4$/.test(obj.fileName)) {
-                                this.obj.fileType = 'video';
-                            } else {
-                                this.obj.fileType = 'other';
-                            }
-                            this.fileSrc = '/files/download/' + obj.fileId;
-
-                            let img = new Image();
-                            img.src = this.fileSrc;
-                            let _this = this;
-                            img.onload = function(){
-                                if (img.width > 590) {
-                                    _this.imgWidth = "100%";
-                                } else {
-                                    _this.imgWidth = img.width + "px";
-                                }
-                            };
-                        }
-                        /*richText
-                        $('#view-notice-body').html(obj.content);
-                        richText*/
+                axios.get('/food/materialDetail?id=' + id).then(res => {
+                    if (res.data.code == 1) {
+                        this.obj = res.data.data;
                     } else {
                         alert(res.data.msg)
                     }

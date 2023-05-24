@@ -18,6 +18,26 @@ public class Result implements java.io.Serializable {
 	//查询总记录数
 	private long total;
 
+	//查询总页数
+	private long totalPage;
+
+
+	public Result(int code, String msg, Object data, long total, long totalPage) {
+		this.code = code;
+		this.msg = msg;
+		this.data = data;
+		this.total = total;
+		this.totalPage = totalPage;
+	}
+
+	public long getTotalPage() {
+		return totalPage;
+	}
+
+	public void setTotalPage(long totalPage) {
+		this.totalPage = totalPage;
+	}
+
 	public long getTotal() {
 		return total;
 	}

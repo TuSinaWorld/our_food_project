@@ -24,8 +24,8 @@ public class MybatisPlusConfig {
         PaginationInnerInterceptor pageInterceptor = new PaginationInnerInterceptor();
         // 设置请求的页面大于最大页后操作，true调回到首页，false继续请求。默认false
         pageInterceptor.setOverflow(false);
-        // 单页分页条数限制，默认无限制
-        pageInterceptor.setMaxLimit(8L);
+//        // 单页分页条数限制，默认无限制
+//        pageInterceptor.setMaxLimit(8L);
         // 设置数据库类型
         pageInterceptor.setDbType(DbType.MYSQL);
 

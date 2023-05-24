@@ -10,6 +10,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/my.css" rel="stylesheet">
     <link href="css/nav.css" rel="stylesheet">
+    <link href="css/global.css" rel="stylesheet">
     <link href="css/element/index.css" rel="stylesheet"/>
 
     <style>
@@ -62,7 +63,7 @@
                 </div>
                 <div class="col-md-10" style="color: #666">
                 <span v-for="subItem in item.subList" style="margin-left: 30px; cursor: pointer;"
-                      :key="subItem.id" :class="{active: subItem.id === activeId}" @click="handleClickClassify(subItem.id)">
+                      :key="subItem.id" :class="{active: subItem.id === activeId}" @click="query(1,0,subItem.id)">
                    {{subItem.name}}
                 </span>
                 </div>
@@ -74,35 +75,19 @@
         <div>
             <div style="width: 25%; display: inline-block; padding: 10px; text-align: center" v-for="item in tableData" :key="item.id">
                 <a :href="'foodsMenuInfoDetail.html?id='+item.id">
-                    <img style="width: 100%; height: 180px; border-radius: 10px" :src='"/files/download/" + item.fileId' alt="">
+                    <img style="width: 100%; height: 180px; border-radius: 10px" :src='"../file/" + item.fileName' alt="">
                 </a>
                 <div style="padding-top: 10px"><b>{{item.name}}</b></div>
                 <div> #{{item.tips}}# {{item.description}}</div>
             </div>
-            <div style="text-align: center;">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item" :class="{ disabled: preActive }">
-                            <a class="page-link" href="javascript:void(0)"
-                               @click="loadTable(pageInfo.pageNum - 1)">上一页</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="javascript:void(0)" v-if="pageInfo.pageNum > 1" @click="loadTable(pageInfo.pageNum - 1)">{{pageInfo.pageNum - 1}}</a>
-                        </li>
-                        <li class="page-item disabled">
-                            <a class="page-link" aria-disabled="true" href="javascript:void(0)">{{pageInfo.pageNum}}</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="javascript:void(0)" v-if="pageInfo.hasNextPage" @click="loadTable(pageInfo.pageNum + 1)">{{pageInfo.pageNum + 1}}</a>
-                        </li>
-                        <li class="page-item" :class="{ disabled: nextActive }">
-                            <a class="page-link" href="javascript:void(0)" @click="loadTable(pageInfo.hasNextPage? (pageInfo.pageNum + 1) : pageInfo.pageNum)">下一页</a>
-                        </li>
-                    </ul>
-                </nav>
+        </div>
+        <div style="text-align: center">
+            <div class="laypage-main"><span class="laypage-curr" @click.prevent="query(1,0)">首页</span>
+                <div  class="laypage-next" @click.prevent="query(-1,1)">上一页</div>
+                <div  class="laypage-next" @click.prevent="query(+1,2)">下一页</div>
+                <div  class="laypage-last" title="尾页" @click.prevent="query(total)">尾页</div>
             </div>
         </div>
-
 
     </div>
 </div>
@@ -132,7 +117,8 @@
             videoShow: true,
             url: '',
             tableData: [],
-            pageInfo: {},
+            total:0,//总条数
+            totalPage:0,//总页数
             preActive: true,
             nextActive: true,
             user: {},
@@ -140,42 +126,49 @@
             classify: [],
             activeId: 1,
         },
-
-        created: function() {
-            axios.get('/auth').then(res => {
-                if (res.data.code === '0') {
-                    this.user = res.data.data;
-                    if (this.user.level !== 3) {
-                        this.isShow = true;
-                    }
-                }
-            });
-            axios.get("/classifyInfo").then(res => {
-                if (res.data.code === '0') {
-                    this.classify = res.data.data;
-                    if(this.classify.length && this.classify[0].subList.length) {
-                        this.activeId = this.classify[0].subList[0].id;
-                        this.loadTable(1);
-                    }
-                } else {
-                    alert(res.data.msg);
-                }
-            });
-
+        mounted(){
+            this.classifyinfo();
         },
 
         methods: {
-            loadTable(pageNum) {
-                axios.get("/foodsMenuInfo/page/all?classifyId=" + this.activeId + "&pageNum=" + pageNum).then(res => {
-                    if (res.data.code === '0') {
-                        this.tableData = res.data.data.list;
-                        this.pageInfo = res.data.data;
-                        this.preActive = !(this.pageInfo.hasPreviousPage);
-                        this.nextActive = !(this.pageInfo.hasNextPage);
+            classifyinfo() {
+                axios.get("/food/allClassify").then(res => {
+                    if (res.data.code == 1) {
+                        this.classify = res.data.data;
+                        if(this.classify.length >0) {
+                            this.activeId = this.classify[0].subList[0].id;
+                            this.query(1,0,1);
+                        }
                     } else {
                         alert(res.data.msg);
                     }
                 });
+            },
+            query(page,state,subid){
+                if(subid>0){
+                    this.activeId=subid;
+                }
+                if(state==0){
+                    this.page=1;
+                }else if(state>0){
+                    this.page=this.page+page;
+                    if(this.page>this.totalPage){
+                        alert("已经是最后一页");
+                        return;
+                    }
+                    if(this.page<1){
+                        alert("该页为首页无法进行上一页操作!");
+                        this.page=1;
+                        return;
+                    }
+                }
+                axios.get("/food/menuPage?subid="+this.activeId+"&page="+this.page).then(res=>{
+                    if(res.data.code==1){
+                        this.total = res.data.total;
+                        this.tableData  = res.data.data;
+                        this.totalPage=res.data.totalPage;
+                    }
+                })
             },
             viewModal: function (data) {
                 axios.get("/foodsMenuInfo/" + data.id).then(res => {
@@ -232,10 +225,6 @@
                         msg('error', res.data.msg);
                     }
                 })
-            },
-            handleClickClassify(classifyId) {
-                this.activeId = classifyId;
-                this.loadTable(this.pageInfo.pageNum);
             },
         }
     })
