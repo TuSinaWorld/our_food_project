@@ -2,7 +2,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/food?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
-    password: 123456
+    password: 1
     username: root
   application:
     name: background
@@ -24,7 +24,7 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启SQL语句打印
 
 server:
-  port: ${port:10020}
+  port: ${port:10021}
 logging:
   level:
     root: info
@@ -32,4 +32,3 @@ logging:
     org.springframework: info
   file:
     path: ./logs
-
