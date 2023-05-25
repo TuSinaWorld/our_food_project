@@ -37,7 +37,7 @@
                     <a style="margin-right: 50px; color: blue" href="javascript:void(0)" @click="logout">退出</a>
                     </span>
                     <a v-if="!(user.name)" href="/end/page/login.html" target="_blank" style="margin-right: 10px; color: #666666">登录</a>
-                    <a href="/front/register.html" target="_blank" style="margin-right: 30px; color: #666666">注册</a>
+                    <a v-if="!(user.name)" href="/static/front/register.html" target="_blank" style="margin-right: 30px; color: #666666">注册</a>
                 </div>
             </div>
 
@@ -95,6 +95,26 @@
 <script src="js/vue2.6.11/axios.js"></script>
 
 <script>
+
+    //使用axios
+    Vue.prototype.axios = axios;
+    // 在每次请求时，前端携带token到请求头中
+    axios.interceptors.request.use(config => {
+        // 从localStorage或vuex中获取token
+        const token = localStorage.getItem('token') ;   //|| this.$store.state.token;
+        // 如果有token，就添加到请求头中
+        if (token) {
+            config.headers.token = token;
+        }else{
+            config.headers.token ='';
+        }
+        console.log(   token );
+        console.log(   config );
+        return config;
+    }, error => {
+        return Promise.reject(error);
+    });
+
     new Vue({
         el: '#wrapper',
         data: {
@@ -116,13 +136,23 @@
             });
             this.currentId = this.getQueryVariable('id');
             this.loadAdvertiserInfo();
+            this.checklogin();
         },
 
         methods: {
+            checklogin(){
+                axios.get("/user/checkLogin").then(res => {
+                    if(res.data.code == 1){
+                        this.user = res.data.data;
+                    }else {
+                        alert("用户未登录 ...");
+                    }
+                })
+            },
             loadAdvertiserInfo() {
-                axios.get('/advertiserInfo/page/all?pageSize=10').then(res => {
-                    if (res.data.code === '0') {
-                        this.advertiserList = res.data.data.list;
+                axios.get('/advertiser/selectAadvertiser').then(res => {
+                    if (res.data.code == 1) {
+                        this.advertiserList = res.data.data;
                         this.advertiserList.forEach(item => {
                             if(parseInt(this.currentId) === item.id) {  // 当前选择的公告
                                 item.isActive = true;

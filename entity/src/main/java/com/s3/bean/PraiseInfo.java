@@ -34,7 +34,7 @@ public class PraiseInfo implements Serializable {
     /**
      * 时间
      */
-    private LocalDateTime time;
+    private String time;
 
     /**
      * 笔记id
@@ -67,11 +67,11 @@ public class PraiseInfo implements Serializable {
         this.name = name;
     }
 
-    public LocalDateTime getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

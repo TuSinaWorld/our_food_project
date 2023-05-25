@@ -17,6 +17,8 @@
         <module>find_and_cart</module>
         <module>displayproducts</module>
         <module>background</module>
+        <module>collect_and_praise</module>
+        <module>advertiser</module>
     </modules>
 
     <parent>

@@ -37,7 +37,7 @@
                     <a style="margin-right: 50px; color: blue" href="javascript:void(0)" @click="logout">退出</a>
                     </span>
                     <a v-if="!(user.name)" href="/end/page/login.html" target="_blank" style="margin-right: 10px; color: #666666">登录</a>
-                    <a href="/front/register.html" target="_blank" style="margin-right: 30px; color: #666666">注册</a>
+                    <a v-if="!(user.name)" href="/static/front/register.html" target="_blank" style="margin-right: 30px; color: #666666">注册</a>
                 </div>
             </div>
 
@@ -98,10 +98,10 @@
 
         <div style="text-align: center">
             <button class="btn btn-sm" style="background-color: red; color: white" @click="praise()">
-                点赞({{obj.praiseCount}})
+                点赞({{pariseSum}})
             </button>
             <button class="btn btn-sm" style="background-color: darkorange; color: white" @click="collect()">
-                收藏({{obj.collectCount}})
+                收藏({{collectSum}})
             </button>
         </div>
         <!-- /. 表单数据 -->
@@ -160,6 +160,27 @@
 <script src="js/element/index.js"></script>
 
 <script>
+
+    //使用axios
+    Vue.prototype.axios = axios;
+    // 在每次请求时，前端携带token到请求头中
+    axios.interceptors.request.use(config => {
+        // 从localStorage或vuex中获取token
+        const token = localStorage.getItem('token') ;   //|| this.$store.state.token;
+        // 如果有token，就添加到请求头中
+        if (token) {
+            config.headers.token = token;
+        }else{
+            config.headers.token ='';
+        }
+        console.log(   token );
+        console.log(   config );
+        return config;
+    }, error => {
+        return Promise.reject(error);
+    });
+
+
     function msg(type, msg) {
         Vue.prototype.$message({
             type: type, // success（成功）、warning（警告）, error(错误)
@@ -169,7 +190,7 @@
             center: true,
         })
     }
-    new Vue({
+    const app = new Vue({
         el: '#wrapper',
         data: {
             imgWidth: '0px',
@@ -183,20 +204,63 @@
             },
             fileSrc: '',
             user: {},
-            isShow: false
+            isShow: false,
+            token:'',
+            sumcollect:'',
+            name:'',
+            foodsId:'',
+            pariseSum:0,
+            collectSum:0
+        },
+        mounted(){
+            this.sumCollect();
+            this.sumPraise();
         },
         created() {
             this.load();
+            this.checklogin();
         },
         methods: {
+            sumCollect() {
+                let id = this.getQueryVariable('id');
+                // const data = {foodsId: id};
+                // let params = new URLSearchParams(data);
+                axios.get('/collect/sumCollect?id=' + id).then(res => {
+                    if(res.data.code == 1) {
+                       // alert("有"+res.data.data+"人收藏了该菜谱");
+                        app.$data.collectSum=res.data.data;
+                    }
+                })
+            },
+            sumPraise() {
+                let id = this.getQueryVariable('id');
+                // const data = {foodsId: this.obj.foodsId};
+                // let params = new URLSearchParams(data);
+                axios.get("/praise/sumPraise?id=" + id).then(res => {
+                    if(res.data.code == 1) {
+                        // alert("有"+res.data.data+"人点赞了该菜谱");
+                        app.$data.pariseSum=res.data.data;
+                    }
+                })
+            },
+            checklogin(){
+                axios.get("/user/checkLogin").then(res => {
+                    if(res.data.code == 1){
+                        // this.obj.user = res.data.data;
+                        this.user = res.data.data;
+                        // alert(this.user);
+                    }else {
+                        alert("用户未登录 ...");
+                    }
+                })
+            },
             load() {
                 let id = this.getQueryVariable('id');
                 console.info("接收id为:"+id);
-                this.comment.foreignId = id;
                 if (id !== 0) {
                     axios.get('/food/menuDetail?id=' + id).then(res => {
                         if (res.data.code == 1) {
-                            this.obj = res.data.data;
+                            app.$data.obj = res.data.data;
                             console.info("接收到的obj:"+obj);
                         } else {
                             alert(res.data.msg)
@@ -248,16 +312,18 @@
             },
             praise() {
                 if(!this.user || !this.user.name) {
-                    location.href = '/end/page/login.html';
+                    location.href = '/static/front/login.html';
                     return;
                 }
+
                 const data = {foodsId: this.obj.id, name: this.obj.name};
-                axios.post("/praiseInfo", data).then(res => {
-                    if(res.data.code === '0') {
-                        if(res.data.data.id) {
-                            msg("success", '点赞成功');
-                            this.load();
-                        }
+                let params = new URLSearchParams(data);
+                axios.post("/praise/insertPraise", params).then(res => {
+                    if(res.data.code == 1) {
+                        msg("success", res.data.msg);
+                        this.sumPraise();
+                        this.load();
+
                     } else {
                         msg('error', res.data.msg);
                     }
@@ -265,16 +331,17 @@
             },
             collect() {
                 if(!this.user || !this.user.name) {
-                    location.href = '/end/page/login.html';
+                    location.href = '/static/front/login.html';
                     return;
                 }
+
                 const data = {foodsId: this.obj.id, name: this.obj.name};
-                axios.post("/collectInfo", data).then(res => {
-                    if(res.data.code === '0') {
-                        if(res.data.data.id) {
-                            msg("success", '收藏成功');
-                            this.load();
-                        }
+                let params = new URLSearchParams(data);
+                axios.post("/collect/inserCollect",params).then(res => {
+                    if(res.data.code == 1) {
+                        msg("success", res.data.msg);
+                        this.sumCollect();
+                        this.load();
                     } else {
                         msg('error', res.data.msg);
                     }

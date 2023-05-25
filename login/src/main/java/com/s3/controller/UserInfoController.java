@@ -4,6 +4,7 @@ package com.s3.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mysql.cj.PreparedQuery;
 import com.s3.bean.AdminInfo;
 import com.s3.bean.Result;
 import com.s3.bean.UserInfo;
@@ -120,7 +121,14 @@ public class UserInfoController {
      */
     @RequestMapping ("/register")
     public Result Regist(@RequestParam String level,@RequestParam String name,@RequestParam String password,@RequestParam String sex){
-        System.out.println(userInfoDao);
+        //判断用户名是否被注册
+        QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("name",name);
+        UserInfo userInfo1 = userInfoDao.selectOne(queryWrapper);
+        if (userInfo1 != null){
+            return Result.failure("用户名已经被注册 ...",null);
+        }
+
         UserInfo userInfo = new UserInfo();
         userInfo.setName(name);
         userInfo.setPassword(password);

@@ -5,25 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3385eafc-c4fd-412a-8b7d-54b40e203a9b" name="Changes" comment="完成显示首页信息以及菜品详细信息">
-      <change afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/ClassifyInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/mapper/ClassifyInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/mapper/SubClassifyInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/vo/ClassifyInfoVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/css/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/advertiser/src/main/java/com/example/bean/Result.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/advertiser/src/main/java/com/example/config/RedisConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/advertiser/src/main/java/com/example/controller/AdvertiserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/advertiser/src/main/java/com/example/dao/AdvertiserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/advertiser/src/main/java/com/example/util/Redisconstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collect_and_praise/src/main/java/com/example/bean/Result.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collect_and_praise/src/main/java/com/example/config/RedisConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collect_and_praise/src/main/java/com/example/controller/CollectInfoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collect_and_praise/src/main/java/com/example/controller/PraiseInfoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collect_and_praise/src/main/java/com/example/dao/CollectInfoDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collect_and_praise/src/main/java/com/example/dao/PraiseInfoDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collect_and_praise/src/main/java/com/example/util/Redisconstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_22_20_38__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_22_20_38__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_18_35____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_18_35____.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_18_59____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_18_59____.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_21_08____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_21_08____.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_21_36____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_22_21_36____.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_23_16_50___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_23_16_50___Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/_22_5_2023_8_48_pm____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_22_5_2023_8_48_pm____.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/_23_5_2023_3_26_pm___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_23_5_2023_3_26_pm___Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/config/MybatisPlusConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/config/MybatisPlusConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/controller/FoodMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/controller/FoodMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/util/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/find_and_cart/src/main/java/com/yc/util/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwt/target/classes/util/JwtUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/Jwt/target/classes/util/JwtUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/PraiseInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/entity/src/main/java/com/s3/bean/PraiseInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/target/classes/com/s3/bean/PraiseInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/entity/target/classes/com/s3/bean/PraiseInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/find_and_cart/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/find_and_cart/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/controller/UserInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/login/target/classes/com/s3/controller/UserInfoController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/file/什锦1601474433677.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/file/什锦.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMaterialInfoDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMaterialInfoDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/advertiserInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/advertiserInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMaterialInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMaterialInfo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMenuInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMenuInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMenuInfoDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/foodsMenuInfoDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +57,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -49,6 +73,7 @@
       <MavenGeneralSettings>
         <option name="localRepository" value="D:\MavenRepository" />
         <option name="mavenHome" value="$PROJECT_DIR$/../../../apache-maven-3.6.3" />
+        <option name="useMavenConfig" value="true" />
         <option name="userSettingsFile" value="D:\apache-maven-3.6.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -61,37 +86,38 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/java2/java2/our_food_project/static/src/main/resources/static/front/css&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;ea05a29f6ddf6556050fae63b3ab2a64&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "last_opened_file_path": "E:/food project/our_food_project/advertiser/src/main/java/com/example",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "spring.configuration.checksum": "61f8ece2dde4cf2989e42e808b802067",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\food project\our_food_project\advertiser\src\main\java\com\example" />
+      <recent name="E:\food project\our_food_project\collect_and_praise\src\main\java\com\example" />
       <recent name="D:\java2\java2\our_food_project\static\src\main\resources\static\front\css" />
       <recent name="D:\java2\java2\our_food_project\find_and_cart\src\main\java\com\yc\mapper" />
       <recent name="D:\java2\java2\our_food_project\entity\src\main\java\com\s3\bean" />
-      <recent name="E:\javaee project\login\src\main\java\com\s3\controller" />
-      <recent name="E:\javaee project\login\src\main\java\com\s3" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\javaee project\login\src\main\java\com\s3\config" />
@@ -99,12 +125,34 @@
       <recent name="E:\javaee project\login\src\main\java\com\s3" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.config" />
+      <recent name="com.example.controller" />
+      <recent name="com.example.dao" />
       <recent name="com.yc.vo" />
       <recent name="com.s3.bean" />
-      <recent name="com.yc.util" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.StaticApp">
+  <component name="RunManager" selected="Spring Boot.AdvertiserApplication">
+    <configuration name="AdvertiserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="advertiser" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.AdvertiserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CollectAndpraiseApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="collect_and_praise" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.CollectAndpraiseApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="FindAndCartApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="find_and_cart" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.FindAndCartApp" />
@@ -160,9 +208,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.StaticApp" />
-        <item itemvalue="Spring Boot.FindAndCartApp" />
         <item itemvalue="Spring Boot.GateWayApp" />
+        <item itemvalue="Spring Boot.CollectAndpraiseApplication" />
         <item itemvalue="Spring Boot.LoginApplication" />
+        <item itemvalue="Spring Boot.FindAndCartApp" />
       </list>
     </recent_temporary>
   </component>
@@ -182,6 +231,10 @@
       <workItem from="1684828124148" duration="6128000" />
       <workItem from="1684914872800" duration="5787000" />
       <workItem from="1684926258286" duration="1631000" />
+      <workItem from="1684940612803" duration="7056000" />
+      <workItem from="1684947731196" duration="119000" />
+      <workItem from="1684948336882" duration="3298000" />
+      <workItem from="1684982686217" duration="5247000" />
     </task>
     <task id="LOCAL-00001" summary="完善登录模块">
       <created>1684758399404</created>

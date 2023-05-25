@@ -7,6 +7,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="collect_and_praise" />
+        <module name="advertiser" />
         <module name="displayproducts" />
         <module name="static" />
         <module name="Jwt" />
@@ -21,7 +23,9 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Jwt" options="-parameters" />
+      <module name="advertiser" options="-parameters" />
       <module name="background" options="-parameters" />
+      <module name="collect_and_praise" options="-parameters" />
       <module name="displayproducts" options="-parameters" />
       <module name="entity" options="-parameters" />
       <module name="find_and_cart" options="-parameters" />

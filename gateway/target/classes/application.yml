@@ -47,6 +47,21 @@ spring:
           order: 1
           predicates:
             - Path=/background/**
+        - id: collect
+          uri: lb://collectpraise
+          order: 3
+          predicates:
+            - Path=/collect/**
+        - id: praise
+          uri: lb://collectpraise
+          order: 3
+          predicates:
+            - Path=/praise/**
+        - id: advertisers
+          uri: lb://advertiser
+          order: 3
+          predicates:
+            - Path=/advertiser/**
 management:
   endpoints:
     web:
