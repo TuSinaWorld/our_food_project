@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import util.JwtUtil;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static com.ourfood.background.util.Redisconstants.LOGIN_ADMIN;
@@ -85,5 +86,20 @@ public class BackController {
         //修改密码，防止密码暴露
         adminInfo.setPassword("*****");
         return Result.success("管理员已登陆",adminInfo);
+    }
+
+    @RequestMapping("/showAdminsInfo.admin")
+    public Result showAdminsInfo(){
+        List<AdminInfo> adminInfos = null;
+        try {
+            adminInfos = adminInfoDao.selectList(null);
+            adminInfos.forEach(adminInfo -> {
+                adminInfo.setPassword("***");
+             });
+            return Result.success("查询成功",adminInfos);
+        }catch (Exception e){
+            log.error("查询失败" + e.getMessage());
+            return Result.failure("查询失败",null);
+        }
     }
 }

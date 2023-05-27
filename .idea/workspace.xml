@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3385eafc-c4fd-412a-8b7d-54b40e203a9b" name="Changes" comment="完成收藏页面显示以及相关功能。">
-      <change afterPath="$PROJECT_DIR$/collect_and_praise/src/main/java/com/example/config/MpConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/spring.log.2023-05-25.0.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/collect_and_praise/src/main/java/com/example/controller/CollectInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/collect_and_praise/src/main/java/com/example/controller/CollectInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/collectInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/collectInfo.html" afterDir="false" />
-    </list>
+    <list default="true" id="3385eafc-c4fd-412a-8b7d-54b40e203a9b" name="Changes" comment="完成管理员信息显示功能" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,7 +64,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;d22ef9b5fda70c03b2e76dcc3034702a&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;61f8ece2dde4cf2989e42e808b802067&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -96,10 +89,23 @@
       <recent name="com.s3.bean" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.StaticApp">
+  <component name="RunManager" selected="Spring Boot.GateWayApp">
     <configuration name="AdvertiserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="advertiser" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.AdvertiserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BackGroundApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="background" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ourfood.background.BackGroundApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ourfood.background.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -110,19 +116,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FindAndCartApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="find_and_cart" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.FindAndCartApp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.yc.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -171,11 +164,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.CollectAndpraiseApplication" />
-        <item itemvalue="Spring Boot.StaticApp" />
-        <item itemvalue="Spring Boot.FindAndCartApp" />
-        <item itemvalue="Spring Boot.LoginApplication" />
         <item itemvalue="Spring Boot.GateWayApp" />
+        <item itemvalue="Spring Boot.StaticApp" />
+        <item itemvalue="Spring Boot.BackGroundApplication" />
+        <item itemvalue="Spring Boot.CollectAndpraiseApplication" />
+        <item itemvalue="Spring Boot.LoginApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -199,9 +192,6 @@
       <workItem from="1684947731196" duration="119000" />
       <workItem from="1684948336882" duration="3298000" />
       <workItem from="1684982686217" duration="5247000" />
-      <workItem from="1684989862178" duration="227000" />
-      <workItem from="1685013780939" duration="8417000" />
-      <workItem from="1685157505063" duration="3286000" />
     </task>
     <task id="LOCAL-00001" summary="完善登录模块">
       <created>1684758399404</created>
@@ -231,12 +221,12 @@
       <option name="project" value="LOCAL" />
       <updated>1684832141373</updated>
     </task>
-    <task id="LOCAL-00005" summary="完成了菜谱的点赞收藏功能以及公告栏显示功能。">
-      <created>1684990060730</created>
+    <task id="LOCAL-00005" summary="完成管理员信息显示功能">
+      <created>1685020041164</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1684990060730</updated>
+      <updated>1685020041164</updated>
     </task>
     <option name="localTasksCounter" value="6" />
     <servers />
@@ -260,9 +250,8 @@
     <MESSAGE value="完善登录模块" />
     <MESSAGE value="修复登录bug" />
     <MESSAGE value="完成显示首页信息以及菜品详细信息" />
-    <MESSAGE value="完成了菜谱的点赞收藏功能以及公告栏显示功能。" />
-    <MESSAGE value="完成收藏页面显示以及相关功能。" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成收藏页面显示以及相关功能。" />
+    <MESSAGE value="完成管理员信息显示功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成管理员信息显示功能" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
