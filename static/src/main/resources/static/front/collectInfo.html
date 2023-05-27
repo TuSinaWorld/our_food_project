@@ -31,7 +31,7 @@
                     <a style="margin-right: 50px; color: blue" href="javascript:void(0)" @click="logout">退出</a>
                     </span>
                     <a v-if="!(user.name)" href="/end/page/login.html" target="_blank" style="margin-right: 10px; color: #666666">登录</a>
-                    <a href="/front/register.html" target="_blank" style="margin-right: 30px; color: #666666">注册</a>
+                    <a v-if="!(user.name)" href="/static/front/register.html" target="_blank" style="margin-right: 30px; color: #666666">注册</a>
                 </div>
             </div>
 
@@ -96,7 +96,7 @@
                             <a class="page-link" href="javascript:void(0)" v-if="pageInfo.hasNextPage" @click="loadTable(pageInfo.pageNum + 1)">{{pageInfo.pageNum + 1}}</a>
                         </li>
                         <li class="page-item" :class="{ disabled: nextActive }">
-                            <a class="page-link" href="javascript:void(0)" @click="loadTable(pageInfo.hasNextPage? (pageInfo.pageNum + 1) : pageInfo.pageNum)">下一页</a>
+                            <a class="page-link" href="javascript:void(0)" @click="loadTable()">下一页</a>
                         </li>
                     </ul>
                 </nav>
@@ -113,6 +113,27 @@
 <script src="js/element/index.js"></script>
 
 <script>
+    //使用axios
+    Vue.prototype.axios = axios;
+    // 在每次请求时，前端携带token到请求头中
+    axios.interceptors.request.use(config => {
+        // 从localStorage或vuex中获取token
+        const token = localStorage.getItem('token') ;   //|| this.$store.state.token;
+        // 如果有token，就添加到请求头中
+        if (token) {
+            config.headers.token = token;
+        }else{
+            config.headers.token ='';
+        }
+        console.log(   token );
+        console.log(   config );
+        return config;
+    }, error => {
+        return Promise.reject(error);
+    });
+
+
+
     function msg(type, msg) {
         Vue.prototype.$message({
             type: type, // success（成功）、warning（警告）, error(错误)
@@ -131,45 +152,68 @@
             preActive: true,
             nextActive: true,
             user: {},
-            isShow: false
+            isShow: false,
+            pageNum: 1,
+            foodId:0,
         },
 
         created: function() {
-            axios.get('/auth').then(res => {
-                if (res.data.code === '0') {
-                    this.user = res.data.data;
-                    if (this.user.level !== 3) {
-                        this.isShow = true;
-                    }
+            // axios.get('/auth').then(res => {
+            //     if (res.data.code === '0') {
+            //         this.user = res.data.data;
+            //         if (this.user.level !== 3) {
+            //             this.isShow = true;
+            //         }
+            //
+            //         this.loadTable(1);
+            //     }
+            // });
+            this.checklogin();
 
-                    this.loadTable(1);
-                }
-            });
-
+        },
+        mounted(){
+            this.loadTable(1,0);
         },
 
         methods: {
-            loadTable(pageNum) {
-                let url = "/collectInfo/page/all?pageSize=10&pageNum=" + pageNum;
-                if (!this.user || !this.user.name) {
-                    url += "&level=9";   // 不查询
-                } else {
-                    url += "&userId=" + this.user.id + "&level=" + this.user.level;
+            loadTable(page,state) {
+                if(state==0){
+                    this.pageNum=1;
+                }else if(state>0){
+                    this.pageNum=this.pageNum+page;
+                    if(this.pageNum>this.totalPage){
+                        alert("已经是最后一页");
+                        return;
+                    }
+                    if(this.pageNum<1){
+                        alert("该页为首页无法进行上一页操作!");
+                        this.pageNum=1;
+                        return;
+                    }
                 }
-                axios.get(url).then(res => {
-                    if (res.data.code === '0') {
-                        this.tableData = res.data.data.list;
+                const data = {pageNum: this.pageNum};
+                let params = new URLSearchParams(data);
+                // params.append("pageName",this.pageInfo.pageNum);
+                axios.post("/collect/userCollect",params).then(res => {
+                    if (res.data.code == 1) {
+                        this.tableData = res.data.data.records;
                         for (const item of this.tableData) {
                             item.url = item.notesId ? "notesInfoDetail.html?id=" + item.notesId :
                                 "foodsMenuInfoDetail.html?id=" + item.foodsId;
                         }
-                        this.pageInfo = res.data.data;
-                        this.preActive = !(this.pageInfo.hasPreviousPage);
-                        this.nextActive = !(this.pageInfo.hasNextPage);
                     } else {
                         alert(res.data.msg);
                     }
                 });
+            },
+            checklogin(){
+                axios.get("/user/checkLogin").then(res => {
+                    if(res.data.code == 1){
+                        this.user = res.data.data;
+                    }else {
+                        alert("用户未登录 ...");
+                    }
+                })
             },
             logout() {
                 axios.get("/logout").then(res => {
@@ -182,11 +226,14 @@
             },
             del(id) {
                 if(!this.user || !this.user.name) {
-                    location.href = '/end/page/login.html';
+                    location.href = '/static/front/login.html';
                     return;
                 }
-                axios.delete("/collectInfo/" + id).then(res => {
-                    if(res.data.code === '0') {
+                alert("id:"+id);
+                const data = {foodsId: id};
+                let params = new URLSearchParams(data);
+                axios.post("/collect/delCollect",params).then(res => {
+                    if(res.data.code == 1) {
                         msg('success', "取消成功");
                         this.loadTable(1);
                     } else {

@@ -1,6 +1,8 @@
 package com.example.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.bean.Result;
 import com.example.dao.CollectInfoDao;
 import com.example.dao.PraiseInfoDao;
@@ -9,10 +11,7 @@ import com.s3.bean.PraiseInfo;
 import io.jsonwebtoken.Claims;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import util.JwtUtil;
 
 import javax.annotation.Resource;
@@ -94,5 +93,65 @@ public class CollectInfoController {
         List<CollectInfo> collectInfos =collectInfoDao.selectList(queryWrapper);
         int size = collectInfos.size();
         return Result.success("收藏数 ...",size);
+    }
+
+    /**
+     * 获取目标用户的收藏信息
+     * @param token
+     * @param pageNum
+     * @return
+     */
+    @RequestMapping("/userCollect")
+    public Result UserCollect(@RequestHeader String token,@RequestParam String pageNum){
+        //获取用户userid
+        String userid;
+        try{
+            //读取token中唯一的内容 用户Id
+            Claims claims = JwtUtil.parseJWT(token);
+            userid = claims.get("user").toString();
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
+        long userId = Long.parseLong(userid);
+
+        //取第pageNum页的收藏数据
+        int page = Integer.parseInt(pageNum);
+
+        Page<CollectInfo> pages = new Page<>(page,5);
+        QueryWrapper<CollectInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("userId",userId);
+
+        IPage<CollectInfo> collectInfoPage = collectInfoDao.selectPage(pages,queryWrapper); // 执行分页查询
+
+        return Result.success("该用户收藏了以下内容",collectInfoPage);
+    }
+
+    @RequestMapping("/delCollect")
+    public Result DelCollect(@RequestParam String foodsId,@RequestHeader String token){
+
+        System.out.println("6666666666666666"+foodsId);
+        //获取用户userid
+        String userid;
+        try{
+            //读取token中唯一的内容 用户Id
+            Claims claims = JwtUtil.parseJWT(token);
+            userid = claims.get("user").toString();
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
+
+        long foodid = Long.parseLong(foodsId);
+        long userId = Long.parseLong(userid);
+        QueryWrapper<CollectInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id",foodid);
+        queryWrapper.eq("userId",userId);
+        CollectInfo collectInfo = collectInfoDao.selectOne(queryWrapper);
+
+        collectInfoDao.deleteById(collectInfo.getId());
+
+
+        return Result.success("取消收藏成功 ...",null);
     }
 }
