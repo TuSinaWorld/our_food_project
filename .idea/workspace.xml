@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3385eafc-c4fd-412a-8b7d-54b40e203a9b" name="Changes" comment="完成管理员信息显示功能" />
+    <list default="true" id="3385eafc-c4fd-412a-8b7d-54b40e203a9b" name="Changes" comment="完成收藏页面显示以及相关功能。">
+      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/end/page/indexUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/login/src/main/java/com/s3/controller/UserInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/target/classes/com/s3/controller/UserInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/login/target/classes/com/s3/controller/UserInfoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/end/page/accountUserInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/end/page/accountUserInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/end/page/userInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/end/page/userInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/front/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/front/login.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +65,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/food project/our_food_project/advertiser/src/main/java/com/example&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/food project/our_food_project/static/src/main/resources/static/end/page&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -64,17 +74,17 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;61f8ece2dde4cf2989e42e808b802067&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;d22ef9b5fda70c03b2e76dcc3034702a&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\food project\our_food_project\static\src\main\resources\static\end\page" />
+      <recent name="E:\food project\our_food_project\static\src\main\resources\static\front" />
       <recent name="E:\food project\our_food_project\advertiser\src\main\java\com\example" />
       <recent name="E:\food project\our_food_project\collect_and_praise\src\main\java\com\example" />
       <recent name="D:\java2\java2\our_food_project\static\src\main\resources\static\front\css" />
-      <recent name="D:\java2\java2\our_food_project\find_and_cart\src\main\java\com\yc\mapper" />
-      <recent name="D:\java2\java2\our_food_project\entity\src\main\java\com\s3\bean" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\javaee project\login\src\main\java\com\s3\config" />
@@ -89,23 +99,10 @@
       <recent name="com.s3.bean" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.GateWayApp">
+  <component name="RunManager" selected="Spring Boot.StaticApp">
     <configuration name="AdvertiserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="advertiser" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.AdvertiserApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BackGroundApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="background" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ourfood.background.BackGroundApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ourfood.background.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -116,6 +113,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FindAndCartApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="find_and_cart" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yc.FindAndCartApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yc.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -165,10 +175,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.GateWayApp" />
-        <item itemvalue="Spring Boot.StaticApp" />
-        <item itemvalue="Spring Boot.BackGroundApplication" />
-        <item itemvalue="Spring Boot.CollectAndpraiseApplication" />
         <item itemvalue="Spring Boot.LoginApplication" />
+        <item itemvalue="Spring Boot.CollectAndpraiseApplication" />
+        <item itemvalue="Spring Boot.FindAndCartApp" />
+        <item itemvalue="Spring Boot.StaticApp" />
       </list>
     </recent_temporary>
   </component>
@@ -192,6 +202,8 @@
       <workItem from="1684947731196" duration="119000" />
       <workItem from="1684948336882" duration="3298000" />
       <workItem from="1684982686217" duration="5247000" />
+      <workItem from="1685173012712" duration="14716000" />
+      <workItem from="1685194422980" duration="1031000" />
     </task>
     <task id="LOCAL-00001" summary="完善登录模块">
       <created>1684758399404</created>

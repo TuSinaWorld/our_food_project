@@ -1,6 +1,7 @@
 package com.s3.controller;
 
 
+import com.alibaba.druid.sql.visitor.functions.Ucase;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,11 +16,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 import util.JwtUtil;
 
 import javax.annotation.Resource;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static com.s3.util.Redisconstants.LOGIN_USER;
@@ -159,5 +162,128 @@ public class UserInfoController {
         userInfoDao.updateById(userInfo);
 
         return Result.success("重置密码成功...密码为:123456...",userInfo);
+    }
+
+    /**
+     * 查询登录用户详细信息
+     * @param token
+     * @return
+     */
+    @RequestMapping("/selectUser")
+    public Result SelectUser(@RequestHeader String token){
+        //判断前端是否传来token或token为空值时
+        if(token == null || "".equals(token)){
+            return Result.failure("用户未登录 ...",null);
+        }
+        //定义id
+        String id;
+        try{
+            //读取token中唯一的内容 用户Id
+            Claims claims = JwtUtil.parseJWT(token);
+            id = claims.get("user").toString();
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
+        int userId = Integer.parseInt(id);
+
+        QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id",userId);
+        List<UserInfo> userInfos = userInfoDao.selectList(queryWrapper);
+
+        return Result.success("用户信息",userInfos);
+    }
+
+    /**
+     * 用户修改个人信息
+     * @param token
+     * @param name
+     * @param nickName
+     * @param sex
+     * @param age
+     * @param birthday
+     * @param phone
+     * @param address
+     * @param email
+     * @param cardId
+     * @return
+     */
+    @RequestMapping("/updataUser")
+    public Result UpdataUser(@RequestHeader String token,@RequestParam String name,
+                             @RequestParam String password, @RequestParam String nickName,
+                             @RequestParam String sex, @RequestParam String age,
+                             @RequestParam String birthday, @RequestParam String phone,
+                             @RequestParam String address, @RequestParam String email,
+                             @RequestParam String cardId){
+        //判断前端是否传来token或token为空值时
+        if(token == null || "".equals(token)){
+            return Result.failure("用户未登录 ...",null);
+        }
+        //定义id
+        String id;
+        try{
+            //读取token中唯一的内容 用户Id
+            Claims claims = JwtUtil.parseJWT(token);
+            id = claims.get("user").toString();
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
+        Long userId = Long.parseLong(id);
+
+        UserInfo userInfo = new UserInfo();
+        userInfo.setId(userId);
+        userInfo.setName(name);
+        userInfo.setPassword(password);
+        userInfo.setNickName(nickName);
+        userInfo.setSex(sex);
+        userInfo.setSex(sex);
+        int ages = Integer.parseInt(age);
+        userInfo.setAge(ages);
+        userInfo.setBirthday(birthday);
+        userInfo.setPhone(phone);
+        userInfo.setAddress(address);
+        userInfo.setEmail(email);
+        userInfo.setCardId(cardId);
+
+        userInfoDao.updateById(userInfo);
+
+        return Result.success("修改成功 ...",userInfo);
+    }
+
+    /**
+     * 注销账户
+     * @param token
+     * @return
+     */
+    @RequestMapping("/delUser")
+    public Result DelUser(@RequestHeader String token){
+        //判断前端是否传来token或token为空值时
+        if(token == null || "".equals(token)){
+            return Result.failure("用户未登录 ...",null);
+        }
+        //定义id
+        String id;
+        try{
+            //读取token中唯一的内容 用户Id
+            Claims claims = JwtUtil.parseJWT(token);
+            id = claims.get("user").toString();
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
+        Long userId = Long.parseLong(id);
+        System.out.println(userId);
+
+        QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id",userId);
+        UserInfo userInfo = userInfoDao.selectOne(queryWrapper);
+
+        if (userInfo == null){
+            return Result.failure("不存在该用户 ...",null);
+        }
+
+        userInfoDao.deleteById(userId);
+        return Result.success("注销账户成功 ...",null);
     }
 }

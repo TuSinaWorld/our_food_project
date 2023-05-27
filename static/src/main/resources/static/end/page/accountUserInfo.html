@@ -133,7 +133,7 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label">姓名</label>
 									<div class="col-sm-7">
-										<input type="text" class="form-control" v-model="entity.name" placeholder="请输入姓名" id="name">
+										<input type="text" class="form-control" v-model="entity.name" placeholder="请输入名字" id="name">
 									</div>
 								</div>
 								<div class="form-group">
@@ -143,13 +143,19 @@
 									</div>
 								</div>
 								<div class="form-group">
+									<label class="col-sm-3 control-label">密码</label>
+									<div class="col-sm-7">
+										<input type="text" class="form-control" v-model="entity.password" placeholder="请输入新密码" id="password">
+									</div>
+								</div>
+								<div class="form-group">
 									<label class="col-sm-3 control-label">性别</label>
 									<div class="col-sm-7">
 										<label class="radio-inline">
-											<input type="radio" value="男" v-model="entity.sex" id="sex">男
+											<input type="radio" value="男" v-model="entity.sex" id="sex1">男
 										</label>
 										<label class="radio-inline">
-											<input type="radio" value="女" v-model="entity.sex" id="sex">女
+											<input type="radio" value="女" v-model="entity.sex" id="sex0">女
 										</label>
 									</div>
 								</div>
@@ -214,6 +220,26 @@
 <script src="../js/element/index.js"></script>
 
 <script>
+
+	//使用axios
+	Vue.prototype.axios = axios;
+	// 在每次请求时，前端携带token到请求头中
+	axios.interceptors.request.use(config => {
+		// 从localStorage或vuex中获取token
+		const token = localStorage.getItem('token') ;   //|| this.$store.state.token;
+		// 如果有token，就添加到请求头中
+		if (token) {
+			config.headers.token = token;
+		}else{
+			config.headers.token ='';
+		}
+		console.log(   token );
+		console.log(   config );
+		return config;
+	}, error => {
+		return Promise.reject(error);
+	});
+
     function msg(type, msg) {
         Vue.prototype.$message({
             type: type, // success（成功）、warning（警告）, error(错误)
@@ -235,7 +261,7 @@
         },
         created: function () {
 
-            this.loadData();
+            // this.loadData();
 
             axios.get("/authority").then(res => {
                 if (res.data.code === '0') {
@@ -245,10 +271,20 @@
                 }
             });
 
-            this.user = JSON.parse(localStorage.getItem('user'));
-
+            // this.user = JSON.parse(localStorage.getItem('user'));
+			this.checklogin();
         },
         methods: {
+			checklogin(){
+				axios.get("/user/checkLogin").then(res => {
+					if(res.data.code == 1){
+						this.user = res.data.data;
+						this.entity = res.data.data;
+					}else {
+						alert("用户未登录 ...");
+					}
+				})
+			},
             loadData() {
                 axios.get("/getAccountInfo").then(res => {
                     if (res.data.code === '0') {
@@ -259,18 +295,15 @@
                 });
             },
             update() {
-                if (checkValid(this.entity)) {
-                    axios.put(
-                        "/userInfo", this.entity
-                    ).then(res => {
-                        if (res.data.code === '0') {
+				let params = new URLSearchParams(this.entity);
+                    axios.post("/user/updataUser",params).then(res => {
+                        if (res.data.code == 1 ) {
                             msg('success', '更新成功');
-                            this.loadData();
+                            this.checklogin()
                         } else {
                             msg('error', res.data.msg);
                         }
                     })
-                }
             },
             logout() {
                 logout();

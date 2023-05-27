@@ -169,8 +169,8 @@
 										<td>{{obj.cardId}}</td>
 
                                         <td>
-                                            <button class="btn btn-primary btn-xs" v-on:click="init(obj)">编辑</button>
-                                            <button class="btn btn-danger btn-xs" v-on:click="del(obj.id)">删除</button>
+                                            <a href="/static/end/page/accountUserInfo.html" target="_blank">修改个人信息</a>
+                                            <button class="btn btn-danger btn-xs" v-on:click="del(obj.id)">注销</button>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -231,7 +231,7 @@
 							<label class="col-sm-3 control-label">性别</label>
 							<div class="col-sm-7">
 								<label class="radio-inline">
-									<input type="radio" value="男" v-model="entity.sex" id="sex">男
+									<input type="radio" value="男" v-model="entity.sex" id="sex1">男
 								</label>
 								<label class="radio-inline">
 									<input type="radio" value="女" v-model="entity.sex" id="sex">女
@@ -298,6 +298,26 @@
 <script src="../js/element/index.js"></script>
 
 <script>
+    //使用axios
+    Vue.prototype.axios = axios;
+    // 在每次请求时，前端携带token到请求头中
+    axios.interceptors.request.use(config => {
+        // 从localStorage或vuex中获取token
+        const token = localStorage.getItem('token') ;   //|| this.$store.state.token;
+        // 如果有token，就添加到请求头中
+        if (token) {
+            config.headers.token = token;
+        }else{
+            config.headers.token ='';
+        }
+        console.log(   token );
+        console.log(   config );
+        return config;
+    }, error => {
+        return Promise.reject(error);
+    });
+
+
     function msg(type, msg) {
         Vue.prototype.$message({
             type: type, // success（成功）、warning（警告）, error(错误)
@@ -328,9 +348,9 @@
         },
         created: function () {
 
-            this.loadTable(1);
 
-            this.user = JSON.parse(localStorage.getItem('user'));
+            //
+            // this.user = JSON.parse(localStorage.getItem('user'));
 
             axios.get("/permission/2").then(res => {
                 if (res.data.code === '0') {
@@ -347,16 +367,25 @@
                     msg('error', res.data.msg);
                 }
             });
-
-
+            this.loadTable();
+            this.checklogin();
         },
         methods: {
-
-            loadTable(pageNum) {
-                let name = this.name === '' ? "all" : this.name;
-                axios.get("/userInfo/page/" + name + "?pageNum=" + pageNum).then(res => {
-                    if (res.data.code === '0') {
-                        this.objs = res.data.data.list;
+            checklogin(){
+                axios.get("/user/checkLogin").then(res => {
+                    if(res.data.code == 1){
+                        this.user = res.data.data;
+                    }else {
+                        alert("用户未登录 ...");
+                        window.location.href = '/static/front/login.html';
+                    }
+                })
+            },
+            loadTable() {
+                // let name = this.name === '' ? "all" : this.name;
+                axios.get("/user/selectUser").then(res => {
+                    if (res.data.code == 1) {
+                        this.objs = res.data.data;
                         this.pageInfo = res.data.data;
                         this.preActive = !(this.pageInfo.hasPreviousPage);
                         this.nextActive = !(this.pageInfo.hasNextPage);
@@ -411,10 +440,6 @@
                 }
             },
             del(id) {
-                if (this.permission.indexOf(2) === -1) {
-                    msg('warning', '你没有权限操作');
-                    return;
-                }
                 let _this = this;
                 this.$confirm('确认删除？', '系统提示', {
                     confirmButtonText: '确定',
@@ -422,10 +447,10 @@
                     cancelButtonClass: 'btn-custom-cancel',
                     type: 'warning'
                 }).then(function(){
-                    axios.delete("/userInfo/" + id).then(res => {
-                        if (res.data.code === '0') {
+                    axios.delete("/user/delUser").then(res => {
+                        if (res.data.code == 1) {
                             msg('success', '删除成功');
-                            _this.loadTable(1);
+                            this.checklogin();
                         } else {
                             msg('error', res.data.msg);
                         }
