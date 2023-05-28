@@ -2,19 +2,19 @@ package com.ourfood.background.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ourfood.background.bean.Result;
-import com.ourfood.background.dao.AdminInfoDao;
-import com.s3.bean.AdminInfo;
+import com.ourfood.background.dao.*;
+import com.s3.bean.*;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import util.JwtUtil;
 
 import javax.annotation.Resource;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -30,6 +30,15 @@ public class BackController {
     private RedisTemplate redisTemplate;
     @Resource
     AdminInfoDao adminInfoDao;
+    @Resource
+    UserInfoDao userInfoDao;
+    @Resource
+    ClassifyInfoDao classifyInfoDao;
+    @Resource
+    SubClassifyInfoDao subClassifyInfoDao;
+    @Resource
+    AdvertiserInfoDao advertiserInfoDao;
+
 
     @RequestMapping("/login")
     public Result login(@RequestParam String name, @RequestParam String password){
@@ -93,13 +102,205 @@ public class BackController {
         List<AdminInfo> adminInfos = null;
         try {
             adminInfos = adminInfoDao.selectList(null);
-            adminInfos.forEach(adminInfo -> {
-                adminInfo.setPassword("***");
-             });
+            adminInfos.forEach(adminInfo -> adminInfo.setPassword("***"));
             return Result.success("查询成功",adminInfos);
         }catch (Exception e){
             log.error("查询失败" + e.getMessage());
             return Result.failure("查询失败",null);
         }
     }
+
+    @RequestMapping("/showUsersInfo.admin")
+    public Result showUsersInfo(){
+        List<UserInfo> userInfos = null;
+        try{
+            userInfos = userInfoDao.selectList(null);
+            userInfos.forEach(userInfo -> userInfo.setPassword("***"));
+            return Result.success("查询成功",userInfos);
+        }catch (Exception e){
+            log.error("查询失败" + e.getMessage());
+            return Result.failure("查询失败",null);
+        }
+    }
+
+    @RequestMapping("/banUser.admin")
+    public Result banUser(@RequestParam String userId){
+        try{
+            int i = userInfoDao.deleteById(userId);
+            return Result.success("封禁成功",i);
+        }catch (Exception e){
+            log.error("封禁失败" + e.getMessage());
+            return Result.failure("封禁失败",null);
+        }
+    }
+
+    @RequestMapping("/getClassifyInfo.admin")
+    public Result getClassifyInfo(){
+        List<ClassifyInfo> classifyInfos = null;
+        try{
+            classifyInfos = classifyInfoDao.selectList(null);
+            return Result.success("查询成功",classifyInfos);
+        }catch (Exception e){
+            log.error("查询失败" + e.getMessage());
+            return Result.failure("查询失败",null);
+        }
+    }
+
+    @RequestMapping("/deleteClassifyInfo.admin")
+    public Result deleteClassifyInfo(@RequestParam String id){
+        try{
+            int i = classifyInfoDao.deleteById(id);
+            return Result.success("删除成功",i);
+        }catch (Exception e){
+            log.error("删除失败" + e.getMessage());
+            return Result.failure("删除失败",null);
+        }
+    }
+
+    @RequestMapping("/addClassifyInfo.admin")
+    public Result addClassifyInfo(@RequestParam String name,@RequestParam("descroiption") String description){
+        ClassifyInfo classifyInfo = new ClassifyInfo();
+        classifyInfo.setName(name);
+        classifyInfo.setDescroiption(description);
+        try{
+            int insert = classifyInfoDao.insert(classifyInfo);
+            return Result.success("添加成功",insert);
+        }catch (Exception e){
+            log.error("添加失败" + e.getMessage());
+            return Result.failure("添加失败",null);
+        }
+    }
+
+    @RequestMapping("/updateClassifyInfo.admin")
+    public Result updateClassifyInfo(@RequestParam Long id,@RequestParam String name,@RequestParam("descroiption") String description) {
+        ClassifyInfo classifyInfo = new ClassifyInfo();
+        classifyInfo.setId(id);
+        classifyInfo.setName(name);
+        classifyInfo.setDescroiption(description);
+        try {
+            int update = classifyInfoDao.updateById(classifyInfo);
+            return Result.success("更新成功", update);
+        } catch (Exception e) {
+            log.error("更新失败" + e.getMessage());
+            return Result.failure("更新失败", null);
+        }
+    }
+    @RequestMapping("/getSubClassifyInfo.admin")
+    public Result getSubClassifyInfo(){
+        List<SubClassifyInfo> subClassifyInfos = null;
+        try{
+            subClassifyInfos = subClassifyInfoDao.selectList(null);
+            return Result.success("查询成功",subClassifyInfos);
+        }catch (Exception e){
+            log.error("查询失败" + e.getMessage());
+            return Result.failure("查询失败",null);
+        }
+    }
+
+    @RequestMapping("/deleteSubClassifyInfo.admin")
+    public Result deleteSubClassifyInfo(@RequestParam String id){
+        try{
+            int i = subClassifyInfoDao.deleteById(id);
+            return Result.success("删除成功",i);
+        }catch (Exception e){
+            log.error("删除失败" + e.getMessage());
+            return Result.failure("删除失败",null);
+        }
+    }
+
+    @RequestMapping("/addSubClassifyInfo.admin")
+    public Result addSubClassifyInfo(@RequestParam String name,String description,Long classifyId){
+        SubClassifyInfo subClassifyInfo = new SubClassifyInfo();
+        subClassifyInfo.setName(name);
+        subClassifyInfo.setDescription(description);
+        subClassifyInfo.setClassifyId(classifyId);
+        try{
+            int insert = subClassifyInfoDao.insert(subClassifyInfo);
+            return Result.success("添加成功",insert);
+        }catch (Exception e){
+            log.error("添加失败" + e.getMessage());
+            return Result.failure("添加失败",null);
+        }
+    }
+
+    @RequestMapping("/updateSubClassifyInfo.admin")
+    public Result updateSubClassifyInfo(@RequestParam Long id,@RequestParam String name,String description,Long classifyId) {
+        SubClassifyInfo subClassifyInfo = new SubClassifyInfo();
+        subClassifyInfo.setId(id);
+        subClassifyInfo.setName(name);
+        subClassifyInfo.setDescription(description);
+        subClassifyInfo.setClassifyId(classifyId);
+        try {
+            int update = subClassifyInfoDao.updateById(subClassifyInfo);
+            return Result.success("更新成功", update);
+        } catch (Exception e) {
+            log.error("更新失败" + e.getMessage());
+            return Result.failure("更新失败", null);
+        }
+    }
+    @RequestMapping("/getAdvertiserInfo.admin")
+    public Result getAdvertiserInfo(){
+        List<AdvertiserInfo> advertiserInfos = null;
+        try{
+            advertiserInfos = advertiserInfoDao.selectList(null);
+            return Result.success("查询成功",advertiserInfos);
+        }catch (Exception e){
+            log.error("查询失败" + e.getMessage());
+            return Result.failure("查询失败",null);
+        }
+    }
+
+    @RequestMapping("/deleteAdvertiserInfo.admin")
+    public Result deleteAdvertiserInfo(@RequestParam String id){
+        try{
+            int i = advertiserInfoDao.deleteById(id);
+            return Result.success("删除成功",i);
+        }catch (Exception e){
+            log.error("删除失败" + e.getMessage());
+            return Result.failure("删除失败",null);
+        }
+    }
+
+    @RequestMapping("/addAdvertiserInfo.admin")
+    public Result addAdvertiserInfo(@RequestParam String name,@RequestParam String content){
+        AdvertiserInfo advertiserInfo = new AdvertiserInfo();
+        advertiserInfo.setName(name);
+        advertiserInfo.setContent(content);
+        advertiserInfo.setTime(LocalDateTime.now());
+        try{
+            int insert = advertiserInfoDao.insert(advertiserInfo);
+            return Result.success("添加成功",insert);
+        }catch (Exception e){
+            log.error("添加失败" + e.getMessage());
+            return Result.failure("添加失败",null);
+        }
+    }
+
+
+
+
+
+//    @RequestMapping("/getAdvertiserInfo.admin")
+//    public Result getAdvertiserInfo(){
+//        List<AdvertiserInfo> advertiserInfos = null;
+//        try{
+//            advertiserInfos = advertiserInfoDao.selectList(null);
+//            return Result.success("查询成功",advertiserInfos);
+//        }catch (Exception e){
+//            log.error("查询失败" + e.getMessage());
+//            return Result.failure("查询失败",null);
+//        }
+//    }
+//
+//    @RequestMapping("/deleteAdvertiserInfo.admin")
+//    public Result deleteAdvertiserInfo(@RequestParam String id){
+//        try{
+//            int i = advertiserInfoDao.deleteById(id);
+//            return Result.success("删除成功",i);
+//        }catch (Exception e){
+//            log.error("删除失败" + e.getMessage());
+//            return Result.failure("删除失败",null);
+//        }
+//    }
+
 }
