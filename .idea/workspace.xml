@@ -4,23 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3385eafc-c4fd-412a-8b7d-54b40e203a9b" name="Changes" comment="完成收藏页面显示以及相关功能。">
-      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/ourfood/background/dao/AdvertiserInfoDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/ourfood/background/dao/ClassifyInfoDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/ourfood/background/dao/FoodsMenuInfoDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/ourfood/background/dao/SubClassifyInfoDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background/src/main/java/com/ourfood/background/dao/UserInfoDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/src/main/resources/static/end/page/userManage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_27_12_20___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_27_12_20___Changes_.xml" afterDir="false" />
+    <list default="true" id="3385eafc-c4fd-412a-8b7d-54b40e203a9b" name="Changes" comment="完成大部分后台模块功能">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/background/src/main/java/com/ourfood/background/controller/BackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/background/src/main/java/com/ourfood/background/controller/BackController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/end/page/adminInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/end/page/adminInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/end/page/advertiserInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/end/page/advertiserInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/end/page/classifyInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/end/page/classifyInfo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/end/page/foodsMenuInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/end/page/foodsMenuInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/end/page/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/end/page/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/src/main/resources/static/end/page/subClassifyInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/main/resources/static/end/page/subClassifyInfo.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +95,7 @@
       <recent name="com.s3.bean" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.StaticApp">
+  <component name="RunManager" selected="Spring Boot.BackGroundApplication">
     <configuration name="AdvertiserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="advertiser" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.AdvertiserApplication" />
@@ -183,8 +170,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.StaticApp" />
         <item itemvalue="Spring Boot.BackGroundApplication" />
+        <item itemvalue="Spring Boot.StaticApp" />
         <item itemvalue="Spring Boot.GateWayApp" />
         <item itemvalue="Spring Boot.LoginApplication" />
         <item itemvalue="Spring Boot.CollectAndpraiseApplication" />
@@ -249,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685020041164</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="完成大部分后台模块功能">
+      <created>1685302225542</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1685302225542</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,7 +266,8 @@
     <MESSAGE value="修复登录bug" />
     <MESSAGE value="完成显示首页信息以及菜品详细信息" />
     <MESSAGE value="完成管理员信息显示功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成管理员信息显示功能" />
+    <MESSAGE value="完成大部分后台模块功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成大部分后台模块功能" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

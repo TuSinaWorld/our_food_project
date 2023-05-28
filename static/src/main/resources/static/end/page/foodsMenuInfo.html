@@ -71,7 +71,7 @@
                             <a href="subClassifyInfo.html"><i class="fa fa-table"></i>菜谱小类信息</a>
                         </li>
                         <li>
-                            <a href="foodsMenuInfo.html"><i class="fa fa-table"></i>菜谱信息</a>
+                            <a href="foodsMenuInfo.html" class="active-menu"><i class="fa fa-table"></i>菜谱信息</a>
                         </li>
                         <!--						<li>-->
                         <!--							<a href="foodsMaterialInfo.html"><i class="fa fa-table"></i>食材信息</a>-->
@@ -89,7 +89,7 @@
                         <!--							<a href="newsInfo.html"><i class="fa fa-table"></i>饮食资讯信息</a>-->
                         <!--						</li>-->
                         <li>
-                            <a href="advertiserInfo.html" class="active-menu"><i class="fa fa-table"></i>公告信息</a>
+                            <a href="advertiserInfo.html"><i class="fa fa-table"></i>公告信息</a>
                         </li>
                         <!--						<li>-->
                         <!--							<a href="messageInfo.html"><i class="fa fa-table"></i>趣味答题信息</a>-->
@@ -117,7 +117,7 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="page-subhead-line">这是公告信息，可以管理公告。 </h1>
+                    <h1 class="page-subhead-line">这是菜谱信息，可以管理菜谱。 </h1>
                 </div>
             </div>
 
@@ -125,28 +125,11 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            公告信息表
+                            菜谱信息表
                         </div>
-
-                        <el-button type="text" @click="AdvertiserInfo = {},dialogFormVisible2 = true">新增公告</el-button>
-                        <el-dialog title="新增公告" :visible.sync="dialogFormVisible2" :modal-append-to-body="abcd">
-                            <el-form :model="AdvertiserInfo" size="mini">
-                                <el-form-item label="公告名:" label-width="100px">
-                                    <el-input v-model="AdvertiserInfo.name" autocomplete="off"></el-input>
-                                </el-form-item>
-                                <el-form-item label="公告内容:" label-width="100px">
-                                    <el-input v-model="AdvertiserInfo.content" autocomplete="off"></el-input>
-                                </el-form-item>
-                            </el-form>
-                            <div slot="footer" class="dialog-footer">
-                                <el-button @click="dialogFormVisible2 = false">取 消</el-button>
-                                <el-button type="primary" @click="addClassify(),dialogFormVisible2 = false">确 定</el-button>
-                            </div>
-                        </el-dialog>
-
                         <template>
                             <el-table
-                                    :data="AdvertisersInfo"
+                                    :data="foodsMenusInfo"
                                     style="width: 100%"
                                     max-height="415">
                                 <el-table-column
@@ -157,34 +140,59 @@
                                 </el-table-column>
                                 <el-table-column
                                         prop="name"
-                                        label="公告名"
+                                        label="菜谱名"
                                         width="130">
                                 </el-table-column>
                                 <el-table-column
-                                        prop="time"
-                                        label="公告时间"
-                                        width="200">
+                                        prop="description"
+                                        label="描述"
+                                        width="300">
                                 </el-table-column>
                                 <el-table-column
-                                        prop="content"
-                                        label="公告内容"
-                                        width="500">
+                                        prop="tips"
+                                        label="类别"
+                                        width="160">
+                                </el-table-column>
+                                <el-table-column
+                                        prop="subId"
+                                        label="菜谱小类id"
+                                        width="120">
+                                </el-table-column>
+                                <el-table-column
+                                        prop="fileId"
+                                        label="图片id"
+                                        width="120">
+                                </el-table-column>
+                                <el-table-column
+                                        prop="fileName"
+                                        label="图片名"
+                                        width="160">
+                                </el-table-column>
+                                <el-table-column
+                                        prop="userName"
+                                        label="用户名"
+                                        width="160">
+                                </el-table-column>
+                                <el-table-column
+                                        prop="uploadUserId"
+                                        label="上传用户id"
+                                        width="160">
                                 </el-table-column>
                                 <el-table-column
                                         fixed="right"
                                         label="操作"
                                         width="300">
                                     <template slot-scope="scope">
-                                        <el-button type="text" @click="AdvertiserInfo = AdvertisersInfo[scope.$index],deletex = true">删除</el-button>
+                                        <el-button type="text" @click="foodsMenuInfo = foodsMenusInfo[scope.$index],deletex = true">删除</el-button>
                                         <el-dialog
                                                 title="警告"
                                                 :visible.sync="deletex"
                                                 :modal-append-to-body="abcd"
                                                 width="30%">
-                                            <span>是否确定删除"{{AdvertiserInfo.name}}"这篇公告?</span>
+                                            <span>是否确定删除"{{foodsMenuInfo.name}}"菜谱?</span>
                                             <span slot="footer" class="dialog-footer">
                                                 <el-button @click="deletex = false">取 消</el-button>
-                                                <el-button type="primary" @click="deleteClassify(AdvertiserInfo.id),deletex = false">确 定</el-button>
+                                                <el-button type="primary" @click="deleteClassify(foodsMenuInfo.id),deletex = false">确 定</el-button>
                                             </span>
                                         </el-dialog>
                                     </template>
@@ -214,29 +222,16 @@
         data: {
             user: {},
             abcd: false,
-            AdvertiserInfo:{},
-            AdvertisersInfo:[],
-            dialogFormVisible2:false,
+            foodsMenusInfo:[],
+            foodsMenuInfo:{},
             deletex:false,
-            dialogFormVisible:false
         },
         methods: {
             getDatas(){
-                axios.post("/background/getAdvertiserInfo.admin").then(data => {
+                axios.post("/background/getFoodsMenuInfo.admin").then(data => {
                     if(data.data.code == 1){
-                        this.AdvertisersInfo = data.data.data;
+                        this.foodsMenusInfo = data.data.data;
                     }else{
-                        this.$message.error(data.data.msg);
-                    }
-                })
-            },
-            addClassify(){
-                let params = new URLSearchParams(this.AdvertiserInfo);
-                axios.post("/background/addAdvertiserInfo.admin",params).then(data => {
-                    if(data.data.code == 1){
-                        this.$message.success("添加成功");
-                        this.getDatas();
-                    }else {
                         this.$message.error(data.data.msg);
                     }
                 })
@@ -244,7 +239,7 @@
             deleteClassify(id){
                 let params = new URLSearchParams();
                 params.append("id",id);
-                axios.post("/background/deleteAdvertiserInfo.admin",params).then(data =>{
+                axios.post("/background/deleteFoodsMenuInfo.admin",params).then(data =>{
                     if(data.data.code == 1){
                         this.$message.success("删除成功");
                         this.getDatas();

@@ -26,6 +26,8 @@ import static com.ourfood.background.util.Redisconstants.LOGIN_ADMIN_TTL;
 @Slf4j
 public class BackController {
 
+    //TODO:修改命密码,管理员认证,zipkin和sentinel部件
+
     @Autowired
     private RedisTemplate redisTemplate;
     @Resource
@@ -38,6 +40,8 @@ public class BackController {
     SubClassifyInfoDao subClassifyInfoDao;
     @Resource
     AdvertiserInfoDao advertiserInfoDao;
+    @Resource
+    FoodsMenuInfoDao foodsMenuInfoDao;
 
 
     @RequestMapping("/login")
@@ -275,32 +279,27 @@ public class BackController {
             return Result.failure("添加失败",null);
         }
     }
+    @RequestMapping("/getFoodsMenuInfo.admin")
+    public Result getFoodsMenuInfo(){
+        List<FoodsMenuInfo> foodsMenuInfo = null;
+        try{
+            foodsMenuInfo = foodsMenuInfoDao.selectList(null);
+            return Result.success("查询成功",foodsMenuInfo);
+        }catch (Exception e){
+            log.error("查询失败" + e.getMessage());
+            return Result.failure("查询失败",null);
+        }
+    }
 
-
-
-
-
-//    @RequestMapping("/getAdvertiserInfo.admin")
-//    public Result getAdvertiserInfo(){
-//        List<AdvertiserInfo> advertiserInfos = null;
-//        try{
-//            advertiserInfos = advertiserInfoDao.selectList(null);
-//            return Result.success("查询成功",advertiserInfos);
-//        }catch (Exception e){
-//            log.error("查询失败" + e.getMessage());
-//            return Result.failure("查询失败",null);
-//        }
-//    }
-//
-//    @RequestMapping("/deleteAdvertiserInfo.admin")
-//    public Result deleteAdvertiserInfo(@RequestParam String id){
-//        try{
-//            int i = advertiserInfoDao.deleteById(id);
-//            return Result.success("删除成功",i);
-//        }catch (Exception e){
-//            log.error("删除失败" + e.getMessage());
-//            return Result.failure("删除失败",null);
-//        }
-//    }
+    @RequestMapping("/deleteFoodsMenuInfo.admin")
+    public Result deleteFoodsMenuInfo(@RequestParam String id){
+        try{
+            int i = foodsMenuInfoDao.deleteById(id);
+            return Result.success("删除成功",i);
+        }catch (Exception e){
+            log.error("删除失败" + e.getMessage());
+            return Result.failure("删除失败",null);
+        }
+    }
 
 }
